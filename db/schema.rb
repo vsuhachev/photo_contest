@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113092623) do
+ActiveRecord::Schema.define(version: 20170113113101) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170113092623) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "image_data"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 

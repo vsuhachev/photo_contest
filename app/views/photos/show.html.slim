@@ -13,8 +13,8 @@ p
   strong Obtained at:
   = @photo.obtained_at
 p
-  strong User:
-  = @photo.user
+  strong Image:
+  img src=@photo.image_url(:small)
 
 = link_to 'Edit', edit_photo_path(@photo)
 '|

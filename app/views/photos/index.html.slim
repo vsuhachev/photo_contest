@@ -7,7 +7,6 @@ table
       th Description
       th Location
       th Obtained at
-      th User
       th
       th
       th
@@ -19,7 +18,6 @@ table
         td = photo.description
         td = photo.location
         td = photo.obtained_at
-        td = photo.user
         td = link_to 'Show', photo
         td = link_to 'Edit', edit_photo_path(photo)
         td = link_to 'Destroy', photo, data: { confirm: 'Are you sure?' }, method: :delete

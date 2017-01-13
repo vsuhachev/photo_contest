@@ -24,3 +24,5 @@
 /.idea
 /.ruby-version
 /.ruby-gemset
+
+/public/uploads/

@@ -19,6 +19,6 @@
     = f.label :obtained_at
     = f.date_select :obtained_at
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.hidden_field :image, value: @photo.cached_image_data
+    = f.file_field :image
   .actions = f.submit
