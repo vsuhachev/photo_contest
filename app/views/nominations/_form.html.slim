@@ -1,0 +1,15 @@
+= form_for (action_name == 'edit' ? @nomination : [:contest, @nomination]) do |f|
+  - if @nomination.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@nomination.errors.count, "error")} prohibited this nomination from being saved:"
+      ul
+        - @nomination.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions = f.submit

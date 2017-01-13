@@ -1,0 +1,25 @@
+h1 Listing nominations
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Contest
+      th
+      th
+      th
+
+  tbody
+    - @nominations.each do |nomination|
+      tr
+        td = nomination.title
+        td = nomination.description
+        td = nomination.contest
+        td = link_to 'Show', nomination
+        td = link_to 'Edit', edit_nomination_path(nomination)
+        td = link_to 'Destroy', nomination, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Nomination', new_contest_nomination_path(@contest)
