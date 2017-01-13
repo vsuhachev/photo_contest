@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fio1: MyString
+  fio2: MyString
+  fio3: MyString
+  dob: 2017-01-13
+  location: MyText
+  user: one
+  contest: one
+
+two:
+  fio1: MyString
+  fio2: MyString
+  fio3: MyString
+  dob: 2017-01-13
+  location: MyText
+  user: two
+  contest: two

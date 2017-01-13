@@ -1,26 +1,22 @@
-class ContestPhotoPolicy < AdminOwnedPolicy
+class AdminOwnedPolicy < ApplicationPolicy
   def index?
-    true
+    user.has_role?(:admin)
   end
 
   def show?
-    super || user == record.user
+    user.has_role?(:admin)
   end
 
   def create?
-    super || user == record.user
-  end
-
-  def new?
-    true
+    user.has_role?(:admin)
   end
 
   def update?
-    super || user == record.user
+    user.has_role?(:admin)
   end
 
   def destroy?
-    super || user == record.user
+    user.has_role?(:admin)
   end
 
   class Scope < Scope
@@ -29,7 +25,7 @@ class ContestPhotoPolicy < AdminOwnedPolicy
         when user.has_role?(:admin)
           scope
         else
-          scope.authored(user)
+          fail Pundit::NotAuthorizedError, 'invalid scope'
       end
     end
   end

@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   has_many :competitors
   has_many :photos
+  has_many :jurors
 end

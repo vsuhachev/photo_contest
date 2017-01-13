@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113113101) do
+ActiveRecord::Schema.define(version: 20170113150843) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20170113113101) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["contest_id"], name: "index_criteria_on_contest_id"
+  end
+
+  create_table "jurors", force: :cascade do |t|
+    t.string   "fio1"
+    t.string   "fio2"
+    t.string   "fio3"
+    t.date     "dob"
+    t.text     "location"
+    t.integer  "user_id"
+    t.integer  "contest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_jurors_on_contest_id"
+    t.index ["user_id"], name: "index_jurors_on_user_id"
   end
 
   create_table "nominations", force: :cascade do |t|

@@ -6,6 +6,7 @@ class Contest < ApplicationRecord
   has_many :competitors, through: :competitors_contests
 
   has_many :photos, class_name: 'ContestPhoto'
+  has_many :jurors
 
   scope :active_competitors, -> { competitors }
 end

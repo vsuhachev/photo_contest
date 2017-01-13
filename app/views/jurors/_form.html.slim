@@ -1,0 +1,30 @@
+= form_for shallow_target @juror, [:contest] do |f|
+  - if @juror.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@juror.errors.count, "error")} prohibited this juror from being saved:"
+      ul
+        - @juror.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :fio1
+    = f.text_field :fio1
+  .field
+    = f.label :fio2
+    = f.text_field :fio2
+  .field
+    = f.label :fio3
+    = f.text_field :fio3
+  .field
+    = f.label :dob
+    = f.date_select :dob
+  .field
+    = f.label :location
+    = f.text_area :location
+
+  - if permitted_attributes_for(@juror).include? :user_id
+    .field
+      = f.label :user
+      = f.text_field :user_id
+
+  .actions = f.submit

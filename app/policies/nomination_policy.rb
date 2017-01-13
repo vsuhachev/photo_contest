@@ -1,2 +1,2 @@
-class NominationPolicy < ContestPolicy
+class NominationPolicy < AdminOwnedPolicy
 end

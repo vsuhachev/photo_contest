@@ -1,2 +1,2 @@
-class CriterionPolicy < ContestPolicy
+class CriterionPolicy < AdminOwnedPolicy
 end
