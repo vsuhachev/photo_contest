@@ -1,0 +1,15 @@
+= form_for form_target(@contest, @contest_photo) do |f|
+  - if @contest_photo.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@contest_photo.errors.count, "error")} prohibited this contest_photo from being saved:"
+      ul
+        - @contest_photo.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :photo
+    = f.text_field :photo
+  .field
+    = f.label :nomination
+    = f.text_field :nomination
+  .actions = f.submit

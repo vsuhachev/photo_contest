@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Photo:
+  = @contest_photo.photo
+p
+  strong Nomination:
+  = @contest_photo.nomination
+
+= link_to 'Edit', edit_contest_photo_path(@contest_photo)
+'|
+= link_to 'Back', contest_photos_path

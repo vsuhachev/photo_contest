@@ -1,0 +1,1 @@
+json.array! @contest_photos, partial: 'contest_photos/contest_photo', as: :contest_photo

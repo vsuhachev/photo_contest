@@ -1,0 +1,1 @@
+json.partial! "contest_photos/contest_photo", contest_photo: @contest_photo

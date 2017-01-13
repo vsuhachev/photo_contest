@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'contests#index'
+  root 'home#index'
 
   resources :competitors
   resources :photos
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :contests do
     resources :nominations, shallow: true
     resources :criteria, shallow: true
+    resources :contest_photos, path: 'photos', as: 'photos'
   end
 
   devise_for :users
