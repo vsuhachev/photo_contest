@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   roles_attribute :roles_mask
   roles :admin, :competitor, :jury
+
+  has_many :competitors
 end

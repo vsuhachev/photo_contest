@@ -18,7 +18,7 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nomination" do
     assert_difference('Nomination.count') do
-      post contest_nominations_url(@contest), params: { nomination: { contest_id: @nomination.contest_id, description: @nomination.description, title: @nomination.title } }
+      post contest_nominations_url(@contest), params: { nomination: { description: @nomination.description, title: @nomination.title } }
     end
 
     assert_redirected_to nomination_url(Nomination.last)
@@ -35,7 +35,7 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update nomination" do
-    patch nomination_url(@nomination), params: { nomination: { contest_id: @nomination.contest_id, description: @nomination.description, title: @nomination.title } }
+    patch nomination_url(@nomination), params: { nomination: { description: @nomination.description, title: @nomination.title } }
     assert_redirected_to nomination_url(@nomination)
   end
 

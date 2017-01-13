@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :competitors
   resources :contests do
     resources :nominations, shallow: true
     resources :criteria, shallow: true

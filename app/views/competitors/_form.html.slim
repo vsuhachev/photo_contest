@@ -1,0 +1,21 @@
+= form_for @competitor do |f|
+  - if @competitor.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@competitor.errors.count, "error")} prohibited this competitor from being saved:"
+      ul
+        - @competitor.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :fio1
+    = f.text_field :fio1
+  .field
+    = f.label :fio2
+    = f.text_field :fio2
+  .field
+    = f.label :fio3
+    = f.text_field :fio3
+  .field
+    = f.label :dob
+    = f.date_select :dob
+  .actions = f.submit

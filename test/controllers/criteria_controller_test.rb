@@ -18,7 +18,7 @@ class CriteriaControllerTest < ActionDispatch::IntegrationTest
 
   test "should create criterion" do
     assert_difference('Criterion.count') do
-      post contest_criteria_url(@contest), params: { criterion: { contest_id: @criterion.contest_id, description: @criterion.description, title: @criterion.title } }
+      post contest_criteria_url(@contest), params: { criterion: { description: @criterion.description, title: @criterion.title } }
     end
 
     assert_redirected_to criterion_url(Criterion.last)
@@ -35,7 +35,7 @@ class CriteriaControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update criterion" do
-    patch criterion_url(@criterion), params: { criterion: { contest_id: @criterion.contest_id, description: @criterion.description, title: @criterion.title } }
+    patch criterion_url(@criterion), params: { criterion: { description: @criterion.description, title: @criterion.title } }
     assert_redirected_to criterion_url(@criterion)
   end
 

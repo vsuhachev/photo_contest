@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Fio1:
+  = @competitor.fio1
+p
+  strong Fio2:
+  = @competitor.fio2
+p
+  strong Fio3:
+  = @competitor.fio3
+p
+  strong Dob:
+  = @competitor.dob
+
+= link_to 'Edit', edit_competitor_path(@competitor)
+'|
+= link_to 'Back', competitors_path

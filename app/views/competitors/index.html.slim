@@ -1,0 +1,27 @@
+h1 Listing competitors
+
+table
+  thead
+    tr
+      th Fio1
+      th Fio2
+      th Fio3
+      th Dob
+      th
+      th
+      th
+
+  tbody
+    - @competitors.each do |competitor|
+      tr
+        td = competitor.fio1
+        td = competitor.fio2
+        td = competitor.fio3
+        td = competitor.dob
+        td = link_to 'Show', competitor
+        td = link_to 'Edit', edit_competitor_path(competitor)
+        td = link_to 'Destroy', competitor, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Competitor', new_competitor_path
