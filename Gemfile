@@ -65,3 +65,5 @@ gem 'shrine'
 gem 'fastimage'
 gem 'image_processing'
 gem 'mini_magick', '>= 4.3.5'
+
+gem 'thor', '0.19.1' # fix issue with "Expected string default value for '--jbuilder'; got true (boolean)" messsage

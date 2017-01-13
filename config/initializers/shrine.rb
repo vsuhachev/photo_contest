@@ -9,3 +9,8 @@ Shrine.storages = {
 Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data
 Shrine.plugin :logging
+
+Shrine.plugin :backgrounding
+
+Shrine::Attacher.promote { |data| ImagePromoteJob.perform_later(data) }
+Shrine::Attacher.delete { |data| ImageDeleteJob.perform_later(data) }
