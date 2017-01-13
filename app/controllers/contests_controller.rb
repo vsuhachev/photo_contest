@@ -4,27 +4,32 @@ class ContestsController < ApplicationController
   # GET /contests
   # GET /contests.json
   def index
-    @contests = Contest.all
+    authorize Contest
+    @contests = policy_scope(Contest).all
   end
 
   # GET /contests/1
   # GET /contests/1.json
   def show
+    authorize @contest
   end
 
   # GET /contests/new
   def new
     @contest = Contest.new
+    authorize @contest
   end
 
   # GET /contests/1/edit
   def edit
+    authorize @contest
   end
 
   # POST /contests
   # POST /contests.json
   def create
     @contest = Contest.new(contest_params)
+    authorize @contest
 
     respond_to do |format|
       if @contest.save
@@ -40,6 +45,7 @@ class ContestsController < ApplicationController
   # PATCH/PUT /contests/1
   # PATCH/PUT /contests/1.json
   def update
+    authorize @contest
     respond_to do |format|
       if @contest.update(contest_params)
         format.html { redirect_to @contest, notice: 'Contest was successfully updated.' }
@@ -54,6 +60,7 @@ class ContestsController < ApplicationController
   # DELETE /contests/1
   # DELETE /contests/1.json
   def destroy
+    authorize @contest
     @contest.destroy
     respond_to do |format|
       format.html { redirect_to contests_url, notice: 'Contest was successfully destroyed.' }

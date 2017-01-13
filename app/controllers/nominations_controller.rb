@@ -6,27 +6,32 @@ class NominationsController < ApplicationController
   # GET /nominations
   # GET /nominations.json
   def index
-    @nominations = @contest.nominations.all
+    authorize Nomination
+    @nominations = policy_scope(@contest.nominations).all
   end
 
   # GET /nominations/1
   # GET /nominations/1.json
   def show
+    authorize @nomination
   end
 
   # GET /nominations/new
   def new
-    @nomination = @contest.nominations.build
+    @nomination = policy_scope(@contest.nominations).build
+    authorize @nomination
   end
 
   # GET /nominations/1/edit
   def edit
+    authorize @nomination
   end
 
   # POST /nominations
   # POST /nominations.json
   def create
-    @nomination = @contest.nominations.build(nomination_params)
+    @nomination = policy_scope(@contest.nominations).build(nomination_params)
+    authorize @nomination
 
     respond_to do |format|
       if @nomination.save
@@ -42,6 +47,7 @@ class NominationsController < ApplicationController
   # PATCH/PUT /nominations/1
   # PATCH/PUT /nominations/1.json
   def update
+    authorize @nomination
     respond_to do |format|
       if @nomination.update(nomination_params)
         format.html { redirect_to @nomination, notice: 'Nomination was successfully updated.' }
@@ -56,6 +62,7 @@ class NominationsController < ApplicationController
   # DELETE /nominations/1
   # DELETE /nominations/1.json
   def destroy
+    authorize @nomination
     @nomination.destroy
     respond_to do |format|
       format.html { redirect_to contest_nominations_url(@contest), notice: 'Nomination was successfully destroyed.' }

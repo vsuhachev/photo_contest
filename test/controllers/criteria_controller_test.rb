@@ -2,6 +2,8 @@ require 'test_helper'
 
 class CriteriaControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @contest = contests(:one)
     @criterion = criteria(:one)
   end

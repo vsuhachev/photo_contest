@@ -6,27 +6,32 @@ class CriteriaController < ApplicationController
   # GET /criteria
   # GET /criteria.json
   def index
-    @criteria = @contest.criteria.all
+    authorize Criterion
+    @criteria = policy_scope(@contest.criteria).all
   end
 
   # GET /criteria/1
   # GET /criteria/1.json
   def show
+    authorize @criterion
   end
 
   # GET /criteria/new
   def new
-    @criterion = @contest.criteria.build
+    @criterion = policy_scope(@contest.criteria).build
+    authorize @criterion
   end
 
   # GET /criteria/1/edit
   def edit
+    authorize @criterion
   end
 
   # POST /criteria
   # POST /criteria.json
   def create
-    @criterion = @contest.criteria.build(criterion_params)
+    @criterion = policy_scope(@contest.criteria).build(criterion_params)
+    authorize @criterion
 
     respond_to do |format|
       if @criterion.save
@@ -42,6 +47,7 @@ class CriteriaController < ApplicationController
   # PATCH/PUT /criteria/1
   # PATCH/PUT /criteria/1.json
   def update
+    authorize @criterion
     respond_to do |format|
       if @criterion.update(criterion_params)
         format.html { redirect_to @criterion, notice: 'Criterion was successfully updated.' }
@@ -56,6 +62,7 @@ class CriteriaController < ApplicationController
   # DELETE /criteria/1
   # DELETE /criteria/1.json
   def destroy
+    authorize @criterion
     @criterion.destroy
     respond_to do |format|
       format.html { redirect_to contest_criteria_url(@contest), notice: 'Criterion was successfully destroyed.' }

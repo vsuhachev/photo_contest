@@ -6,6 +6,7 @@
 #
 one:
   email: user_1@example.org
+  roles_mask: 1
 
 two:
   email: user_2@example.org

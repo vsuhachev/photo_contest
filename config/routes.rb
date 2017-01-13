@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'contests#index'
 
   resources :competitors
   resources :contests do

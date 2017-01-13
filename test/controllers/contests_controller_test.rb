@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ContestsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @contest = contests(:one)
   end
 

@@ -4,27 +4,32 @@ class CompetitorsController < ApplicationController
   # GET /competitors
   # GET /competitors.json
   def index
+    authorize Competitor
     @competitors = policy_scope(Competitor).all
   end
 
   # GET /competitors/1
   # GET /competitors/1.json
   def show
+    authorize @competitor
   end
 
   # GET /competitors/new
   def new
     @competitor = policy_scope(Competitor).build
+    authorize @competitor
   end
 
   # GET /competitors/1/edit
   def edit
+    authorize @competitor
   end
 
   # POST /competitors
   # POST /competitors.json
   def create
     @competitor = policy_scope(Competitor).build(competitor_params)
+    authorize @competitor
 
     respond_to do |format|
       if @competitor.save
@@ -40,6 +45,7 @@ class CompetitorsController < ApplicationController
   # PATCH/PUT /competitors/1
   # PATCH/PUT /competitors/1.json
   def update
+    authorize @competitor
     respond_to do |format|
       if @competitor.update(competitor_params)
         format.html { redirect_to @competitor, notice: 'Competitor was successfully updated.' }
@@ -54,6 +60,7 @@ class CompetitorsController < ApplicationController
   # DELETE /competitors/1
   # DELETE /competitors/1.json
   def destroy
+    authorize @competitor
     @competitor.destroy
     respond_to do |format|
       format.html { redirect_to competitors_url, notice: 'Competitor was successfully destroyed.' }
