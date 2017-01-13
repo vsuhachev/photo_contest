@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @photo.title
+p
+  strong Description:
+  = @photo.description
+p
+  strong Location:
+  = @photo.location
+p
+  strong Obtained at:
+  = @photo.obtained_at
+p
+  strong User:
+  = @photo.user
+
+= link_to 'Edit', edit_photo_path(@photo)
+'|
+= link_to 'Back', photos_path

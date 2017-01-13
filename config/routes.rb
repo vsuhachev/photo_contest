@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'contests#index'
 
   resources :competitors
+  resources :photos
+
   resources :contests do
     resources :nominations, shallow: true
     resources :criteria, shallow: true

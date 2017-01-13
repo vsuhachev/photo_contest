@@ -10,4 +10,5 @@ class User < ApplicationRecord
   roles :admin, :competitor, :jury
 
   has_many :competitors
+  has_many :photos
 end
