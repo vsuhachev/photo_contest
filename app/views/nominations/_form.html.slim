@@ -1,4 +1,4 @@
-= form_for (action_name == 'edit' ? @nomination : [:contest, @nomination]) do |f|
+= form_for shallow_target @nomination, [:contest] do |f|
   - if @nomination.errors.any?
     #error_explanation
       h2 = "#{pluralize(@nomination.errors.count, "error")} prohibited this nomination from being saved:"

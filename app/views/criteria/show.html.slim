@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @criterion.title
+p
+  strong Description:
+  = @criterion.description
+
+= link_to 'Edit', edit_criterion_path(@criterion)
+'|
+= link_to 'Back', contest_criteria_path(@contest)

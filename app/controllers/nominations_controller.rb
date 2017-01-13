@@ -1,5 +1,6 @@
 class NominationsController < ApplicationController
-  before_action :set_contest, only: [:new, :create, :index]
+  include ContestControllerPart
+
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
 
   # GET /nominations
@@ -63,18 +64,15 @@ class NominationsController < ApplicationController
   end
 
   private
-    def set_contest
-      @contest = Contest.find(params[:contest_id])
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_nomination
-      @nomination = Nomination.find(params[:id])
-      @contest = @nomination.contest
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_nomination
+    @nomination = Nomination.find(params[:id])
+    @contest = @nomination.contest
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def nomination_params
-      params.require(:nomination).permit(:title, :description, :contest_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def nomination_params
+    params.require(:nomination).permit(:title, :description)
+  end
 end

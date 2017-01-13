@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :contests do
     resources :nominations, shallow: true
+    resources :criteria, shallow: true
   end
 
   devise_for :users

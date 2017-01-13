@@ -1,0 +1,23 @@
+h1 Listing criteria
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @criteria.each do |criterion|
+      tr
+        td = criterion.title
+        td = criterion.description
+        td = link_to 'Show', criterion
+        td = link_to 'Edit', edit_criterion_path(criterion)
+        td = link_to 'Destroy', criterion, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Criterion', new_contest_criterion_path(@contest)
