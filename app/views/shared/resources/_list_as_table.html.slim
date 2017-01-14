@@ -16,7 +16,7 @@ ruby:
       - collection.each do |item|
         tr
           - attributes.each do |attr|
-            td = item[attr]
+            td = item.send(attr)
           td
             = render 'shared/resources/list_actions', path: path.merge(id: item)
 - else

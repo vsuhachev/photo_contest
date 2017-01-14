@@ -1,6 +1,6 @@
 = render 'shared/resources/header', title: t('.title')
 
 - if permitted_attributes_for(Juror).include? :user_id
-  = render 'shared/resources/list_as_table', attributes: %i(fio1 fio2 fio3 dob location user), collection: @jurors
+  = render 'shared/resources/list_as_table', attributes: %i(fio dob location user), collection: @jurors
 - else
-  = render 'shared/resources/list_as_table', attributes: %i(fio1 fio2 fio3 dob location), collection: @jurors
+  = render 'shared/resources/list_as_table', attributes: %i(fio dob location), collection: @jurors

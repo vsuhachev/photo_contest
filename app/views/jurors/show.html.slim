@@ -1,21 +1,17 @@
 = render 'shared/resources/header', title: @juror, path: { id: @juror, contest_id: @contest }
 
-p
-  strong Fio1:
-  = @juror.fio1
-p
-  strong Fio2:
-  = @juror.fio2
-p
-  strong Fio3:
-  = @juror.fio3
-p
-  strong Dob:
-  = @juror.dob
-p
-  strong Location:
-  = @juror.location
-- if permitted_attributes_for(@juror).include? :user_id
-  p
-    strong User:
-    = @juror.user
+.form-group
+  label: strong = @juror.class.human_attribute_name(:user)
+  p.form-control-static = @juror.user.email
+
+.form-group
+  label: strong = @juror.class.human_attribute_name(:dob)
+  p.form-control-static = @juror.dob
+
+.form-group
+  label: strong = @juror.class.human_attribute_name(:location)
+  p.form-control-static = @juror.location
+
+.form-group
+  label: strong = @juror.class.human_attribute_name(:description)
+  p.form-control-static = @juror.description

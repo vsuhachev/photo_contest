@@ -10,6 +10,7 @@ ru:
 
     attributes:
       competitor:
+        fio: Ф.И.О.
         fio1: Фамилия
         fio2: Имя
         fio3: Отчество
@@ -21,6 +22,7 @@ ru:
         title: Название
         description: Описание
       juror:
+        fio: Ф.И.О.
         fio1: Фамилия
         fio2: Имя
         fio3: Отчество
