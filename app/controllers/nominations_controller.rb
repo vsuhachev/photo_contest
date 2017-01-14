@@ -3,6 +3,10 @@ class NominationsController < ApplicationController
 
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb I18n.t('contests.index.title'), :contests_path
+  add_breadcrumb ->(c) { c.instance_variable_get(:@contest) }, ->(c) { c.contest_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t('nominations.index.title'), ->(c) { c.contest_nominations_path(c.instance_variable_get(:@contest)) }
+
   # GET /nominations
   # GET /nominations.json
   def index

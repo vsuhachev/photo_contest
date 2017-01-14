@@ -9,9 +9,6 @@ html
     .container
       = render 'shared/header'
 
-      ol.breadcrumb
-        = render_breadcrumbs tag: :li, tag_options: { class: 'breadcrumb-item' }, separator: '', builder: MyCrumbsBuilder
-
     .container
       = yield
 

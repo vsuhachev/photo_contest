@@ -1,8 +1,3 @@
-h1 Editing criterion
+= render 'shared/resources/header', title: t('.title'), path: { id: @criterion, contest_id: @contest }
 
 == render 'form'
-
-= link_to 'Show', @criterion
-'|
-= link_to 'Back', contest_criteria_path(@contest)
-

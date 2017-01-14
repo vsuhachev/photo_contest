@@ -13,11 +13,6 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get me_in_jury" do
-    get me_in_jury_path
-    assert_response :success
-  end
-
   test "should get new" do
     get new_contest_juror_url(@contest)
     assert_response :success

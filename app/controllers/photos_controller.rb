@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('photos.title'), :photos_path
+  add_breadcrumb I18n.t('photos.index.title'), :photos_path
 
   # GET /photos
   # GET /photos.json
@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-    add_breadcrumb @photo.title
+    add_breadcrumb @photo
     authorize @photo
   end
 

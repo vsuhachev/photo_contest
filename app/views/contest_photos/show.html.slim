@@ -1,4 +1,4 @@
-p#notice = notice
+= render 'shared/resources/header', title: @contest_photo, path: { id: @contest_photo }
 
 p
   strong Photo:
@@ -6,7 +6,3 @@ p
 p
   strong Nomination:
   = @contest_photo.nomination
-
-= link_to 'Edit', edit_contest_photo_path(@contest_photo)
-'|
-= link_to 'Back', contest_photos_path

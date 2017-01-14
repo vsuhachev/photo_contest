@@ -1,8 +1,3 @@
-h1 Editing juror
+= render 'shared/resources/header', title: t('.title'), path: { id: @juror, contest_id: @contest }
 
 == render 'form'
-
-= link_to 'Show', @juror
-'|
-= link_to 'Back', jurors_path
-

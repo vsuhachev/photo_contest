@@ -1,6 +1,4 @@
-= render 'photos/header', title: @photo.title, photo: @photo
-
-p#notice = notice
+= render 'shared/resources/header', title: @photo, path: { id: @photo }
 
 .row
   .col-12.col-md-6.col-lg-8

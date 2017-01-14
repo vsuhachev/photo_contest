@@ -9,4 +9,8 @@ class Contest < ApplicationRecord
   has_many :jurors
 
   scope :active_competitors, -> { competitors }
+
+  def to_s
+    title
+  end
 end

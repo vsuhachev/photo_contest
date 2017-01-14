@@ -10,4 +10,8 @@ class ContestPhoto < ApplicationRecord
   validate do
     errors.add('nomination must belongs to contest') if nomination && contest != nomination&.contest
   end
+
+  def to_s
+    [contest, photo].map(&:to_s).compact.join(' :: ')
+  end
 end

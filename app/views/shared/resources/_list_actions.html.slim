@@ -1,0 +1,11 @@
+ruby:
+  btn_class = 'btn btn-sm btn-secondary ml-1'
+  path ||= {}
+
+.d-flex.flex-nowrap.justify-content-end.align-items-center
+  = link_to({ controller: controller_name, action: :show }.merge(path), class: btn_class)  do
+    = icon 'folder-open-o', title: t('actions.show')
+  = link_to({ controller: controller_name, action: :edit }.merge(path), class: btn_class) do
+    = icon 'pencil', title: t('actions.edit')
+  = link_to({ controller: controller_name, action: :destroy }.merge(path), data: { confirm: t('actions.confirm.destroy') }, method: :delete, class: btn_class) do
+    = icon 'trash', title: t('actions.destroy')

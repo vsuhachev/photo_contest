@@ -1,34 +1,6 @@
-h1 Listing jurors
+= render 'shared/resources/header', title: t('.title')
 
-table
-  thead
-    tr
-      th Fio1
-      th Fio2
-      th Fio3
-      th Dob
-      th Location
-      - if permitted_attributes_for(Juror).include? :user_id
-        th User
-      th
-      th
-      th
-
-  tbody
-    - @jurors.each do |juror|
-      tr
-        td = juror.fio1
-        td = juror.fio2
-        td = juror.fio3
-        td = juror.dob
-        td = juror.location
-        - if permitted_attributes_for(juror).include? :user_id
-          td = juror.user
-        td = link_to 'Show', juror
-        td = link_to 'Edit', edit_juror_path(juror)
-        td = link_to 'Destroy', juror, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-- if @contest
-  = link_to 'New Juror', new_contest_juror_path(@contest)
+- if permitted_attributes_for(Juror).include? :user_id
+  = render 'shared/resources/list_as_table', attributes: %i(fio1 fio2 fio3 dob location user), collection: @jurors
+- else
+  = render 'shared/resources/list_as_table', attributes: %i(fio1 fio2 fio3 dob location), collection: @jurors

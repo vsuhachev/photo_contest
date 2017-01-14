@@ -1,32 +1,36 @@
 class JurorsController < ApplicationController
   include ContestControllerPart
 
-  skip_before_action :set_contest, only: [:index]
-
   before_action :set_juror, only: [:show, :edit, :update, :destroy]
+
+  add_breadcrumb I18n.t('contests.index.title'), :contests_path
+  add_breadcrumb ->(c) { c.instance_variable_get(:@contest) }, ->(c) { c.contest_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t('jurors.index.title'), ->(c) { c.contest_jurors_path(c.instance_variable_get(:@contest)) }
 
   # GET /jurors
   # GET /jurors.json
   def index
     authorize Juror
-    set_contest if params[:contest_id]
-    @jurors = policy_scope(@contest&.jurors || Juror).all
+    @jurors = policy_scope(@contest.jurors).all
   end
 
   # GET /jurors/1
   # GET /jurors/1.json
   def show
+    add_breadcrumb @juror
     authorize @juror
   end
 
   # GET /jurors/new
   def new
+    add_breadcrumb I18n.t('app.crumbs.new')
     @juror = policy_scope(@contest.jurors).build
     authorize @juror
   end
 
   # GET /jurors/1/edit
   def edit
+    add_breadcrumb @juror
     authorize @juror
   end
 
@@ -50,6 +54,7 @@ class JurorsController < ApplicationController
   # PATCH/PUT /jurors/1
   # PATCH/PUT /jurors/1.json
   def update
+    add_breadcrumb @juror
     authorize @juror
     respond_to do |format|
       if @juror.update(permitted_attributes(@juror))

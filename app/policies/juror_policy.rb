@@ -13,9 +13,9 @@ class JurorPolicy < AdminOwnedPolicy
 
   def permitted_attributes
     if user.has_role?(:admin)
-      [:fio1, :fio2, :fio3, :dob, :location, :user_id]
+      [:fio1, :fio2, :fio3, :dob, :location, :description, :user_id]
     elsif user == record.user
-      [:fio1, :fio2, :fio3, :dob, :location]
+      [:fio1, :fio2, :fio3, :dob, :location, :description]
     else
       []
     end

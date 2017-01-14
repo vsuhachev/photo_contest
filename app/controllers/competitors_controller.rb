@@ -1,6 +1,8 @@
 class CompetitorsController < ApplicationController
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb I18n.t('competitors.index.title'), :competitors_path
+
   # GET /competitors
   # GET /competitors.json
   def index
@@ -11,17 +13,20 @@ class CompetitorsController < ApplicationController
   # GET /competitors/1
   # GET /competitors/1.json
   def show
+    add_breadcrumb @competitor
     authorize @competitor
   end
 
   # GET /competitors/new
   def new
+    add_breadcrumb I18n.t('app.crumbs.new')
     @competitor = policy_scope(Competitor).build
     authorize @competitor
   end
 
   # GET /competitors/1/edit
   def edit
+    add_breadcrumb @competitor
     authorize @competitor
   end
 

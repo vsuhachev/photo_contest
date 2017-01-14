@@ -12,4 +12,10 @@ class User < ApplicationRecord
   has_many :competitors
   has_many :photos
   has_many :jurors
+
+  def title
+    email.split('@').first
+  end
+
+  alias_method :to_s, :title
 end

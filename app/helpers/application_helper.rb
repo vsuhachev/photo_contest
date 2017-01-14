@@ -1,6 +1,13 @@
 module ApplicationHelper
   def shallow_target(object, path)
-    action_name == 'edit' ? object : path + [object]
+    case action_name
+      when 'edit', 'update'
+        object
+      when 'new', 'create'
+        path + [object]
+      else
+        object
+    end
   end
 
   def permitted_attributes_for(record, action = params[:action])
@@ -14,6 +21,6 @@ module ApplicationHelper
   end
 
   def current_user_name
-    current_user&.email.split('@').first
+    current_user&.title
   end
 end

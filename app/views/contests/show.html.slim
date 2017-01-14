@@ -1,12 +1,7 @@
-p#notice = notice
+= render 'shared/resources/header', title: @contest, path: { id: @contest }
 
-p
-  strong Title:
-  = @contest.title
-p
-  strong Description:
-  = @contest.description
+p = @contest.description
 
-= link_to 'Edit', edit_contest_path(@contest)
-'|
-= link_to 'Back', contests_path
+= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-4'
+= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-4'
+= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-4'

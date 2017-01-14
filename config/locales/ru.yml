@@ -8,30 +8,72 @@ ru:
     crumbs:
       home: Главная
       new: Новый
+      edit: Правка
 
   actions:
+    show: Просмотр
     new: Создать
     edit: Редактировать
     destroy: Удалить
     confirm:
       generic: Вы уверены?
       destroy: Удалить?
+    no_items: Нет записей...
 
   auth:
     sign_in: Вход
     sign_out: Выход
     sign_up: Регистрация
 
+  shared:
+    resources:
+      errors:
+        errors_occur: При сохранении возникли ошибки
+
   photos:
-    title: Мои фотографии
+    index:
+      title: Мои фотографии
     edit:
       title: 'Мои фотографии: Правка'
     new:
       title: 'Мои фотографии: Создание'
 
   competitors:
-    title: Мои участники
+    index:
+      title: Мои участники
     edit:
       title: 'Мои участники: Правка'
     new:
       title: 'Мои участники: Создание'
+
+  contests:
+    index:
+      title: Конкурсы
+    edit:
+      title: 'Редактирование конкурса'
+    new:
+      title: 'Создание конкурса'
+
+  criteria:
+    index:
+      title: Критерии
+    edit:
+      title: 'Редактирование критерия'
+    new:
+      title: 'Создание критерия'
+
+  nominations:
+    index:
+      title: Номинации
+    edit:
+      title: 'Редактирование номинации'
+    new:
+      title: 'Создание номинации'
+
+  jurors:
+    index:
+      title: Жюри
+    edit:
+      title: 'Редактирование члена жюри'
+    new:
+      title: 'Создание члена жюри'

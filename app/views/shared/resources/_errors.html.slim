@@ -1,0 +1,9 @@
+- if obj.errors.any?
+  .alert.alert-danger.alert-dismissible.fade.show role="alert"
+    button.close type="button" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true" &times;
+
+    h4.alert-heading = t('.errors_occur')
+    ul.list-unstyled
+      - obj.errors.full_messages.each do |message|
+        li = message

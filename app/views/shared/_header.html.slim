@@ -10,8 +10,7 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
   #navbarSupportedContent.collapse.navbar-collapse
 
     ul.navbar-nav.mr-auto
-      li.nav-item
-        = link_to t('app.menu.contests'), contests_path, class: 'nav-link'
+      li.nav-item = link_to t('app.menu.contests'), contests_path, class: 'nav-link'
 
     ul.navbar-nav
       - if user_signed_in?
@@ -22,8 +21,8 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
             data-toggle="dropdown")
             = icon 'user', current_user_name
           .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
-            = link_to t('competitors.title'), competitors_path, class: 'dropdown-item'
-            = link_to t('photos.title'), photos_path, class: 'dropdown-item'
+            = link_to t('competitors.index.title'), competitors_path, class: 'dropdown-item'
+            = link_to t('photos.index.title'), photos_path, class: 'dropdown-item'
             .dropdown-divider
             = link_to t('auth.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - else
@@ -32,8 +31,16 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
         li.nav-item
           = link_to t('auth.sign_up'), new_user_registration_path, class: 'nav-link'
 
+ol.breadcrumb
+  = render_breadcrumbs tag: :li, tag_options: { class: 'breadcrumb-item' }, separator: '', builder: MyCrumbsBuilder
+
 - if alert.present?
   .alert.alert-danger.alert-dismissible.fade.show role="alert"
     button.close type="button" data-dismiss="alert" aria-label="Close"
       span aria-hidden="true" &times;
     = alert
+- if notice.present?
+  .alert.alert-success.alert-dismissible.fade.show role="alert"
+    button.close type="button" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true" &times;
+    = notice

@@ -1,0 +1,23 @@
+ruby:
+  attributes ||= [:id]
+  collection ||= []
+  path ||= {}
+  model = collection.first&.class
+
+- if model
+  table.table.table-hover.w-100
+    thead
+      tr
+        - attributes.each do |attr|
+          th = model.human_attribute_name(attr)
+        th
+
+    tbody
+      - collection.each do |item|
+        tr
+          - attributes.each do |attr|
+            td = item[attr]
+          td
+            = render 'shared/resources/list_actions', path: path.merge(id: item)
+- else
+  p = t('actions.no_items')

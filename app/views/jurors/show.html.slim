@@ -1,4 +1,4 @@
-p#notice = notice
+= render 'shared/resources/header', title: @juror, path: { id: @juror, contest_id: @contest }
 
 p
   strong Fio1:
@@ -19,7 +19,3 @@ p
   p
     strong User:
     = @juror.user
-
-= link_to 'Edit', edit_juror_path(@juror)
-'|
-= link_to 'Back', contest_jurors_path(@contest)

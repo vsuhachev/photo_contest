@@ -1,6 +1,8 @@
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb I18n.t('contests.index.title'), :contests_path
+
   # GET /contests
   # GET /contests.json
   def index
@@ -11,17 +13,20 @@ class ContestsController < ApplicationController
   # GET /contests/1
   # GET /contests/1.json
   def show
+    add_breadcrumb @contest
     authorize @contest
   end
 
   # GET /contests/new
   def new
+    add_breadcrumb I18n.t('app.crumbs.new')
     @contest = Contest.new
     authorize @contest
   end
 
   # GET /contests/1/edit
   def edit
+    add_breadcrumb @contest
     authorize @contest
   end
 

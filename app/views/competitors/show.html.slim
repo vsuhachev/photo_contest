@@ -1,4 +1,4 @@
-p#notice = notice
+= render 'shared/resources/header', title: @competitor, path: { id: @competitor }
 
 p
   strong Fio1:
@@ -12,7 +12,3 @@ p
 p
   strong Dob:
   = @competitor.dob
-
-= link_to 'Edit', edit_competitor_path(@competitor)
-'|
-= link_to 'Back', competitors_path

@@ -1,9 +1,36 @@
 ru:
   activerecord:
     models:
+      competitor: Участник
+      contest: Критерий
+      criterion: Критерий
+      juror: Член жюри
+      nomination: Номинация
       photo: Фото
 
     attributes:
+      competitor:
+        fio1: Фамилия
+        fio2: Имя
+        fio3: Отчество
+        dob: Дата рождения
+      contest:
+        title: Название
+        description: Описание
+      criterion:
+        title: Название
+        description: Описание
+      juror:
+        fio1: Фамилия
+        fio2: Имя
+        fio3: Отчество
+        dob: Дата рождения
+        location: Откуда
+        description: О себе
+        user: Пользователь
+      nomination:
+        title: Название
+        description: Описание
       photo:
         title: Название
         description: Описание

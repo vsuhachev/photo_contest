@@ -1,12 +1,3 @@
-p#notice = notice
+= render 'shared/resources/header', title: @nomination, path: { id: @nomination, contest_id: @contest }
 
-p
-  strong Title:
-  = @nomination.title
-p
-  strong Description:
-  = @nomination.description
-
-= link_to 'Edit', edit_nomination_path(@nomination)
-'|
-= link_to 'Back', contest_nominations_path(@contest)
+p = @nomination.description

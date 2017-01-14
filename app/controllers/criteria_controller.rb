@@ -3,6 +3,10 @@ class CriteriaController < ApplicationController
 
   before_action :set_criterion, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb I18n.t('contests.index.title'), :contests_path
+  add_breadcrumb ->(c) { c.instance_variable_get(:@contest) }, ->(c) { c.contest_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t('criteria.index.title'), ->(c) { c.contest_criteria_path(c.instance_variable_get(:@contest)) }
+
   # GET /criteria
   # GET /criteria.json
   def index
@@ -13,17 +17,20 @@ class CriteriaController < ApplicationController
   # GET /criteria/1
   # GET /criteria/1.json
   def show
+    add_breadcrumb @criterion
     authorize @criterion
   end
 
   # GET /criteria/new
   def new
+    add_breadcrumb I18n.t('app.crumbs.new')
     @criterion = policy_scope(@contest.criteria).build
     authorize @criterion
   end
 
   # GET /criteria/1/edit
   def edit
+    add_breadcrumb @criterion
     authorize @criterion
   end
 

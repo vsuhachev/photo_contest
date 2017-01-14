@@ -1,25 +1,3 @@
-h1 Listing contest_photos
+= render 'shared/resources/header', title: t('.title')
 
-table
-  thead
-    tr
-      th Photo
-      th Contest
-      th Nomination
-      th
-      th
-      th
-
-  tbody
-    - @contest_photos.each do |contest_photo|
-      tr
-        td = contest_photo.photo
-        td = contest_photo.contest
-        td = contest_photo.nomination
-        td = link_to 'Show', contest_photo_path(@contest, contest_photo)
-        td = link_to 'Edit', edit_contest_photo_path(@contest, contest_photo)
-        td = link_to 'Destroy', contest_photo_path(@contest, contest_photo), data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Contest photo', new_contest_photo_path
+= render 'shared/resources/list_as_table', attributes: %i(photo contest nomination), collection: @contest_photos
