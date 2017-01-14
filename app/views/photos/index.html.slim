@@ -1,27 +1,16 @@
-h1 Listing photos
+= render 'photos/header', title: t('photos.title'), photo: nil
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th Location
-      th Obtained at
-      th
-      th
-      th
-
-  tbody
-    - @photos.each do |photo|
-      tr
-        td = photo.title
-        td = photo.description
-        td = photo.location
-        td = photo.obtained_at
-        td = link_to 'Show', photo
-        td = link_to 'Edit', edit_photo_path(photo)
-        td = link_to 'Destroy', photo, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Photo', new_photo_path
+.row
+  - @photos.each do |photo|
+    .col-12.col-sm-6.col-md-4.col-lg-3
+      .card.mr-2.mb-2
+        = link_to photo do
+          img.card-img-top.img-fluid src=(photo.image_url(:medium)) alt=photo.title style="max-height: 14em"
+        .card-block
+          h4.card-title = photo.title
+          p.card-text = photo.location
+          p.card-text = photo.obtained_at
+          = link_to edit_photo_path(photo), class: 'btn btn-secondary mr-1' do
+            = icon 'pencil', title: t('actions.edit')
+          = link_to photo, data: { confirm: t('actions.confirm.destroy') }, method: :delete, class: 'btn btn-secondary mr-1' do
+            = icon 'trash', title: t('actions.destroy')

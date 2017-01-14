@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      photo: Фото
+
+    attributes:
+      photo:
+        title: Название
+        description: Описание
+        location: Место съемки
+        obtained_at: Дата съемки
+        image: Изображение

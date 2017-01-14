@@ -1,0 +1,37 @@
+ru:
+  app:
+    title: Ф.К.
+
+    menu:
+      contests: Фото-конкурсы
+
+    crumbs:
+      home: Главная
+      new: Новый
+
+  actions:
+    new: Создать
+    edit: Редактировать
+    destroy: Удалить
+    confirm:
+      generic: Вы уверены?
+      destroy: Удалить?
+
+  auth:
+    sign_in: Вход
+    sign_out: Выход
+    sign_up: Регистрация
+
+  photos:
+    title: Мои фотографии
+    edit:
+      title: 'Мои фотографии: Правка'
+    new:
+      title: 'Мои фотографии: Создание'
+
+  competitors:
+    title: Мои участники
+    edit:
+      title: 'Мои участники: Правка'
+    new:
+      title: 'Мои участники: Создание'

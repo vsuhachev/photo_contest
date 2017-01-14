@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app:
+    title: P.C.
+
+    menu:
+      contests: Contests
+
+  auth:
+    sign_in: Sign in
+    sign_out: Sign out
+    sign_up: Sign up

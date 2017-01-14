@@ -60,6 +60,10 @@ gem 'role_model'
 gem 'pundit'
 
 gem 'slim-rails'
+gem 'bootstrap'
+gem 'font-awesome-sass'
+
+gem 'breadcrumbs_on_rails'
 
 gem 'shrine'
 gem 'fastimage'

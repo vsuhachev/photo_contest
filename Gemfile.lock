@@ -41,7 +41,13 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    autoprefixer-rails (6.6.1)
+      execjs
     bcrypt (3.1.11)
+    bootstrap (4.0.0.alpha6)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.2)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -66,6 +72,8 @@ GEM
     fastimage (2.0.1)
       addressable (~> 2)
     ffi (1.9.14)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -191,11 +199,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap
+  breadcrumbs_on_rails
   byebug
   coffee-rails (~> 4.2)
   devise
   devise-i18n
   fastimage
+  font-awesome-sass
   image_processing
   jbuilder (~> 2.5)
   jquery-rails

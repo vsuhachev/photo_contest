@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb I18n.t('photos.title'), :photos_path
+
   # GET /photos
   # GET /photos.json
   def index
@@ -11,17 +13,20 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    add_breadcrumb @photo.title
     authorize @photo
   end
 
   # GET /photos/new
   def new
+    add_breadcrumb I18n.t('app.crumbs.new')
     @photo = policy_scope(Photo).build
     authorize @photo
   end
 
   # GET /photos/1/edit
   def edit
+    add_breadcrumb @photo.title
     authorize @photo
   end
 

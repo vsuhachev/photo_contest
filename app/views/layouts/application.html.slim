@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title PhotoContest
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+
+  body
+    .container
+      = render 'shared/header'
+
+      ol.breadcrumb
+        = render_breadcrumbs tag: :li, tag_options: { class: 'breadcrumb-item' }, separator: '', builder: MyCrumbsBuilder
+
+    .container
+      = yield
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', 'data-turbolinks-eval' => false

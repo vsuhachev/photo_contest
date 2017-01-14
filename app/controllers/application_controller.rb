@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  add_breadcrumb I18n.t('app.crumbs.home'), :root_path
+
   before_action :authenticate_user!
   after_action :verify_authorized
 
@@ -15,3 +17,5 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 end
+
+DeviseController.skip_after_action :verify_authorized

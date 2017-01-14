@@ -1,21 +1,19 @@
+= render 'photos/header', title: @photo.title, photo: @photo
+
 p#notice = notice
 
-p
-  strong Title:
-  = @photo.title
-p
-  strong Description:
-  = @photo.description
-p
-  strong Location:
-  = @photo.location
-p
-  strong Obtained at:
-  = @photo.obtained_at
-p
-  strong Image:
-  img src=@photo.image_url(:small)
+.row
+  .col-12.col-md-6.col-lg-8
+    = link_to @photo.image_url(:original) do
+      img.img-fluid src=@photo.image_url(:large)
+  .col-12.col-md-6.col-lg-4
+    .card
+      .card-block
+        h4.card-subtitle = @photo.class.human_attribute_name(:location)
+        p.card-text = @photo.location
 
-= link_to 'Edit', edit_photo_path(@photo)
-'|
-= link_to 'Back', photos_path
+        h4.card-subtitle = @photo.class.human_attribute_name(:obtained_at)
+        p.card-text = @photo.obtained_at
+
+        h4.card-subtitle = @photo.class.human_attribute_name(:description)
+        p.card-text = @photo.description
