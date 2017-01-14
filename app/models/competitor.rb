@@ -5,9 +5,11 @@ class Competitor < ApplicationRecord
 
   scope :active_contests, -> { contests }
 
-  validates :user, :fio1, :fio2, presence: true
+  validates :fio1, :fio2, presence: true
 
-  def to_s
+  def fio
     [fio1, fio2, fio3].compact.join(' ')
   end
+
+  alias_method :to_s, :fio
 end

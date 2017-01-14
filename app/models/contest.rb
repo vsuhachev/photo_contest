@@ -10,6 +10,8 @@ class Contest < ApplicationRecord
 
   scope :active_competitors, -> { competitors }
 
+  validates :title, presence: true
+
   def to_s
     title
   end
