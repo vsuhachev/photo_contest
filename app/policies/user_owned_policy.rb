@@ -4,24 +4,30 @@ class UserOwnedPolicy < ApplicationPolicy
   end
 
   def show?
-    user == record.user
+    owner?
   end
 
   def create?
-    user == record.user
+    owner?
   end
 
   def update?
-    user == record.user
+    owner?
   end
 
   def destroy?
-    user == record.user
+    owner?
   end
 
   class Scope < Scope
     def resolve
       scope.where(user_id: user)
     end
+  end
+
+  protected
+
+  def owner?
+    user == record.user
   end
 end

@@ -19,7 +19,13 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create photo" do
     assert_difference('Photo.count') do
-      post photos_url, params: { photo: { description: @photo.description, location: @photo.location, obtained_at: @photo.obtained_at, title: @photo.title, user_id: @photo.user_id } }
+      post photos_url, params: { photo: {
+          description: @photo.description,
+          location: @photo.location,
+          obtained_at: @photo.obtained_at,
+          title: @photo.title,
+          image: fixture_file_upload('files/test.jpg', 'image/jpeg')
+      } }
     end
 
     assert_redirected_to photo_url(Photo.last)
@@ -36,7 +42,13 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update photo" do
-    patch photo_url(@photo), params: { photo: { description: @photo.description, location: @photo.location, obtained_at: @photo.obtained_at, title: @photo.title, user_id: @photo.user_id } }
+    patch photo_url(@photo), params: { photo: {
+        description: @photo.description,
+        location: @photo.location,
+        obtained_at: @photo.obtained_at,
+        title: @photo.title,
+        image: fixture_file_upload('files/test.jpg', 'image/jpeg')
+    } }
     assert_redirected_to photo_url(@photo)
   end
 

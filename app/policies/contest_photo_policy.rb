@@ -1,14 +1,14 @@
-class ContestPhotoPolicy < AdminOwnedPolicy
+class ContestPhotoPolicy < ContestDependentPolicy
   def index?
     true
   end
 
   def show?
-    super || user == record.user
+    super || owner?
   end
 
   def create?
-    super || user == record.user
+    (super || owner?) && contest_enabled?
   end
 
   def new?
@@ -16,11 +16,11 @@ class ContestPhotoPolicy < AdminOwnedPolicy
   end
 
   def update?
-    super || user == record.user
+    (super || owner?) && contest_enabled?
   end
 
   def destroy?
-    super || user == record.user
+    (super || owner?) && contest_enabled?
   end
 
   class Scope < Scope

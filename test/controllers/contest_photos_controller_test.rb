@@ -4,8 +4,11 @@ class ContestPhotosControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:two)
     sign_in @user
-    @contest = contests(:two)
     @contest_photo = contest_photos(:two)
+
+    @contest = contests(:two)
+    @nomination = nominations(:two)
+    @photo = photos(:two_alone)
   end
 
   test "should get index" do
@@ -20,7 +23,10 @@ class ContestPhotosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create contest_photo" do
     assert_difference('ContestPhoto.count') do
-      post contest_photos_url(@contest), params: { contest_photo: { nomination_id: @contest_photo.nomination_id, photo_id: @contest_photo.photo_id } }
+      post contest_photos_url(@contest), params: { contest_photo: {
+          nomination_id: @nomination.id,
+          photo_id: @photo.id
+      } }
     end
 
     assert_redirected_to contest_photo_url(@contest, ContestPhoto.last)
@@ -37,7 +43,10 @@ class ContestPhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contest_photo" do
-    patch contest_photo_url(@contest, @contest_photo), params: { contest_photo: { nomination_id: @contest_photo.nomination_id, photo_id: @contest_photo.photo_id } }
+    patch contest_photo_url(@contest, @contest_photo), params: { contest_photo: {
+        nomination_id: @contest_photo.nomination_id,
+        photo_id: @contest_photo.photo_id
+    } }
     assert_redirected_to contest_photo_url(@contest_photo)
   end
 

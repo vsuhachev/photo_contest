@@ -13,3 +13,10 @@ two:
   location: MyText
   obtained_at: 2017-01-13
   user: two
+
+two_alone:
+  title: MyString
+  description: MyText
+  location: MyText
+  obtained_at: 2017-01-13
+  user: two

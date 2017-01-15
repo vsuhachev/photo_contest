@@ -6,6 +6,7 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     @contest = contests(:one)
     @juror = jurors(:one)
+    @juror_user = users(:three)
   end
 
   test "should get index" do
@@ -20,7 +21,12 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create juror" do
     assert_difference('Juror.count') do
-      post contest_jurors_url(@contest), params: { juror: { dob: @juror.dob, fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3, location: @juror.location, user_id: @juror.user_id } }
+      post contest_jurors_url(@contest), params: { juror: {
+          dob: @juror.dob,
+          fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
+          location: @juror.location,
+          user_id: @juror_user.id
+      } }
     end
 
     assert_redirected_to juror_url(Juror.last)
@@ -37,7 +43,12 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update juror" do
-    patch juror_url(@juror), params: { juror: { dob: @juror.dob, fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3, location: @juror.location, user_id: @juror.user_id } }
+    patch juror_url(@juror), params: { juror: {
+        dob: @juror.dob,
+        fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
+        location: @juror.location,
+        user_id: @juror_user.id
+    } }
     assert_redirected_to juror_url(@juror)
   end
 

@@ -9,3 +9,8 @@ two:
   title: MyString
   description: MyText
   contest: two
+
+in_progress:
+  title: MyString
+  description: MyText
+  contest: in_progress

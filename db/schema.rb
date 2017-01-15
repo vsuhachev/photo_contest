@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114153109) do
+ActiveRecord::Schema.define(version: 20170115033619) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170114153109) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "state"
   end
 
   create_table "criteria", force: :cascade do |t|

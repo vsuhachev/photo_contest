@@ -3,7 +3,14 @@
 one:
   title: MyString
   description: MyText
+  state: draft
 
 two:
   title: MyString
   description: MyText
+  state: preparation
+
+in_progress:
+  title: MyString
+  description: MyText
+  state: in_progress

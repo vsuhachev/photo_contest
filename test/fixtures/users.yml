@@ -11,3 +11,5 @@ one:
 two:
   email: user_2@example.org
 
+three:
+  email: user_3@example.org

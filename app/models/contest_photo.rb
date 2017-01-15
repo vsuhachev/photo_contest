@@ -7,6 +7,7 @@ class ContestPhoto < ApplicationRecord
 
   scope :authored, -> (user) { joins(:photo).where(photos: { user: user }) }
 
+  validates :photo, uniqueness: { scope: [:contest] }
   validate do
     errors.add('nomination must belongs to contest') if nomination && contest != nomination&.contest
   end

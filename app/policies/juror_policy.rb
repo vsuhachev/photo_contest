@@ -1,14 +1,14 @@
-class JurorPolicy < AdminOwnedPolicy
+class JurorPolicy < ContestDependentPolicy
   def index?
     true
   end
 
   def show?
-    super || user == record.user
+    super || owner? && contest_editable?
   end
 
   def update?
-    super || user == record.user
+    super || owner? && contest_editable?
   end
 
   def permitted_attributes

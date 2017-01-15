@@ -9,3 +9,8 @@ two:
   photo: two
   contest: two
   nomination: two
+
+in_progress:
+  photo: two
+  contest: in_progress
+  nomination: in_progress
