@@ -1,22 +1,22 @@
 class AdminOwnedPolicy < ApplicationPolicy
   def index?
-    user.has_role?(:admin)
+    admin?
   end
 
   def show?
-    user.has_role?(:admin)
+    admin?
   end
 
   def create?
-    user.has_role?(:admin)
+    admin?
   end
 
   def update?
-    user.has_role?(:admin)
+    admin?
   end
 
   def destroy?
-    user.has_role?(:admin)
+    admin?
   end
 
   class Scope < Scope
@@ -28,5 +28,11 @@ class AdminOwnedPolicy < ApplicationPolicy
           fail Pundit::NotAuthorizedError, 'invalid scope'
       end
     end
+  end
+
+  protected
+
+  def admin?
+    user.has_role?(:admin)
   end
 end

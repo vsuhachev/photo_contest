@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115033619) do
+ActiveRecord::Schema.define(version: 20170115144918) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -32,15 +32,17 @@ ActiveRecord::Schema.define(version: 20170115033619) do
     t.index ["contest_id"], name: "index_competitors_contests_on_contest_id"
   end
 
-  create_table "contest_photos", force: :cascade do |t|
+  create_table "compositions", force: :cascade do |t|
     t.integer  "photo_id"
     t.integer  "contest_id"
     t.integer  "nomination_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["contest_id"], name: "index_contest_photos_on_contest_id"
-    t.index ["nomination_id"], name: "index_contest_photos_on_nomination_id"
-    t.index ["photo_id"], name: "index_contest_photos_on_photo_id"
+    t.integer  "competitor_id"
+    t.index ["competitor_id"], name: "index_compositions_on_competitor_id"
+    t.index ["contest_id"], name: "index_compositions_on_contest_id"
+    t.index ["nomination_id"], name: "index_compositions_on_nomination_id"
+    t.index ["photo_id"], name: "index_compositions_on_photo_id"
   end
 
   create_table "contests", force: :cascade do |t|

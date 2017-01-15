@@ -1,0 +1,11 @@
+= render 'shared/resources/header', title: @composition, path: { id: @composition, contest_id: @contest }
+
+p
+  strong Competitor:
+  = @composition.competitor
+p
+  strong Photo:
+  = @composition.photo
+p
+  strong Nomination:
+  = @composition.nomination

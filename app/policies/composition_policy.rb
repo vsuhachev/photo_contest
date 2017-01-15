@@ -1,26 +1,22 @@
-class ContestPhotoPolicy < ContestDependentPolicy
+class CompositionPolicy < ContestDependentPolicy
   def index?
     true
   end
 
   def show?
-    super || owner?
+    admin? || owner?
   end
 
   def create?
-    (super || owner?) && contest_enabled?
-  end
-
-  def new?
-    true
+    contest_enabled?
   end
 
   def update?
-    (super || owner?) && contest_enabled?
+    (admin? || owner?) && contest_enabled?
   end
 
   def destroy?
-    (super || owner?) && contest_enabled?
+    (admin? || owner?) && contest_enabled?
   end
 
   class Scope < Scope

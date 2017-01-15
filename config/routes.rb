@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :nominations, shallow: true
     resources :criteria, shallow: true
     resources :jurors, shallow: true
-    resources :contest_photos, path: 'photos', as: 'photos'
+    resources :compositions, shallow: true
   end
 
   devise_for :users

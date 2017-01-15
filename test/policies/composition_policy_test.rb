@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ContestPhotoPolicyTest < ActiveSupport::TestCase
+class CompositionPolicyTest < ActiveSupport::TestCase
 
   def test_scope
   end

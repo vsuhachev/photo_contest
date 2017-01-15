@@ -2,7 +2,8 @@ ru:
   activerecord:
     models:
       competitor: Участник
-      contest: Критерий
+      contest: Конкурс
+      composition: Конкурсная работа
       criterion: Критерий
       juror: Член жюри
       nomination: Номинация
@@ -19,6 +20,10 @@ ru:
         title: Название
         description: Описание
         state: Стадия
+      composition:
+        competitor: Участник
+        photo: Фото
+        nomination: Номинация
       criterion:
         title: Название
         description: Описание

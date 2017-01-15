@@ -7,7 +7,8 @@ class Contest < ApplicationRecord
   has_many :competitors_contests
   has_many :competitors, through: :competitors_contests
 
-  has_many :photos, class_name: 'ContestPhoto'
+  has_many :compositions
+  has_many :photos, through: :compositions
   has_many :jurors
 
   self.state_machine = ContestMachine
