@@ -4,24 +4,29 @@ class UserOwnedPolicy < ApplicationPolicy
   end
 
   def show?
-    owner?
+    admin? || owner?
   end
 
   def create?
-    owner?
+    admin? || owner?
   end
 
   def update?
-    owner?
+    admin? || owner?
   end
 
   def destroy?
-    owner?
+    admin? || owner?
   end
 
   class Scope < Scope
     def resolve
-      scope.where(user_id: user)
+      case
+        when admin?
+          scope
+        else
+          scope.where(user_id: user)
+      end
     end
   end
 end

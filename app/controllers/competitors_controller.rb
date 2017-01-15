@@ -20,7 +20,7 @@ class CompetitorsController < ApplicationController
   # GET /competitors/new
   def new
     add_breadcrumb I18n.t('app.crumbs.new')
-    @competitor = policy_scope(Competitor).build
+    @competitor = Competitor.new
     authorize @competitor
   end
 
@@ -33,7 +33,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competitor = policy_scope(Competitor).build(competitor_params)
+    @competitor = Competitor.new(competitor_params)
     authorize @competitor
 
     respond_to do |format|
