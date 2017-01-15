@@ -22,7 +22,7 @@ class CompositionPolicy < ContestDependentPolicy
   class Scope < Scope
     def resolve
       case
-        when user.has_role?(:admin)
+        when admin?
           scope
         else
           scope.authored(user)

@@ -12,9 +12,9 @@ class JurorPolicy < ContestDependentPolicy
   end
 
   def permitted_attributes
-    if user.has_role?(:admin)
+    if admin?
       [:fio1, :fio2, :fio3, :dob, :location, :description, :user_id]
-    elsif user == record.user
+    elsif owner?
       [:fio1, :fio2, :fio3, :dob, :location, :description]
     else
       []

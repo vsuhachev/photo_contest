@@ -8,7 +8,7 @@ class ContestPolicy < AdminOwnedPolicy
   end
 
   def transition?
-    user.has_role?(:admin)
+    admin?
   end
 
   protected

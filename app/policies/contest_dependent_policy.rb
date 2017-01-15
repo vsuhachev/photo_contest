@@ -16,8 +16,4 @@ class ContestDependentPolicy < ContestPolicy
   def contest
     record.contest
   end
-
-  def owner?
-    user == record.user
-  end
 end

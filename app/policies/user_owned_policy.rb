@@ -24,10 +24,4 @@ class UserOwnedPolicy < ApplicationPolicy
       scope.where(user_id: user)
     end
   end
-
-  protected
-
-  def owner?
-    user == record.user
-  end
 end

@@ -38,7 +38,19 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  module Helpers
+    def admin?
+      user.has_role?(:admin)
+    end
+
+    def owner?
+      user == record.user
+    end
+  end
+
   class Scope
+    include Helpers
+
     attr_reader :user, :scope
 
     def initialize(user, scope)
@@ -50,4 +62,8 @@ class ApplicationPolicy
       scope
     end
   end
+
+  protected
+
+  include Helpers
 end
