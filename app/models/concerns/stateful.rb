@@ -27,7 +27,13 @@ module Stateful
   end
 
   def state_machine
-    @state_machine ||= state_machine_class.new
+    @state_machine ||= state_machine_class.tap do |state_machine|
+      state_machine.callbacks {
+        on_enter do |event|
+          target.state = state
+        end
+      }
+    end.new
     @state_machine.target(self)
     @state_machine
   end

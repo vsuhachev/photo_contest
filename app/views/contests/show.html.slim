@@ -2,6 +2,23 @@
 
 p = @contest.description
 
-= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-4'
-= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-4'
-= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-4'
+= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-2'
+= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-2'
+= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-2'
+
+hr
+
+h2 = t('.workflow')
+
+p
+  strong => "#{t('.current_state')}:"
+  = t("state_machine.contest.states.#{state_machine.state}")
+
+hr
+h3 = t('.actions')
+
+- state_machine.event_names.each do |event|
+  - if state_machine.can?(event)
+    = link_to t("state_machine.contest.events.#{event}"),
+            transition_contest_path(@contest, state_machine: { event: event }),
+            method: :post, class: 'btn btn-secondary mr-2'

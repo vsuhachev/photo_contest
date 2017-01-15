@@ -1,0 +1,12 @@
+ru:
+  activemodel:
+    attributes:
+      stateful_controller/transition_form:
+        event: Действие
+
+    errors:
+      models:
+        stateful_controller/transition_form:
+          attributes:
+            event:
+              not_available: недоступно

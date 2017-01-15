@@ -29,51 +29,76 @@ ru:
     resources:
       errors:
         errors_occur: При сохранении возникли ошибки
+    stateful:
+      transition:
+        action: Действаие
+        close: Закрыть
+        success: Действие завершилось успешно!
+
+  state_machine:
+    contest:
+      states:
+        draft: Черновик
+        preparation: Подготовка
+        in_progres: Сбор оценок
+        finished: Завершен
+        archived: В архиве
+      events:
+        start: Начать подготовительный этап
+        un_start: В черновики
+        launch: Запуск
+        un_launch: Обратно на подготовительный этап
+        finish: Завершить
+        archive: В архив
 
   photos:
     index:
       title: Мои фотографии
     edit:
-      title: 'Мои фотографии: Правка'
+      title: Редактировать фото
     new:
-      title: 'Мои фотографии: Создание'
+      title: Новое фото
 
   competitors:
     index:
       title: Мои участники
     edit:
-      title: 'Мои участники: Правка'
+      title: Редактировать участника
     new:
-      title: 'Мои участники: Создание'
+      title: Новый участник
 
   contests:
     index:
       title: Конкурсы
     edit:
-      title: 'Редактирование конкурса'
+      title: Редактировать конкурс
     new:
-      title: 'Создание конкурса'
+      title: Новый конкурс
+    show:
+      workflow: Ход конкурса
+      current_state: Текущая стадия
+      actions: Возможные действия
 
   criteria:
     index:
       title: Критерии
     edit:
-      title: 'Редактирование критерия'
+      title: Редактировать критерий
     new:
-      title: 'Создание критерия'
+      title: Новый критерий
 
   nominations:
     index:
       title: Номинации
     edit:
-      title: 'Редактирование номинации'
+      title: Редактировать номинацию
     new:
-      title: 'Создание номинации'
+      title: Новая номинация
 
   jurors:
     index:
       title: Жюри
     edit:
-      title: 'Редактирование члена жюри'
+      title: Редактировать члена жюри
     new:
-      title: 'Создание члена жюри'
+      title: Новый член жюри

@@ -1,5 +1,7 @@
 class ContestsController < ApplicationController
-  before_action :set_contest, only: [:show, :edit, :update, :destroy]
+  include StatefulController
+
+  before_action :set_contest, only: [:show, :edit, :update, :destroy, :transition]
 
   add_breadcrumb I18n.t('contests.index.title'), :contests_path
 
@@ -73,14 +75,21 @@ class ContestsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contest
-      @contest = Contest.find(params[:id])
-    end
+  protected
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contest_params
-      params.require(:contest).permit(:title, :description)
-    end
+  def stateful_model
+    @contest
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contest
+    @contest = Contest.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contest_params
+    params.require(:contest).permit(:title, :description)
+  end
 end

@@ -1,0 +1,11 @@
+ruby:
+  i18n_scope ||= [:state_machine]
+
+h1
+  = t('.action')
+  ' :
+  = t(@transition.event, scope: i18n_scope << :events)
+
+= render 'shared/resources/errors', obj: @transition
+
+= link_to t('.close'), transition_redirect_url, class: 'btn btn-primary'

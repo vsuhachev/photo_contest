@@ -18,6 +18,7 @@ ru:
       contest:
         title: Название
         description: Описание
+        state: Стадия
       criterion:
         title: Название
         description: Описание

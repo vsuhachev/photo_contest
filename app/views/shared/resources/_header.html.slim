@@ -4,19 +4,20 @@ ruby:
   new_path = { controller: controller_name, action: :new }.merge(path.except(:id))
   edit_path = { controller: controller_name, action: :edit }.merge(shallow ? path.slice(:id) : path)
   destroy_path = { controller: controller_name, action: :destroy }.merge(shallow ? path.slice(:id) : path)
+  policy = Pundit.policy(current_user, path[:id])
 
 .d-flex.flex-wrap-reverse.justify-content-between.align-items-center
   h1 = title
   ul.actions.list-inline.list-unstyled
-    - if action_name == 'show'
+    - if action_name == 'show' && policy&.edit?
       li.btn.btn-secondary.ml-1
         = link_to edit_path do
           = icon 'pencil', title: t('actions.edit')
-    - if action_name == 'show' || action_name == 'edit'
+    - if (action_name == 'show' || action_name == 'edit') && policy&.destroy?
       li.btn.btn-secondary.ml-1
         = link_to destroy_path, data: { confirm: t('actions.confirm.destroy') }, method: :delete do
           = icon 'trash', title: t('actions.destroy')
-    - if action_name != 'new'
+    - if action_name != 'new' && policy&.new?
       li.btn.btn-secondary.ml-1
         = link_to new_path do
           = icon 'file-o', title: t('actions.new')

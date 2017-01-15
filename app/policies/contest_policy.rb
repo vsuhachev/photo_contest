@@ -7,6 +7,10 @@ class ContestPolicy < AdminOwnedPolicy
     super && contest_destroyable?
   end
 
+  def transition?
+    user.has_role?(:admin)
+  end
+
   protected
 
   def contest
