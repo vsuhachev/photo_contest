@@ -1,0 +1,11 @@
+= render 'shared/resources/header', title: t('.title'), path: { id: @<%= singular_table_name %> }
+
+ruby:
+  klass = @<%= singular_table_name %>.class
+
+dl.row
+<% attributes.each do |attribute| -%>
+  dt.col-sm-3 = klass.human_attribute_name(:<%= attribute.name %>)
+  dd.col-sm-9 = @<%= singular_table_name %>.<%= attribute.name %>
+
+<% end -%>

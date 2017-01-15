@@ -1,0 +1,11 @@
+= form_for @<%= singular_table_name %> do |f|
+  = render 'shared/resources/errors', obj: @<%= singular_table_name %>
+
+<% attributes.each do |attribute| -%>
+  .form-group
+    = f.label :<%= attribute.name %>
+    = f.<%= attribute.field_type %> :<%= attribute.name %>, class: 'form-control'
+<% end -%>
+
+  .form-actions
+    = f.submit class: 'btn btn-primary'

@@ -19,6 +19,9 @@ ru:
       generic: Вы уверены?
       destroy: Удалить?
     no_items: Нет записей...
+    created: '%{model} успешно создан.'
+    updated: '%{model} успешно обновлен.'
+    destroyed: '%{model} успешно удален.'
 
   auth:
     sign_in: Вход
