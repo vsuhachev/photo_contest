@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
 
   belongs_to :user
 
-  validates :image_data, presence: true
+  validates :title, :image, presence: true
 
   def to_s
     title

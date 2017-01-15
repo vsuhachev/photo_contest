@@ -1,4 +1,4 @@
-= render 'shared/resources/header', title: t('.title')
+= render 'shared/resources/header', title: t('.title'), policy: policy(policy_scope(Photo).build)
 
 .row
   - @photos.each do |photo|
