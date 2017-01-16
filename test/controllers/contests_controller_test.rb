@@ -41,6 +41,8 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy contest" do
+    @contest = contests(:alone)
+
     assert_difference('Contest.count', -1) do
       delete contest_url(@contest)
     end

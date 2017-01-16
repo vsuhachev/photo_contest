@@ -1,5 +1,7 @@
 = render 'shared/resources/header', title: @contest, path: { id: @contest }
 
+= render 'shared/resources/errors', obj: @contest
+
 p = @contest.description
 
 = link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-2'

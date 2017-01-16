@@ -68,10 +68,14 @@ class ContestsController < ApplicationController
   # DELETE /contests/1.json
   def destroy
     authorize @contest
-    @contest.destroy
     respond_to do |format|
-      format.html { redirect_to contests_url, notice: 'Contest was successfully destroyed.' }
-      format.json { head :no_content }
+      if @contest.destroy
+        format.html { redirect_to contests_url, notice: 'Contest was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @contest.errors, status: :unprocessable_entity }
+      end
     end
   end
 

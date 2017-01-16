@@ -1,5 +1,7 @@
 = render 'shared/resources/header', title: t('.title'), path: { id: @<%= singular_table_name %> }
 
+= render 'shared/resources/errors', obj: @<%= singular_table_name %>
+
 ruby:
   klass = @<%= singular_table_name %>.class
 

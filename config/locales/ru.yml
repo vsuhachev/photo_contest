@@ -31,7 +31,7 @@ ru:
   shared:
     resources:
       errors:
-        errors_occur: При сохранении возникли ошибки
+        errors_occur: Возникли ошибки
     stateful:
       transition:
         action: Действаие

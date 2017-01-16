@@ -1,11 +1,11 @@
 class Contest < ApplicationRecord
   include Stateful
 
-  has_many :nominations
-  has_many :criteria
-  has_many :jurors
-  has_many :competitors
-  has_many :photos
+  has_many :nominations, dependent: :destroy
+  has_many :criteria, dependent: :destroy
+  has_many :jurors, dependent: :destroy
+  has_many :competitors, dependent: :restrict_with_error
+  has_many :photos, dependent: :restrict_with_error
 
   self.state_machine = ContestMachine
 

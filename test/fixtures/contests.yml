@@ -14,3 +14,8 @@ in_progress:
   title: MyString
   description: MyText
   state: in_progress
+
+alone:
+  title: MyString
+  description: MyText
+  state: draft

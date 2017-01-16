@@ -1,5 +1,7 @@
 = render 'shared/resources/header', title: @competitor, path: { id: @competitor, contest_id: @contest }
 
+= render 'shared/resources/errors', obj: @competitor
+
 ruby:
   klass = @competitor.class
 

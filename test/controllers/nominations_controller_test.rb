@@ -42,6 +42,9 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy nomination" do
+    @contest = contests(:alone)
+    @nomination = nominations(:alone)
+
     assert_difference('Nomination.count', -1) do
       delete nomination_url(@nomination)
     end

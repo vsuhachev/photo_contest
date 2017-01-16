@@ -71,10 +71,14 @@ class <%= controller_class_name %>Controller < ApplicationController
   # DELETE <%= route_url %>/1.json
   def destroy
     authorize @<%= singular_table_name %>
-    @<%= orm_instance.destroy %>
     respond_to do |format|
-      format.html { redirect_to <%= index_helper %>_url, notice: <%= "t('actions.destroyed', model: #{class_name}.model_name.human)" %> }
-      format.json { head :no_content }
+      if @<%= orm_instance.destroy %>
+        format.html { redirect_to <%= index_helper %>_url, notice: <%= "t('actions.destroyed', model: #{class_name}.model_name.human)" %> }
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity }
+      end
     end
   end
 

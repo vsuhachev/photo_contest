@@ -68,10 +68,14 @@ class NominationsController < ApplicationController
   # DELETE /nominations/1.json
   def destroy
     authorize @nomination
-    @nomination.destroy
     respond_to do |format|
-      format.html { redirect_to contest_nominations_url(@contest), notice: 'Nomination was successfully destroyed.' }
-      format.json { head :no_content }
+      if @nomination.destroy
+        format.html { redirect_to contest_nominations_url(@contest), notice: 'Nomination was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @nomination.errors, status: :unprocessable_entity }
+      end
     end
   end
 

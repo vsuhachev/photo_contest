@@ -1,3 +1,5 @@
 = render 'shared/resources/header', title: @nomination, path: { id: @nomination, contest_id: @contest }
 
+= render 'shared/resources/errors', obj: @nomination
+
 p = @nomination.description

@@ -9,9 +9,9 @@ class User < ApplicationRecord
   roles_attribute :roles_mask
   roles :admin, :competitor, :jury
 
-  has_many :competitors
-  has_many :photos
-  has_many :jurors
+  has_many :competitors, dependent: :nullify
+  has_many :photos, dependent: :nullify
+  has_many :jurors, dependent: :nullify
 
   def title
     email.split('@').first
