@@ -4,11 +4,11 @@
 
 p = @contest.description
 
-= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-2'
-= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-2'
-= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-2'
-= link_to t('competitors.index.title'), contest_competitors_path(@contest), class: 'btn btn-secondary mr-2'
-= link_to t('photos.index.title'), contest_photos_path(@contest), class: 'btn btn-secondary mr-2'
+= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
+= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
+= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
+= link_to t('competitors.index.title'), contest_competitors_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
+= link_to t('photos.index.title'), contest_photos_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
 hr
 
 h2 = t('.workflow')
@@ -25,4 +25,4 @@ hr
     - if state_machine.can?(event)
       = link_to t("state_machine.contest.events.#{event}"),
               transition_contest_path(@contest, state_machine: { event: event }),
-              method: :post, class: 'btn btn-secondary mr-2'
+              method: :post, class: 'btn btn-secondary mr-2 mb-2'
