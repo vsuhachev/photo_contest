@@ -4,8 +4,9 @@ ruby:
   klass = @juror.class
 
 dl.row
-  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:user)
-  dd.col-sm-9 = @juror.user.email
+  - if display_user?(@juror)
+    dt.col-sm-3.text-sm-right = klass.human_attribute_name(:user)
+    dd.col-sm-9 = @juror.user.email
 
   dt.col-sm-3.text-sm-right = klass.human_attribute_name(:dob)
   dd.col-sm-9 = @juror.dob
