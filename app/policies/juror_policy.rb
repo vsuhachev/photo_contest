@@ -20,15 +20,4 @@ class JurorPolicy < ContestDependentPolicy
       []
     end
   end
-
-  class Scope < Scope
-    def resolve
-      case
-        when user.has_role?(:admin)
-          scope
-        else
-          scope.where(user_id: user)
-      end
-    end
-  end
 end

@@ -24,7 +24,7 @@ class CriteriaController < ApplicationController
   # GET /criteria/new
   def new
     add_breadcrumb I18n.t('app.crumbs.new')
-    @criterion = policy_scope(@contest.criteria).build
+    @criterion = @contest.criteria.build
     authorize @criterion
   end
 
@@ -37,7 +37,7 @@ class CriteriaController < ApplicationController
   # POST /criteria
   # POST /criteria.json
   def create
-    @criterion = policy_scope(@contest.criteria).build(criterion_params)
+    @criterion = @contest.criteria.build(criterion_params)
     authorize @criterion
 
     respond_to do |format|

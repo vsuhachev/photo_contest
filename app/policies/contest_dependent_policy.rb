@@ -11,6 +11,12 @@ class ContestDependentPolicy < ContestPolicy
     super && contest_editable?
   end
 
+  class Scope < Scope
+    def resolve
+      scope
+    end
+  end
+
   protected
 
   def contest

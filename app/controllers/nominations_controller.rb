@@ -22,7 +22,7 @@ class NominationsController < ApplicationController
 
   # GET /nominations/new
   def new
-    @nomination = policy_scope(@contest.nominations).build
+    @nomination = @contest.nominations.build
     authorize @nomination
   end
 
@@ -34,7 +34,7 @@ class NominationsController < ApplicationController
   # POST /nominations
   # POST /nominations.json
   def create
-    @nomination = policy_scope(@contest.nominations).build(nomination_params)
+    @nomination = @contest.nominations.build(nomination_params)
     authorize @nomination
 
     respond_to do |format|

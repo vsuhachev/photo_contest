@@ -24,7 +24,7 @@ class JurorsController < ApplicationController
   # GET /jurors/new
   def new
     add_breadcrumb I18n.t('app.crumbs.new')
-    @juror = policy_scope(@contest.jurors).build
+    @juror = @contest.jurors.build
     authorize @juror
   end
 
@@ -37,7 +37,7 @@ class JurorsController < ApplicationController
   # POST /jurors
   # POST /jurors.json
   def create
-    @juror = policy_scope(@contest.jurors).build(permitted_attributes(Juror))
+    @juror = @contest.jurors.build(permitted_attributes(Juror))
     authorize @juror
 
     respond_to do |format|

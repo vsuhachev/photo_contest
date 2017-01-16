@@ -1,10 +1,6 @@
-class UserOwnedPolicy < ApplicationPolicy
+class LoggedUserPolicy < ApplicationPolicy
   def index?
     true
-  end
-
-  def show?
-    admin? || owner?
   end
 
   def create?

@@ -1,14 +1,29 @@
-class ContestPolicy < AdminOwnedPolicy
+class ContestPolicy < LoggedUserPolicy
+  def create?
+    admin?
+  end
+
   def update?
-    super && contest_editable?
+    admin? && contest_editable?
   end
 
   def destroy?
-    super && contest_destroyable?
+    admin? && contest_destroyable?
   end
 
   def transition?
     admin?
+  end
+
+  class Scope < Scope
+    def resolve
+      case
+        when admin?
+          scope
+        else
+          scope.published
+      end
+    end
   end
 
   protected

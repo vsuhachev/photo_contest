@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CompetitorsContestsPolicyTest < ActiveSupport::TestCase
+class LoggedUserPolicyTest < ActiveSupport::TestCase
 
   def test_scope
   end

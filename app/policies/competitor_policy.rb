@@ -1,2 +1,2 @@
-class CompetitorPolicy < UserOwnedPolicy
+class CompetitorPolicy < LoggedUserPolicy
 end

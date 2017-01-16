@@ -11,7 +11,7 @@ class CompositionsController < ApplicationController
   # GET /compositions.json
   def index
     authorize Composition
-    @compositions = policy_scope(Composition).all
+    @compositions = policy_scope(@contest.compositions).all
   end
 
   # GET /compositions/1

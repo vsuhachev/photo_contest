@@ -1,2 +1,2 @@
-class PhotoPolicy < UserOwnedPolicy
+class PhotoPolicy < LoggedUserPolicy
 end
