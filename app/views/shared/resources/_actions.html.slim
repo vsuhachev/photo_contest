@@ -1,0 +1,15 @@
+ruby:
+  hide ||= []
+  btn_class ||= 'btn btn-secondary mr-1 mb-1'
+  path ||= {}
+  policy ||= Pundit.policy(current_user, path[:id])
+
+- if !hide.include?(:show) && policy.show?
+  = link_to({ controller: controller_name, action: :show }.merge(path), class: btn_class)  do
+    = icon 'folder-open-o', title: t('actions.show')
+- if !hide.include?(:edit) && policy.edit?
+  = link_to({ controller: controller_name, action: :edit }.merge(path), class: btn_class) do
+    = icon 'pencil', title: t('actions.edit')
+- if !hide.include?(:destroy) && policy.destroy?
+  = link_to({ controller: controller_name, action: :destroy }.merge(path), data: { confirm: t('actions.confirm.destroy') }, method: :delete, class: btn_class) do
+    = icon 'trash', title: t('actions.destroy')

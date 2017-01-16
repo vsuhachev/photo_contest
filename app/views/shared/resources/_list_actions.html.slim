@@ -1,15 +1,8 @@
 ruby:
-  btn_class = 'btn btn-sm btn-secondary ml-1'
-  path ||= {}
-  policy = Pundit.policy(current_user, path[:id])
+  btn_class ||= 'btn btn-sm btn-secondary ml-1'
+  path ||= nil
+  policy ||= nil
+  hide ||= nil
 
 .d-flex.flex-nowrap.justify-content-end.align-items-center
-  - if policy.show?
-    = link_to({ controller: controller_name, action: :show }.merge(path), class: btn_class)  do
-      = icon 'folder-open-o', title: t('actions.show')
-  - if policy.edit?
-    = link_to({ controller: controller_name, action: :edit }.merge(path), class: btn_class) do
-      = icon 'pencil', title: t('actions.edit')
-  - if policy.destroy?
-    = link_to({ controller: controller_name, action: :destroy }.merge(path), data: { confirm: t('actions.confirm.destroy') }, method: :delete, class: btn_class) do
-      = icon 'trash', title: t('actions.destroy')
+  = render 'shared/resources/actions', btn_class: btn_class, path: path, policy: policy, hide: hide

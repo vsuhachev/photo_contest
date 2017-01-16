@@ -10,7 +10,6 @@
           h4.card-title = photo.title
           p.card-text = photo.location
           p.card-text = photo.obtained_at
-          = link_to edit_photo_path(photo), class: 'btn btn-secondary mr-1' do
-            = icon 'pencil', title: t('actions.edit')
-          = link_to photo, data: { confirm: t('actions.confirm.destroy') }, method: :delete, class: 'btn btn-secondary mr-1' do
-            = icon 'trash', title: t('actions.destroy')
+
+          .d-flex.flex-nowrap.justify-content-start.align-items-center
+            = render 'shared/resources/actions', path: { id: photo }, hide: [:show]
