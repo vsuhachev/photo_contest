@@ -28,8 +28,8 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
           obtained_at: @photo.obtained_at,
           title: @photo.title,
           image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
-          competitor: @competitor,
-          nomination: @nomination
+          competitor_id: @competitor.id,
+          nomination_id: @nomination.id
       } }
     end
 
@@ -53,8 +53,8 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
         obtained_at: @photo.obtained_at,
         title: @photo.title,
         image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
-        competitor: @competitor,
-        nomination: @nomination
+        competitor_id: @competitor.id,
+        nomination_id: @nomination.id
     } }
     assert_redirected_to photo_url(@photo)
   end

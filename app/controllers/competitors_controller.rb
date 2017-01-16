@@ -35,7 +35,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competitor = @contest.competitors.build(competitor_params)
+    @competitor = @contest.competitors.build(competitor_params.merge(user: current_user))
     authorize @competitor
 
     respond_to do |format|

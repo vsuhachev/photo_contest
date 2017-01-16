@@ -1,17 +1,25 @@
 = render 'shared/resources/header', title: @photo, path: { id: @photo, contest_id: @contest }
 
+ruby:
+  klass = @photo.class
+
 .row
   .col-12.col-md-6.col-lg-8
     = link_to @photo.image_url(:original) do
       img.img-fluid src=@photo.image_url(:large)
   .col-12.col-md-6.col-lg-4
-    .card
-      .card-block
-        h4.card-subtitle = @photo.class.human_attribute_name(:location)
-        p.card-text = @photo.location
+    dl.row
+      dt.col-12 = klass.human_attribute_name(:location)
+      dd.col-12 = @photo.location
 
-        h4.card-subtitle = @photo.class.human_attribute_name(:obtained_at)
-        p.card-text = @photo.obtained_at
+      dt.col-12 = klass.human_attribute_name(:obtained_at)
+      dd.col-12 = @photo.obtained_at
 
-        h4.card-subtitle = @photo.class.human_attribute_name(:description)
-        p.card-text = @photo.description
+      dt.col-12 = klass.human_attribute_name(:description)
+      dd.col-12 = @photo.description
+
+      dt.col-12 = klass.human_attribute_name(:nomination)
+      dd.col-12 = @photo.nomination
+
+      dt.col-12 = klass.human_attribute_name(:competitor)
+      dd.col-12 = @photo.competitor

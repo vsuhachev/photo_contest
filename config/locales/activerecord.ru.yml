@@ -16,18 +16,11 @@ ru:
         fio2: Имя
         fio3: Отчество
         dob: Дата рождения
+        contest: Конкурс
       contest:
         title: Название
         description: Описание
         state: Стадия
-      composition:
-        competitor: Участник
-        photo: Фото
-        nomination: Номинация
-        title: Фото/Название
-        description: Фото/Описание
-        location: Фото/Место съемки
-        obtained_at: Фото/Дата съемки
       criterion:
         title: Название
         description: Описание
@@ -44,6 +37,10 @@ ru:
         title: Название
         description: Описание
       photo:
+        contest: Конкурс
+        nomination: Номинация
+        competitor: Участник
+        user: Пользователь
         title: Название
         description: Описание
         location: Место съемки
@@ -52,8 +49,9 @@ ru:
 
     errors:
       models:
-        composition:
+        photo:
           attributes:
-            base:
-              photo_must_belongs_to_competitor: Фото должно принадлежать выбранному участнику
-              nomination_must_belongs_to_contest: Номинация должна принадлежать выбранному конкурсу
+            competitor:
+              must_belongs_to_you: должен принадлежать вам
+            nomination:
+              must_belongs_to_contest: должна принадлежать текущему конкурсу

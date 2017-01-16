@@ -2,6 +2,14 @@
   = render 'shared/resources/errors', obj: @photo
 
   .form-group
+    = f.label :competitor
+    = f.collection_select :competitor_id, competitors_list, :id, :to_s, { include_blank: true }, class: 'form-control'
+
+  .form-group
+    = f.label :nomination
+    = f.collection_select :nomination_id, nominations_list, :id, :to_s, { include_blank: true }, class: 'form-control'
+
+  .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'
   .form-group

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116083200) do
+ActiveRecord::Schema.define(version: 20170116111851) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -77,7 +77,9 @@ ActiveRecord::Schema.define(version: 20170116083200) do
     t.text     "image_data"
     t.integer  "nomination_id"
     t.integer  "competitor_id"
+    t.integer  "contest_id"
     t.index ["competitor_id"], name: "index_photos_on_competitor_id"
+    t.index ["contest_id"], name: "index_photos_on_contest_id"
     t.index ["nomination_id"], name: "index_photos_on_nomination_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end

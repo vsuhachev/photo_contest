@@ -8,6 +8,7 @@ one:
   user: one
   nomination: one
   competitor: one
+  contest: one
 
 two:
   title: MyString
@@ -17,3 +18,4 @@ two:
   user: two
   nomination: two
   competitor: two
+  contest: two

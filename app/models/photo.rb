@@ -4,9 +4,13 @@ class Photo < ApplicationRecord
   belongs_to :user
   belongs_to :nomination
   belongs_to :competitor
-  has_one :contest, through: :competitor
+  belongs_to :contest
 
   validates :image, :title, :location, :obtained_at, :description, presence: true
+  validate do
+    errors.add(:competitor, :must_belongs_to_you) if competitor && competitor.user != user
+    errors.add(:nomination, :must_belongs_to_contest) if nomination && contest != nomination.contest
+  end
 
   def to_s
     title

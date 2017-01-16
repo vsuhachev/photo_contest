@@ -35,7 +35,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = @contest.photos.build(photo_params)
+    @photo = @contest.photos.build(photo_params.merge(user: current_user))
     authorize @photo
 
     respond_to do |format|
@@ -83,6 +83,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:title, :description, :location, :obtained_at, :image)
+    params.require(:photo).permit(:title, :description, :location, :obtained_at, :image, :competitor_id, :nomination_id)
   end
 end
