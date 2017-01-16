@@ -17,15 +17,19 @@ class ContestPolicy < AdminOwnedPolicy
     record
   end
 
+  def state_machine
+    contest&.state_machine
+  end
+  
   def contest_editable?
-    contest.state_machine.draft? || contest.state_machine.preparation?
+    state_machine&.draft? || state_machine&.preparation?
   end
 
   def contest_destroyable?
-    contest.state_machine.draft?
+    state_machine&.draft?
   end
 
   def contest_enabled?
-    contest.state_machine.preparation?
+    state_machine&.preparation?
   end
 end
