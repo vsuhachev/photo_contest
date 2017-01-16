@@ -16,10 +16,11 @@ p
   = t("state_machine.contest.states.#{state_machine.state}")
 
 hr
-h3 = t('.actions')
 
-- state_machine.event_names.each do |event|
-  - if state_machine.can?(event)
-    = link_to t("state_machine.contest.events.#{event}"),
-            transition_contest_path(@contest, state_machine: { event: event }),
-            method: :post, class: 'btn btn-secondary mr-2'
+- if policy(@contest).transition?
+  h3 = t('.actions')
+  - state_machine.event_names.each do |event|
+    - if state_machine.can?(event)
+      = link_to t("state_machine.contest.events.#{event}"),
+              transition_contest_path(@contest, state_machine: { event: event }),
+              method: :post, class: 'btn btn-secondary mr-2'

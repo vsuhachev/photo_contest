@@ -56,7 +56,7 @@ ru:
 
   photos:
     index:
-      title: Мои фотографии
+      title: Фотографии
     edit:
       title: Редактировать фото
     new:
@@ -64,7 +64,7 @@ ru:
 
   competitors:
     index:
-      title: Мои участники
+      title: Участники
     edit:
       title: Редактировать участника
     new:
