@@ -24,6 +24,10 @@ ru:
         competitor: Участник
         photo: Фото
         nomination: Номинация
+        title: Фото/Название
+        description: Фото/Описание
+        location: Фото/Место съемки
+        obtained_at: Фото/Дата съемки
       criterion:
         title: Название
         description: Описание
@@ -45,3 +49,11 @@ ru:
         location: Место съемки
         obtained_at: Дата съемки
         image: Изображение
+
+    errors:
+      models:
+        composition:
+          attributes:
+            base:
+              photo_must_belongs_to_competitor: Фото должно принадлежать выбранному участнику
+              nomination_must_belongs_to_contest: Номинация должна принадлежать выбранному конкурсу

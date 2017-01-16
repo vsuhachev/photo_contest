@@ -8,10 +8,13 @@ class Composition < ApplicationRecord
 
   scope :authored, -> (user) { joins(:photo).where(photos: { user: user }) }
 
+  delegate :title, :location, :obtained_at, :description, to: :photo
+
   validates :photo, uniqueness: { scope: [:contest] }
+  validates :title, :location, :obtained_at, :description, presence: true
   validate do
-    errors.add(:base, 'photo must belongs to competitor') if (photo || competitor) && competitor&.user != photo&.user
-    errors.add(:base, 'nomination must belongs to contest') if nomination && contest != nomination&.contest
+    errors.add(:base, :photo_must_belongs_to_competitor) if (photo || competitor) && competitor&.user != photo&.user
+    errors.add(:base, :nomination_must_belongs_to_contest) if nomination && contest != nomination&.contest
   end
 
   def to_s
