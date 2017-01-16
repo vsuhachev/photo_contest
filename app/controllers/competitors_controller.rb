@@ -1,4 +1,6 @@
 class CompetitorsController < ApplicationController
+  include ProfilePart
+
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb I18n.t('competitors.index.title'), :competitors_path
@@ -7,7 +9,7 @@ class CompetitorsController < ApplicationController
   # GET /competitors.json
   def index
     authorize Competitor
-    @competitors = policy_scope(Competitor).all
+    @competitors = my_competitors.all
   end
 
   # GET /competitors/1
@@ -19,21 +21,21 @@ class CompetitorsController < ApplicationController
 
   # GET /competitors/new
   def new
-    add_breadcrumb I18n.t('app.crumbs.new')
-    @competitor = Competitor.new
+    @competitor = my_competitors.build
     authorize @competitor
+    add_breadcrumb I18n.t('app.crumbs.new')
   end
 
   # GET /competitors/1/edit
   def edit
-    add_breadcrumb @competitor
     authorize @competitor
+    add_breadcrumb @competitor
   end
 
   # POST /competitors
   # POST /competitors.json
   def create
-    @competitor = Competitor.new(competitor_params)
+    @competitor = my_competitors.build(competitor_params)
     authorize @competitor
 
     respond_to do |format|
@@ -75,12 +77,10 @@ class CompetitorsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_competitor
     @competitor = Competitor.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def competitor_params
     params.require(:competitor).permit(:fio1, :fio2, :fio3, :dob)
   end

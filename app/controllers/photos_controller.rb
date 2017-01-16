@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  include ProfilePart
+
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb I18n.t('photos.index.title'), :photos_path
@@ -7,7 +9,7 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     authorize Photo
-    @photos = policy_scope(Photo).all
+    @photos = my_photos.all
   end
 
   # GET /photos/1
@@ -20,7 +22,7 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     add_breadcrumb I18n.t('app.crumbs.new')
-    @photo = policy_scope(Photo).build
+    @photo = my_photos.build
     authorize @photo
   end
 
@@ -33,7 +35,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = policy_scope(Photo).build(photo_params)
+    @photo = my_photos.build(photo_params)
     authorize @photo
 
     respond_to do |format|
@@ -74,13 +76,12 @@ class PhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def photo_params
-      params.require(:photo).permit(:title, :description, :location, :obtained_at, :image)
-    end
+  def set_photo
+    @photo = Photo.find(params[:id])
+  end
+
+  def photo_params
+    params.require(:photo).permit(:title, :description, :location, :obtained_at, :image)
+  end
 end

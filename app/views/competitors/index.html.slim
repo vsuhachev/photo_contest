@@ -1,3 +1,3 @@
-= render 'shared/resources/header', title: t('.title'), policy: policy(Competitor)
+= render 'shared/resources/header', title: t('.title'), policy: policy(my_competitors.build)
 
 = render 'shared/resources/list_as_table', attributes: %i(fio1 fio2 fio3 dob), collection: @competitors

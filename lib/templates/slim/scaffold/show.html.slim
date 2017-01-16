@@ -5,7 +5,7 @@ ruby:
 
 dl.row
 <% attributes.each do |attribute| -%>
-  dt.col-sm-3 = klass.human_attribute_name(:<%= attribute.name %>)
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:<%= attribute.name %>)
   dd.col-sm-9 = @<%= singular_table_name %>.<%= attribute.name %>
 
 <% end -%>

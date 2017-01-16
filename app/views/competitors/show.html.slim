@@ -1,14 +1,17 @@
 = render 'shared/resources/header', title: @competitor, path: { id: @competitor }
 
-p
-  strong Fio1:
-  = @competitor.fio1
-p
-  strong Fio2:
-  = @competitor.fio2
-p
-  strong Fio3:
-  = @competitor.fio3
-p
-  strong Dob:
-  = @competitor.dob
+ruby:
+  klass = @competitor.class
+
+dl.row
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:fio1)
+  dd.col-sm-9 = @competitor.fio1
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:fio2)
+  dd.col-sm-9 = @competitor.fio2
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:fio3)
+  dd.col-sm-9 = @competitor.fio3
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:dob)
+  dd.col-sm-9 = @competitor.dob
