@@ -3,8 +3,6 @@ class NominationsController < ApplicationController
 
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('contests.index.title'), :contests_path
-  add_breadcrumb ->(c) { c.instance_variable_get(:@contest) }, ->(c) { c.contest_path(c.instance_variable_get(:@contest)) }
   add_breadcrumb I18n.t('nominations.index.title'), ->(c) { c.contest_nominations_path(c.instance_variable_get(:@contest)) }
 
   # GET /nominations
@@ -18,17 +16,20 @@ class NominationsController < ApplicationController
   # GET /nominations/1.json
   def show
     authorize @nomination
+    add_breadcrumb @nomination
   end
 
   # GET /nominations/new
   def new
     @nomination = @contest.nominations.build
     authorize @nomination
+    add_breadcrumb I18n.t('app.crumbs.new')
   end
 
   # GET /nominations/1/edit
   def edit
     authorize @nomination
+    add_breadcrumb @nomination
   end
 
   # POST /nominations
@@ -76,13 +77,11 @@ class NominationsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_nomination
     @nomination = Nomination.find(params[:id])
     @contest = @nomination.contest
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def nomination_params
     params.require(:nomination).permit(:title, :description)
   end

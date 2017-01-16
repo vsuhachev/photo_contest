@@ -1,7 +1,7 @@
 class Competitor < ApplicationRecord
   belongs_to :user
-
-  scope :active_contests, -> { contests }
+  belongs_to :contest
+  has_many :photos
 
   validates :fio1, :fio2, :dob, presence: true
 

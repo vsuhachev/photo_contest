@@ -6,6 +6,7 @@ one:
   fio3: MyString
   dob: 2017-01-13
   user: one
+  contest: one
 
 two:
   fio1: MyString
@@ -13,3 +14,4 @@ two:
   fio3: MyString
   dob: 2017-01-13
   user: two
+  contest: two

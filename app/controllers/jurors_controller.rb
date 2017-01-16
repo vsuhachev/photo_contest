@@ -3,8 +3,6 @@ class JurorsController < ApplicationController
 
   before_action :set_juror, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('contests.index.title'), :contests_path
-  add_breadcrumb ->(c) { c.instance_variable_get(:@contest) }, ->(c) { c.contest_path(c.instance_variable_get(:@contest)) }
   add_breadcrumb I18n.t('jurors.index.title'), ->(c) { c.contest_jurors_path(c.instance_variable_get(:@contest)) }
 
   # GET /jurors

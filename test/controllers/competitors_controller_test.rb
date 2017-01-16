@@ -2,24 +2,28 @@ require 'test_helper'
 
 class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:two)
     sign_in @user
-    @competitor = competitors(:one)
+    @competitor = competitors(:two)
+    @contest = contests(:two)
   end
 
   test "should get index" do
-    get competitors_url
+    get contest_competitors_url(@contest)
     assert_response :success
   end
 
   test "should get new" do
-    get new_competitor_url
+    get new_contest_competitor_url(@contest)
     assert_response :success
   end
 
   test "should create competitor" do
     assert_difference('Competitor.count') do
-      post competitors_url, params: { competitor: { dob: @competitor.dob, fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3 } }
+      post contest_competitors_url(@contest), params: { competitor: {
+          dob: @competitor.dob,
+          fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
+      } }
     end
     assert_redirected_to competitor_url(Competitor.last)
     assert_equal @user, Competitor.last.user
@@ -36,7 +40,10 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update competitor" do
-    patch competitor_url(@competitor), params: { competitor: { dob: @competitor.dob, fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3 } }
+    patch competitor_url(@competitor), params: { competitor: {
+        dob: @competitor.dob,
+        fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
+    } }
     assert_redirected_to competitor_url(@competitor)
   end
 
@@ -45,6 +52,6 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
       delete competitor_url(@competitor)
     end
 
-    assert_redirected_to competitors_url
+    assert_redirected_to contest_competitors_url(@contest)
   end
 end

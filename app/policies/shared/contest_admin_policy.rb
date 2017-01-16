@@ -1,8 +1,8 @@
-class ContestPolicy < ApplicationPolicy
+class Shared::ContestAdminPolicy < ApplicationPolicy
   include Helpers::ContestPolicyHelper
 
   def contest
-    record
+    record.contest
   end
 
   def index?
@@ -10,7 +10,7 @@ class ContestPolicy < ApplicationPolicy
   end
 
   def create?
-    admin?
+    admin? && contest_editable?
   end
 
   def update?
@@ -18,21 +18,12 @@ class ContestPolicy < ApplicationPolicy
   end
 
   def destroy?
-    admin? && contest_destroyable?
-  end
-
-  def transition?
-    admin?
+    admin? && contest_editable?
   end
 
   class Scope < Scope
     def resolve
-      case
-        when admin?
-          scope
-        else
-          scope.published
-      end
+      scope
     end
   end
 end

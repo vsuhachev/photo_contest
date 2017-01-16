@@ -1,2 +1,2 @@
-class CompetitorPolicy < LoggedUserPolicy
+class CompetitorPolicy < Shared::ContestUserPolicy
 end

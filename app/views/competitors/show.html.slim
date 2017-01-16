@@ -1,4 +1,4 @@
-= render 'shared/resources/header', title: @competitor, path: { id: @competitor }
+= render 'shared/resources/header', title: @competitor, path: { id: @competitor, contest_id: @contest }
 
 ruby:
   klass = @competitor.class

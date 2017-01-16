@@ -1,15 +1,15 @@
 class CompetitorsController < ApplicationController
-  include ProfilePart
+  include ContestControllerPart
 
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('competitors.index.title'), :competitors_path
+  add_breadcrumb I18n.t('competitors.index.title'), ->(c) { c.contest_competitors_path(c.instance_variable_get(:@contest)) }
 
   # GET /competitors
   # GET /competitors.json
   def index
     authorize Competitor
-    @competitors = my_competitors.all
+    @competitors = policy_scope(@contest.competitors).all.all
   end
 
   # GET /competitors/1
@@ -21,7 +21,7 @@ class CompetitorsController < ApplicationController
 
   # GET /competitors/new
   def new
-    @competitor = my_competitors.build
+    @competitor = @contest.competitors.build
     authorize @competitor
     add_breadcrumb I18n.t('app.crumbs.new')
   end
@@ -35,7 +35,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competitor = my_competitors.build(competitor_params)
+    @competitor = @contest.competitors.build(competitor_params)
     authorize @competitor
 
     respond_to do |format|
@@ -70,7 +70,7 @@ class CompetitorsController < ApplicationController
     authorize @competitor
     @competitor.destroy
     respond_to do |format|
-      format.html { redirect_to competitors_url, notice: 'Competitor was successfully destroyed.' }
+      format.html { redirect_to contest_competitors_url(@contest), notice: 'Competitor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,6 +79,7 @@ class CompetitorsController < ApplicationController
 
   def set_competitor
     @competitor = Competitor.find(params[:id])
+    @contest = @competitor.contest
   end
 
   def competitor_params

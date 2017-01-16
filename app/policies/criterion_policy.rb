@@ -1,2 +1,2 @@
-class CriterionPolicy < ContestDependentPolicy
+class CriterionPolicy < Shared::ContestAdminPolicy
 end

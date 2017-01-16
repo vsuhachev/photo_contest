@@ -4,13 +4,12 @@ class Contest < ApplicationRecord
   has_many :nominations
   has_many :criteria
   has_many :jurors
-  has_many :compositions
-  has_many :photos, through: :compositions
+  has_many :competitors
+  has_many :photos, through: :nominations
 
   self.state_machine = ContestMachine
 
   scope :published, -> { where.not(state: :draft)  }
-  scope :active_competitors, -> { competitors }
 
   validates :title, presence: true
 

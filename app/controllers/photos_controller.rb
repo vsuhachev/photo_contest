@@ -1,15 +1,15 @@
 class PhotosController < ApplicationController
-  include ProfilePart
+  include ContestControllerPart
 
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('photos.index.title'), :photos_path
+  add_breadcrumb I18n.t('photos.index.title'), ->(c) { c.contest_photos_path(c.instance_variable_get(:@contest)) }
 
   # GET /photos
   # GET /photos.json
   def index
     authorize Photo
-    @photos = my_photos.all
+    @photos = policy_scope(@contest.photos).all
   end
 
   # GET /photos/1
@@ -22,20 +22,20 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     add_breadcrumb I18n.t('app.crumbs.new')
-    @photo = my_photos.build
+    @photo = @contest.photos.build
     authorize @photo
   end
 
   # GET /photos/1/edit
   def edit
-    add_breadcrumb @photo.title
     authorize @photo
+    add_breadcrumb @photo
   end
 
   # POST /photos
   # POST /photos.json
   def create
-    @photo = my_photos.build(photo_params)
+    @photo = @contest.photos.build(photo_params)
     authorize @photo
 
     respond_to do |format|
@@ -70,7 +70,7 @@ class PhotosController < ApplicationController
     authorize @photo
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to contest_photos_url(@contest), notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,6 +79,7 @@ class PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.find(params[:id])
+    @contest = @photo.contest
   end
 
   def photo_params

@@ -1,4 +1,4 @@
-= render 'shared/resources/header', title: t('.title'), policy: policy(my_photos.build)
+= render 'shared/resources/header', title: t('.title'), policy: policy(@contest.photos.build)
 
 .row
   - @photos.each do |photo|

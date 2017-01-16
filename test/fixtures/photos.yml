@@ -6,6 +6,8 @@ one:
   location: MyText
   obtained_at: 2017-01-13
   user: one
+  nomination: one
+  competitor: one
 
 two:
   title: MyString
@@ -13,10 +15,5 @@ two:
   location: MyText
   obtained_at: 2017-01-13
   user: two
-
-two_alone:
-  title: MyString
-  description: MyText
-  location: MyText
-  obtained_at: 2017-01-13
-  user: two
+  nomination: two
+  competitor: two

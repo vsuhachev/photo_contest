@@ -2,29 +2,34 @@ require 'test_helper'
 
 class PhotosControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:two)
     sign_in @user
-    @photo = photos(:one)
+    @contest = contests(:two)
+    @photo = photos(:two)
+    @competitor = competitors(:two)
+    @nomination = nominations(:two)
   end
 
   test "should get index" do
-    get photos_url
+    get contest_photos_url(@contest)
     assert_response :success
   end
 
   test "should get new" do
-    get new_photo_url
+    get new_contest_photo_url(@contest)
     assert_response :success
   end
 
   test "should create photo" do
     assert_difference('Photo.count') do
-      post photos_url, params: { photo: {
+      post contest_photos_url(@contest), params: { photo: {
           description: @photo.description,
           location: @photo.location,
           obtained_at: @photo.obtained_at,
           title: @photo.title,
-          image: fixture_file_upload('files/test.jpg', 'image/jpeg')
+          image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
+          competitor: @competitor,
+          nomination: @nomination
       } }
     end
 
@@ -47,7 +52,9 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
         location: @photo.location,
         obtained_at: @photo.obtained_at,
         title: @photo.title,
-        image: fixture_file_upload('files/test.jpg', 'image/jpeg')
+        image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
+        competitor: @competitor,
+        nomination: @nomination
     } }
     assert_redirected_to photo_url(@photo)
   end
@@ -57,6 +64,6 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
       delete photo_url(@photo)
     end
 
-    assert_redirected_to photos_url
+    assert_redirected_to contest_photos_url(@contest)
   end
 end

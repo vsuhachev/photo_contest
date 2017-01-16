@@ -1,2 +1,2 @@
-class PhotoPolicy < LoggedUserPolicy
+class PhotoPolicy < Shared::ContestUserPolicy
 end

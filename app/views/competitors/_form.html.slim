@@ -1,4 +1,4 @@
-= form_for @competitor do |f|
+= form_for shallow_target @competitor, [:contest] do |f|
   = render 'shared/resources/errors', obj: @competitor
 
   .form-group

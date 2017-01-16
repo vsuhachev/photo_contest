@@ -1,22 +1,24 @@
-class CompositionPolicy < ContestDependentPolicy
+class Shared::ContestUserPolicy < ApplicationPolicy
+  include Helpers::ContestPolicyHelper
+
+  def contest
+    record.contest
+  end
+
   def index?
     true
   end
 
-  def show?
-    admin? || owner?
-  end
-
   def create?
-    contest_enabled?
+    (admin? || owner?) && contest_editable?
   end
 
   def update?
-    (admin? || owner?) && contest_enabled?
+    (admin? || owner?) && contest_editable?
   end
 
   def destroy?
-    (admin? || owner?) && contest_enabled?
+    (admin? || owner?) && contest_editable?
   end
 
   class Scope < Scope
@@ -33,7 +35,7 @@ class CompositionPolicy < ContestDependentPolicy
         when admin? || contest_published?
           scope
         else
-          scope.authored(user)
+          scope.where(user_id: user)
       end
     end
   end

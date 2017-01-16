@@ -1,4 +1,4 @@
-class JurorPolicy < ContestDependentPolicy
+class JurorPolicy < Shared::ContestAdminPolicy
   def index?
     true
   end

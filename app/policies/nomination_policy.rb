@@ -1,2 +1,2 @@
-class NominationPolicy < ContestDependentPolicy
+class NominationPolicy < Shared::ContestAdminPolicy
 end

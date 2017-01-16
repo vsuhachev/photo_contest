@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :competitors
-  resources :photos
-
   concern :stateful do |options|
     member do
       post :transition, options
@@ -15,7 +12,8 @@ Rails.application.routes.draw do
     resources :nominations, shallow: true
     resources :criteria, shallow: true
     resources :jurors, shallow: true
-    resources :compositions, shallow: true
+    resources :competitors, shallow: true
+    resources :photos, shallow: true
   end
 
   devise_for :users
