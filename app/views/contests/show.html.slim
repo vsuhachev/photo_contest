@@ -25,4 +25,6 @@ hr
     - if state_machine.can?(event)
       = link_to t("state_machine.contest.events.#{event}"),
               transition_contest_path(@contest, state_machine: { event: event }),
-              method: :post, class: 'btn btn-secondary mr-2 mb-2'
+              method: :post,
+              data: { confirm: t('actions.confirm.generic') },
+              class: 'btn btn-secondary mr-2 mb-2'
