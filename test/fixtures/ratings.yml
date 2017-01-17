@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  juror: in_progress
+  photo: in_progress
+  criterion: in_progress
+  value: 1
+
+two:
+  juror: in_progress
+  photo: in_progress
+  criterion: in_progress_two
+  value: 2

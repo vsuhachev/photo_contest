@@ -15,3 +15,19 @@ two:
   dob: 2017-01-13
   user: two
   contest: two
+
+in_progress:
+  fio1: MyString
+  fio2: MyString
+  fio3: MyString
+  dob: 2017-01-13
+  user: two
+  contest: in_progress
+
+alone:
+  fio1: MyString
+  fio2: MyString
+  fio3: MyString
+  dob: 2017-01-13
+  user: two
+  contest: two

@@ -48,6 +48,8 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy competitor" do
+    @competitor = competitors(:alone)
+
     assert_difference('Competitor.count', -1) do
       delete competitor_url(@competitor)
     end

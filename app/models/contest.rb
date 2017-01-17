@@ -16,4 +16,12 @@ class Contest < ApplicationRecord
   def to_s
     title
   end
+
+  def user_is_juror?(user)
+    jurors.exists?(user_id: user)
+  end
+
+  def juror_for_user(user)
+    jurors.find_by(user_id: user)
+  end
 end

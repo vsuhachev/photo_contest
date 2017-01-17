@@ -6,6 +6,9 @@ class Photo < ApplicationRecord
   belongs_to :competitor
   belongs_to :contest
 
+  has_many :ratings, dependent: :delete_all
+  has_many :criteria, through: :contest
+
   validates :image, :title, :location, :obtained_at, :description, presence: true
   validate do
     errors.add(:competitor, :must_belongs_to_you) if competitor && competitor.user != user

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :ratings, except: %i(new edit)
+
   resources :contests do
     concerns :stateful
     resources :nominations, shallow: true

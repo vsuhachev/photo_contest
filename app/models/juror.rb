@@ -2,6 +2,8 @@ class Juror < ApplicationRecord
   belongs_to :user
   belongs_to :contest
 
+  has_many :ratings, dependent: :delete_all
+
   validates :fio1, :fio2, presence: true
   validates :user, uniqueness: { scope: [:contest] }
 

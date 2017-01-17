@@ -19,3 +19,13 @@ two:
   nomination: two
   competitor: two
   contest: two
+
+in_progress:
+  title: MyString
+  description: MyText
+  location: MyText
+  obtained_at: 2017-01-13
+  user: two
+  nomination: in_progress
+  competitor: in_progress
+  contest: in_progress

@@ -1,0 +1,25 @@
+ruby:
+  photo ||= nil
+  criterion ||= nil
+  rating ||= nil
+  max ||= 10
+
+.row
+  .col-sm-3.text-sm-right
+    = criterion
+  .col-sm-9
+    - if rating
+      ul.c-rating (
+        data-rating-id=rating.id
+        data-rating-value=rating.value
+        data-rating-max=max
+        data-url=rating_url(rating, format: :json)
+      )
+    - else
+      ul.c-rating (
+        data-rating-value=0
+        data-rating-max=max
+        data-url=ratings_url(format: :json)
+        data-photo-id=photo.id
+        data-criterion-id=criterion.id
+      )

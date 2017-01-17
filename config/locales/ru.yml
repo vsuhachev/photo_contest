@@ -37,6 +37,9 @@ ru:
         action: Действаие
         close: Закрыть
         success: Действие завершилось успешно!
+    ratings:
+      photo:
+        title: Оценки
 
   state_machine:
     contest:

@@ -14,4 +14,8 @@ module Helpers::ContestPolicyHelper
   def contest_enabled?
     state_machine&.preparation?
   end
+
+  def contest_rating_able?
+    state_machine&.in_progress?
+  end
 end

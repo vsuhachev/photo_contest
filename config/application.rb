@@ -12,6 +12,8 @@ module PhotoContest
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
+
     config.sass.preferred_syntax = :sass
 
     config.generators do |g|

@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
   include ContestControllerPart
 
+  helper Shared::RatingsHelper
+
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb I18n.t('photos.index.title'), ->(c) { c.contest_photos_path(c.instance_variable_get(:@contest)) }

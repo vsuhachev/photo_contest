@@ -1,0 +1,22 @@
+ruby:
+  max ||= 10
+  user ||= current_user
+  ratings = ratings_by_criterion(photo, user)
+  juror ||= photo.contest.juror_for_user(user)
+  rating_policy = policy(Rating.new(photo: photo, juror: juror))
+
+- if rating_policy.create?
+  .list-group
+
+    .list-group-item.flex-column.align-items-start.list-group-item-info
+      .d-flex.w-100.justify-content-between
+        h5.mb-1 = t('.title')
+        small = juror.fio
+
+    - photo.criteria.each do |criterion|
+      ruby:
+        rating = ratings[criterion.id]
+      .list-group-item.flex-column.align-items-start
+        = render 'shared/ratings/criterion', rating: rating, photo: photo, criterion: criterion, max: max
+        - if criterion.description?
+          .small = criterion.description
