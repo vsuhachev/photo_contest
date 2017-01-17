@@ -1,0 +1,6 @@
+- if @photos.empty?
+  p = t('.no_items')
+- else
+  .row
+    - @photos.each do |photo|
+      = render 'public/photos/photo', item: photo, link: public_photo_path(@contest, @nomination, photo)

@@ -1,4 +1,4 @@
-class ContestsController < ApplicationController
+class ContestsController < AdminController
   include StatefulController
 
   before_action :set_contest, only: [:show, :edit, :update, :destroy, :transition]

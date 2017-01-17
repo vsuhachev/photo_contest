@@ -7,9 +7,7 @@
         = link_to photo do
           img.card-img-top.img-fluid src=(photo.image_url(:medium)) alt=photo.title style="max-height: 14em"
         .card-block
-          h4.card-title = photo.title
-          p.card-text = photo.location
-          p.card-text = photo.obtained_at
-
+          = link_to photo do
+            h6.card-title = photo.title
           .d-flex.flex-nowrap.justify-content-start.align-items-center
             = render 'shared/resources/actions', path: { id: photo }, hide: [:show]

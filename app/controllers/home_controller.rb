@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < AdminController
   skip_before_action :authenticate_user!
 
   def self.policy_class

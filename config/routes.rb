@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  scope path: 'contests', as: :public do
+    get '' => 'public/contests#index', as: :contests
+    scope path: ':contest_id' do
+      get '' => 'public/nominations#index', as: :nominations
+      scope path: ':nomination_id' do
+        get '' => 'public/photos#index', as: :photos
+        get ':photo_id' => 'public/photos#show', as: :photo
+      end
+    end
+  end
+
   root 'home#index'
 
   concern :stateful do |options|
@@ -9,13 +20,15 @@ Rails.application.routes.draw do
 
   resources :ratings, except: %i(new edit)
 
-  resources :contests do
-    concerns :stateful
-    resources :nominations, shallow: true
-    resources :criteria, shallow: true
-    resources :jurors, shallow: true
-    resources :competitors, shallow: true
-    resources :photos, shallow: true
+  scope path: 'admin' do
+    resources :contests do
+      concerns :stateful
+      resources :nominations, shallow: true
+      resources :criteria, shallow: true
+      resources :jurors, shallow: true
+      resources :competitors, shallow: true
+      resources :photos, shallow: true
+    end
   end
 
   devise_for :users

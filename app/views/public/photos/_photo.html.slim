@@ -1,0 +1,14 @@
+ruby:
+  photo ||= item.respond_to?(:photo) ? item.photo : item.is_a?(Photo) ? item : nil
+  image_url = photo ? photo.image_url(:medium) : image_url("placeholder.#{I18n.locale}.png")
+  title ||= item&.title
+  description ||= item&.description
+  link ||= "#"
+
+.col-12.col-sm-6.col-md-4.col-lg-3
+  .card.mr-2.mb-2
+    = link_to link do
+      img.card-img-top.img-fluid src=image_url alt=title style="max-height: 14em"
+    .card-block
+      h4.card-title = title
+      p.card-text.small = description

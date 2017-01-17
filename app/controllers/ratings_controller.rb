@@ -1,4 +1,4 @@
-class RatingsController < ApplicationController
+class RatingsController < AdminController
   include JsonController
 
   before_action :set_rating, only: [:show, :update, :destroy]

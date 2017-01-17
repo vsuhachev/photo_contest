@@ -1,4 +1,4 @@
-class JurorsController < ApplicationController
+class JurorsController < AdminController
   include ContestControllerPart
 
   before_action :set_juror, only: [:show, :edit, :update, :destroy]

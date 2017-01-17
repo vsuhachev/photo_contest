@@ -1,4 +1,4 @@
-= render 'shared/resources/header', title: @photo, path: { id: @photo, contest_id: @contest }
+h1 = @photo.title
 
 ruby:
   klass = @photo.class
@@ -7,6 +7,7 @@ ruby:
   .col-12.col-md-6.col-lg-8
     = link_to @photo.image_url(:original) do
       img.img-fluid src=@photo.image_url(:large)
+
   .col-12.col-md-6.col-lg-4
     dl.row
       dt.col-12 = klass.human_attribute_name(:location)
@@ -18,8 +19,9 @@ ruby:
       dt.col-12 = klass.human_attribute_name(:description)
       dd.col-12 = @photo.description
 
-      dt.col-12 = klass.human_attribute_name(:nomination)
-      dd.col-12 = @photo.nomination
-
       dt.col-12 = klass.human_attribute_name(:competitor)
       dd.col-12 = @photo.competitor
+
+    = render 'shared/ratings/photo', photo: @photo
+
+    .mb-4 = ' '

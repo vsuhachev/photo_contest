@@ -10,11 +10,16 @@ class Contest < ApplicationRecord
   self.state_machine = ContestMachine
 
   scope :published, -> { where.not(state: :draft)  }
+  scope :active, -> { where(state: [:in_progress, :finished])  }
 
   validates :title, presence: true
 
   def to_s
     title
+  end
+
+  def photo
+    photos.first
   end
 
   def user_is_juror?(user)

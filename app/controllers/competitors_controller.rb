@@ -1,4 +1,4 @@
-class CompetitorsController < ApplicationController
+class CompetitorsController < AdminController
   include ContestControllerPart
 
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]

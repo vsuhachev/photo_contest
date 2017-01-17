@@ -1,4 +1,4 @@
-class CriteriaController < ApplicationController
+class CriteriaController < AdminController
   include ContestControllerPart
 
   before_action :set_criterion, only: [:show, :edit, :update, :destroy]

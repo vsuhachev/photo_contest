@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < AdminController
   include ContestControllerPart
 
   helper Shared::RatingsHelper

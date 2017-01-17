@@ -7,4 +7,8 @@ class Nomination < ApplicationRecord
   def to_s
     title
   end
+
+  def photo
+    photos.first
+  end
 end

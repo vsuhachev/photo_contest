@@ -3,9 +3,9 @@ ruby:
   user ||= current_user
   ratings = ratings_by_criterion(photo, user)
   juror ||= photo.contest.juror_for_user(user)
-  rating_policy = policy(Rating.new(photo: photo, juror: juror))
+  rating_policy = Pundit.policy(user, Rating.new(photo: photo, juror: juror))
 
-- if rating_policy.create?
+- if rating_policy&.create?
   .list-group
 
     .list-group-item.flex-column.align-items-start.list-group-item-info

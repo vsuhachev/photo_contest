@@ -4,6 +4,8 @@ ru:
 
     menu:
       contests: Фото-конкурсы
+      admin:
+        contests: Мои конкурсы
 
     crumbs:
       home: Главная
@@ -116,3 +118,17 @@ ru:
       title: Редактировать конкурсную работу
     new:
       title: Подать работу на конкурс
+
+  public:
+    contests:
+      index:
+        title: Конкурсы
+        no_items: Пока нет ни одного активного конкурса, запаситесь терпением.
+
+    nominations:
+      index:
+        no_items: Нет ни одной номинации для этого конкурса.
+
+    photos:
+      index:
+        no_items: Нет ни одной работы в этой номинации.

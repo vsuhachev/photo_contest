@@ -10,7 +10,7 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
   #navbarSupportedContent.collapse.navbar-collapse
 
     ul.navbar-nav.mr-auto
-      li.nav-item = link_to t('app.menu.contests'), contests_path, class: 'nav-link'
+      li.nav-item = link_to t('app.menu.contests'), public_contests_path, class: 'nav-link'
 
     ul.navbar-nav
       - if user_signed_in?
@@ -21,9 +21,8 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
             data-toggle="dropdown")
             = icon 'user', current_user_name
           .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
-            /= link_to t('competitors.index.title'), contest_competitors_path, class: 'dropdown-item'
-            /= link_to t('photos.index.title'), contest_photos_path, class: 'dropdown-item'
-            /.dropdown-divider
+            = link_to t('app.menu.admin.contests'), contests_path, class: 'dropdown-item'
+            .dropdown-divider
             = link_to t('auth.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - else
         li.nav-item

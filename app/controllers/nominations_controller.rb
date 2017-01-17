@@ -1,4 +1,4 @@
-class NominationsController < ApplicationController
+class NominationsController < AdminController
   include ContestControllerPart
 
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
