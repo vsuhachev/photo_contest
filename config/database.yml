@@ -9,17 +9,26 @@ default: &default
   pool: 5
   timeout: 5000
 
-development:
+development: &development
   <<: *default
   database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
   database: db/test.sqlite3
 
+assets:
+  <<: *test
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['DB_NAME'] || 'postgres' %>
+  pool: <%= ENV['DB_POOL'] || 5 %>
+  username: <%= ENV['DB_USER'] || 'postgres' %>
+  password: <%= ENV['DB_PWD'] %>
+  host: <%= ENV['DB_HOST'] || 'postgres' %>
+  port: <%= ENV['DB_PORT'] || 5432 %>

@@ -13,8 +13,7 @@ module PhotoContest
     # -- all .rb files in that directory are automatically loaded.
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
-
-    config.sass.preferred_syntax = :sass
+    config.assets.precompile += %w(*.svg)
 
     config.generators do |g|
       g.stylesheets     false

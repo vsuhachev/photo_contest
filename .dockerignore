@@ -1,0 +1,35 @@
+# Ignore bundler config.
+.bundle*
+
+# Ignore the default SQLite database.
+db/*.sqlite3
+db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Dev environment ignores
+.git*
+.idea*
+.ruby-version
+.ruby-gemset
+
+public/uploads/*
+
+Dockerfile*
+.dockerignore
+docker*
+!docker-entrypoint.sh
+
+app/assets*
+vendor/assets*
+lib/assets*
+lib/templates*
+test*
+spec*
