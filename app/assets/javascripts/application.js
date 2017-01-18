@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tether-1.3.3/tether.min
 //= require bootstrap-sprockets
 //= require five-star-rating/rating
 //= require_tree .

@@ -7,7 +7,8 @@ RUN set -ex \
 	&& apk add --no-cache --virtual .ruby-rundeps \
 		postgresql-client \
 		imagemagick \
-		tzdata
+		tzdata \
+		file
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
