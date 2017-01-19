@@ -57,7 +57,9 @@ ru:
         launch: Запуск
         un_launch: Обратно на подготовительный этап
         finish: Завершить
+        un_finish: Обратно в работу
         archive: В архив
+        un_archive: Вернуть из архива
 
   photos:
     index:
