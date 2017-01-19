@@ -4,7 +4,7 @@ class Juror < ApplicationRecord
 
   has_many :ratings, dependent: :delete_all
 
-  validates :fio1, :fio2, presence: true
+  validates :fio1, :fio2, :dob, :location,  presence: true
   validates :user, uniqueness: { scope: [:contest] }
 
   def fio
