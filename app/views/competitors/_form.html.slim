@@ -13,7 +13,7 @@
   .form-group
     = f.label :dob
     .form-control
-      = f.date_select :dob
+      = f.date_select :dob, start_year: start_year
 
   .form-actions
     = f.submit class: 'btn btn-primary'

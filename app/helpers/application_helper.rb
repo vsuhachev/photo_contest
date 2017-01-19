@@ -35,4 +35,8 @@ module ApplicationHelper
     html << ' ' << text.to_s unless text.blank?
     html
   end
+
+  def start_year
+    @start_year ||= Time.new.year - 100
+  end
 end
