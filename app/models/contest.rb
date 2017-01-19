@@ -23,10 +23,10 @@ class Contest < ApplicationRecord
   end
 
   def user_is_juror?(user)
-    jurors.exists?(user_id: user)
+    user ? jurors.exists?(user_id: user) : false
   end
 
   def juror_for_user(user)
-    jurors.find_by(user_id: user)
+    user ? jurors.find_by(user_id: user) : nil
   end
 end

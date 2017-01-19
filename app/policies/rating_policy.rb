@@ -24,6 +24,6 @@ class RatingPolicy < Shared::ContestUserPolicy
   end
 
   def juror?
-    contest.jurors.where(user_id: user).exists?
+    contest.user_is_juror?(user)
   end
 end
