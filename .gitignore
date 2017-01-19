@@ -27,3 +27,6 @@
 
 /public/uploads/
 /public/assets/
+
+/docker/*.env
+!/docker/example.env

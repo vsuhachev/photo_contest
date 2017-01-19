@@ -7,9 +7,12 @@
 one:
   email: user_1@example.org
   roles_mask: 1
+  confirmed_at: <%= Time.now.utc %>
 
 two:
   email: user_2@example.org
+  confirmed_at: <%= Time.now.utc %>
 
 three:
   email: user_3@example.org
+  confirmed_at: <%= Time.now.utc %>

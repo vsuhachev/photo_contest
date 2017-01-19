@@ -6,11 +6,9 @@ services:
     image: postgres:alpine
     expose:
       - '5432'
+    env_file: .env
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_DB: photo_contest
-      POSTGRES_USER: photo_contest
-      POSTGRES_PASSWORD: bPiuRrTG8JtRFMiuB0
     volumes:
       - pc_pgdata:/var/lib/postgresql/data/pgdata
     restart: always
@@ -22,17 +20,10 @@ services:
       - postgres
     expose:
       - 3000
+    env_file: .env
     environment:
-      - DB_HOST=postgres
-      - DB_NAME=photo_contest
-      - DB_USER=photo_contest
-      - DB_PWD=bPiuRrTG8JtRFMiuB0
-      - DB_POOL=12
-      - WEB_CONCURRENCY=2
-      - RAILS_MAX_THREADS=5
       - RAILS_LOG_TO_STDOUT=true
       - RAILS_SERVE_STATIC_FILES=true
-      - SECRET_KEY_BASE=9d493de61ef092a04759c2b835c24ac0ecddf4cd4086513c2380c38ef5cf04ad0a755c26e6cdcb6a87dc1aeec921482071223f79840acb483762439c358fcf7f
     tmpfs:
       - /opt/app/tmp
       - /opt/app/log

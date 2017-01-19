@@ -6,6 +6,8 @@ ru:
       contests: Фото-конкурсы
       admin:
         contests: Мои конкурсы
+      profile:
+        edit: Профиль
 
     crumbs:
       home: Главная

@@ -1,4 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  include MailerDefaultUrlOptions
+
+  default from: ENV.fetch('RAILS_SMTP_USER', 'from@example.com')
+
   layout 'mailer'
 end

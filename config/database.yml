@@ -26,9 +26,9 @@ assets:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['DB_NAME'] || 'postgres' %>
-  pool: <%= ENV['DB_POOL'] || 5 %>
-  username: <%= ENV['DB_USER'] || 'postgres' %>
-  password: <%= ENV['DB_PWD'] %>
-  host: <%= ENV['DB_HOST'] || 'postgres' %>
-  port: <%= ENV['DB_PORT'] || 5432 %>
+  database: <%= ENV['RAILS_DB_NAME'] || 'postgres' %>
+  pool: <%= ENV['RAILS_DB_POOL'] || 5 %>
+  username: <%= ENV['RAILS_DB_USER'] || 'postgres' %>
+  password: <%= ENV['RAILS_DB_PWD'] %>
+  host: <%= ENV['RAILS_DB_HOST'] || 'postgres' %>
+  port: <%= ENV['RAILS_DB_PORT'] || 5432 %>
