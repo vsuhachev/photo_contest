@@ -3,6 +3,12 @@
 ruby:
   klass = @juror.class
 
+- if @juror.avatar
+  .hidden-xs-down.mb-4
+    img.rounded-circle.w-25.mx-auto.d-block src=@juror.avatar_url(:large)
+  .hidden-sm-up.mb-4
+    img.rounded-circle.w-75.mx-auto.d-block src=@juror.avatar_url(:large)
+
 dl.row
   - if full_view?(@juror)
     dt.col-sm-3.text-sm-right = klass.human_attribute_name(:user)

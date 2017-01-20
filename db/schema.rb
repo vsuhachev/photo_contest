@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120033655) do
+ActiveRecord::Schema.define(version: 20170120045535) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170120033655) do
     t.integer  "contest_id"
     t.string   "location"
     t.string   "organization"
+    t.text     "avatar_data"
     t.index ["contest_id"], name: "index_competitors_on_contest_id"
     t.index ["user_id"], name: "index_competitors_on_user_id"
   end
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170120033655) do
     t.datetime "updated_at",   null: false
     t.text     "description"
     t.string   "organization"
+    t.text     "avatar_data"
     t.index ["contest_id"], name: "index_jurors_on_contest_id"
     t.index ["user_id"], name: "index_jurors_on_user_id"
   end

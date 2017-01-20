@@ -5,15 +5,26 @@
     .form-group
       = f.label :user
       = f.select(:user_id, options_from_collection_for_select(User.all, :id, :email,  f.object.user_id), { include_blank: true }, class: 'form-control')
-  .form-group
-    = f.label :fio1
-    = f.text_field :fio1, class: 'form-control'
-  .form-group
-    = f.label :fio2
-    = f.text_field :fio2, class: 'form-control'
-  .form-group
-    = f.label :fio3
-    = f.text_field :fio3, class: 'form-control'
+
+  .row
+    .form-group.col-sm-11
+      = f.label :avatar
+      = f.hidden_field :avatar, value: f.object.cached_avatar_data
+      = f.file_field :avatar, class: 'form-control-file'
+    - if f.object.avatar
+      .col-sm-1
+        img.img-fluid.rounded-circle src=f.object.avatar_url(:small)
+
+  .form-group.row
+    .col-md-4
+      = f.label :fio1
+      = f.text_field :fio1, class: 'form-control'
+    .col-md-4
+      = f.label :fio2
+      = f.text_field :fio2, class: 'form-control'
+    .col-md-4
+      = f.label :fio3
+      = f.text_field :fio3, class: 'form-control'
   .form-group
     = f.label :dob
     .form-control

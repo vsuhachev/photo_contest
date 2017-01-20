@@ -1,4 +1,6 @@
 class Juror < ApplicationRecord
+  include AvatarUploader[:avatar]
+
   belongs_to :user
   belongs_to :contest
 

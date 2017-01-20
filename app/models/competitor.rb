@@ -1,4 +1,6 @@
 class Competitor < ApplicationRecord
+  include AvatarUploader[:avatar]
+
   belongs_to :user
   belongs_to :contest
   has_many :photos, dependent: :restrict_with_error

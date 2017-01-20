@@ -1,0 +1,8 @@
+ruby:
+  url ||= '#'
+
+.d-flex.align-items-center
+  - if person.avatar
+    a.avatar.mr-2 href=url
+      img.img-fluid.rounded-circle src=person.avatar_url(:small)
+  = person.fio
