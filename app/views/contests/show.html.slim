@@ -4,11 +4,12 @@
 
 p = @contest.description
 
-= link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
-= link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
-= link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
-= link_to t('competitors.index.title'), contest_competitors_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
-= link_to t('photos.index.title'), contest_photos_path(@contest), class: 'btn btn-secondary mr-2 mb-2'
+nav.nav.mb-3.flex-column.flex-sm-row.flex-sm-wrap
+  = link_to t('nominations.index.title'), contest_nominations_path(@contest), class: 'nav-link btn btn-secondary mr-2 mb-2'
+  = link_to t('criteria.index.title'), contest_criteria_path(@contest), class: 'nav-link btn btn-secondary mr-2 mb-2'
+  = link_to t('jurors.index.title'), contest_jurors_path(@contest), class: 'nav-link btn btn-secondary mr-2 mb-2'
+  = link_to t('competitors.index.title'), contest_competitors_path(@contest), class: 'nav-link btn btn-secondary mr-2 mb-2'
+  = link_to t('photos.index.title'), contest_photos_path(@contest), class: 'nav-link btn btn-secondary mr-2 mb-2'
 hr
 
 h2 = t('.workflow')
@@ -21,10 +22,11 @@ hr
 
 - if policy(@contest).transition?
   h3 = t('.actions')
-  - state_machine.event_names.each do |event|
-    - if state_machine.can?(event)
-      = link_to t("state_machine.contest.events.#{event}"),
-              transition_contest_path(@contest, state_machine: { event: event }),
-              method: :post,
-              data: { confirm: t('actions.confirm.generic') },
-              class: 'btn btn-secondary mr-2 mb-2'
+  nav.nav.mb-3.flex-column.flex-sm-row.flex-sm-wrap
+    - state_machine.event_names.each do |event|
+      - if state_machine.can?(event)
+        = link_to t("state_machine.contest.events.#{event}"),
+                transition_contest_path(@contest, state_machine: { event: event }),
+                method: :post,
+                data: { confirm: t('actions.confirm.generic') },
+                class: 'nav-link btn btn-secondary mr-2 mb-2'

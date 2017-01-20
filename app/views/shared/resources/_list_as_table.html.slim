@@ -1,5 +1,6 @@
 ruby:
   attributes ||= [:id]
+  important ||= [attributes.first]
   collection ||= []
   path ||= {}
   model = collection.first&.class
@@ -9,14 +10,14 @@ ruby:
     thead
       tr
         - attributes.each do |attr|
-          th = model.human_attribute_name(attr)
+          th class=(important.include?(attr) ? nil : 'hidden-xs-down') = model.human_attribute_name(attr)
         th
 
     tbody
       - collection.each do |item|
         tr
           - attributes.each do |attr|
-            td = item.send(attr)
+            td class=(important.include?(attr) ? nil : 'hidden-xs-down') = item.send(attr)
           td
             = render 'shared/resources/list_actions', path: path.merge(id: item)
 - else
