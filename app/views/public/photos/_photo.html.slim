@@ -11,4 +11,4 @@ ruby:
       img.card-img-top.img-fluid src=image_url alt=title style="max-height: 14em"
     .card-block
       h4.card-title = title
-      p.card-text.small = description
+      p.card-text.small = description.truncate_words(15, omission: ' ...')
