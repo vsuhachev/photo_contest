@@ -23,7 +23,7 @@ class PublicAccessPolicy < ApplicationPolicy
   def active?
     case state
       when :preparation
-        juror?
+        juror? || admin?
       when :in_progress, :finished
         true
       else
@@ -36,12 +36,14 @@ class PublicAccessPolicy < ApplicationPolicy
       @policy ||= PublicAccessPolicy.new(user, scope)
     end
 
-    delegate :juror?, :contest, to: :policy
+    delegate :admin?, :juror?, :contest, to: :policy
 
     def resolve
       case
-        when juror?
+        when admin?
           contest || Contest.juror_active
+        when juror?
+          contest || Contest.juror_active.by_juror_user(user)
         else
           contest || Contest.active
       end

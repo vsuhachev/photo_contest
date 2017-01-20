@@ -10,9 +10,10 @@ class Contest < ApplicationRecord
 
   self.state_machine = ContestMachine
 
-  scope :published, -> { where.not(state: :draft)  }
-  scope :active, -> { where(state: [:in_progress, :finished])  }
-  scope :juror_active, -> { where(state: [:preparation, :in_progress, :finished])  }
+  scope :published, -> { where.not(state: :draft) }
+  scope :active, -> { where(state: [:in_progress, :finished]) }
+  scope :juror_active, -> { where(state: [:preparation, :in_progress, :finished]) }
+  scope :by_juror_user, -> (user) { joins(:jurors).where(jurors: { user_id: user }) }
 
   validates :title, presence: true
 
