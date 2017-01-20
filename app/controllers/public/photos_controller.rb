@@ -7,7 +7,7 @@ class Public::PhotosController < Public::BaseController
 
   def show
     @photo = @nomination.photos.find(params[:photo_id])
-    add_breadcrumb @photo, public_photo_path(@contest, @nomination, @photo)
+    add_breadcrumb @photo, public_contest_nomination_photo_path(@contest, @nomination, @photo)
   end
 
   private
@@ -17,7 +17,7 @@ class Public::PhotosController < Public::BaseController
     @nomination = @contest.nominations.find(params[:nomination_id])
 
     add_breadcrumb I18n.t('public.contests.index.title'), :public_contests_path
-    add_breadcrumb @contest, public_nominations_path(@contest)
-    add_breadcrumb @nomination, public_photos_path(@contest, @nomination)
+    add_breadcrumb @contest, public_contest_nominations_path(@contest)
+    add_breadcrumb @nomination, public_contest_nomination_photos_path(@contest, @nomination)
   end
 end

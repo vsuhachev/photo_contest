@@ -39,4 +39,8 @@ module ApplicationHelper
   def start_year
     @start_year ||= Time.new.year - 100
   end
+
+  def placeholder_url
+    image_url("placeholder.#{I18n.locale}.png")
+  end
 end

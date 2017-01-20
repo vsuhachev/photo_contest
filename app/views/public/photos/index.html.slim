@@ -3,4 +3,4 @@
 - else
   .row
     - @photos.each do |photo|
-      = render 'public/photos/photo', item: photo, link: public_photo_path(@contest, @nomination, photo)
+      = render 'public/photos/photo', item: photo, link: public_contest_nomination_photo_path(@contest, @nomination, photo)

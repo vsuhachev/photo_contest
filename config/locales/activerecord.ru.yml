@@ -20,6 +20,7 @@ ru:
         organization: Организация
         dob: Дата рождения
         contest: Конкурс
+        description: О себе
         user: Пользователь
       contest:
         title: Название

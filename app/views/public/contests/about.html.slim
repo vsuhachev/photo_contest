@@ -1,0 +1,9 @@
+h1 = @contest.title
+
+-if @contest.cover
+  figure.figure.float-md-right
+    a.float-sm-right href=@contest.cover_url(:large)
+      img.figure-img.img-fluid.rounded src=@contest.cover_url(:medium)
+    figcaption.figure-caption = @contest.description
+
+== @contest.conditions

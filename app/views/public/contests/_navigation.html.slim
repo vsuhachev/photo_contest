@@ -1,0 +1,7 @@
+ruby:
+  contest ||= @contest
+
+nav.nav.mb-3
+  = link_to t('.about'), public_contest_about_path(contest), class: 'nav-link'
+  = link_to t('.competitors'), public_contest_competitors_path(contest), class: 'nav-link'
+  = link_to t('.jurors'), public_contest_jurors_path(contest), class: 'nav-link'

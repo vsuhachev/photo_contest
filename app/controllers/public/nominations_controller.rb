@@ -11,6 +11,6 @@ class Public::NominationsController < Public::BaseController
     @contest = Contest.active.find(params[:contest_id])
 
     add_breadcrumb I18n.t('public.contests.index.title'), :public_contests_path
-    add_breadcrumb @contest, public_nominations_path(@contest)
+    add_breadcrumb @contest, public_contest_nominations_path(@contest)
   end
 end

@@ -1,4 +1,5 @@
 class Contest < ApplicationRecord
+  include CoverUploader[:cover]
   include Stateful
 
   has_many :nominations, dependent: :destroy

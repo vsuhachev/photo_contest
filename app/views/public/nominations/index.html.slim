@@ -1,6 +1,8 @@
+= render 'public/contests/navigation'
+
 - if @nominations.empty?
   p = t('.no_items')
 - else
   .row
     - @nominations.each do |nomination|
-      = render 'public/photos/photo', item: nomination, link: public_photos_path(@contest, nomination)
+      = render 'public/photos/photo', item: nomination, link: public_contest_nomination_photos_path(@contest, nomination)

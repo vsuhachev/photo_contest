@@ -94,6 +94,6 @@ class ContestsController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def contest_params
-    params.require(:contest).permit(:title, :description)
+    params.require(:contest).permit(:title, :description, :cover, :conditions)
   end
 end

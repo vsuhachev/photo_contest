@@ -30,6 +30,9 @@
   .form-group
     = f.label :organization
     = f.text_field :organization, class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
 
   .form-actions
     = f.submit class: 'btn btn-primary'

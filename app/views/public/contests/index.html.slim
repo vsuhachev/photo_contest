@@ -3,4 +3,7 @@
 - else
   .row
     - @contests.each do |contest|
-      = render 'public/photos/photo', item: contest, link: public_nominations_path(contest)
+      = render 'public/photos/photo',
+              item: contest,
+              image: contest.cover || contest.photo&.image,
+              link: public_contest_nominations_path(contest)

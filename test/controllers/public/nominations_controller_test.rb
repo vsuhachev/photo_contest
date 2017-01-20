@@ -6,7 +6,7 @@ class Public::NominationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get public_nominations_url(@contest)
+    get public_contest_nominations_url(@contest)
     assert_response :success
   end
 end

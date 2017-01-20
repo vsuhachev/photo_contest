@@ -88,6 +88,6 @@ class CompetitorsController < AdminController
   end
 
   def competitor_params
-    params.require(:competitor).permit(:fio1, :fio2, :fio3, :dob, :location, :organization, :avatar)
+    params.require(:competitor).permit(:fio1, :fio2, :fio3, :dob, :location, :organization, :avatar, :description)
   end
 end

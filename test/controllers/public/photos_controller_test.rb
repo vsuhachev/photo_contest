@@ -8,12 +8,12 @@ class Public::PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get public_photos_url(@contest, @nomination)
+    get public_contest_nomination_photos_url(@contest, @nomination)
     assert_response :success
   end
 
   test "should get show" do
-    get public_photo_url(@contest, @nomination, @photo)
+    get public_contest_nomination_photo_url(@contest, @nomination, @photo)
     assert_response :success
   end
 end

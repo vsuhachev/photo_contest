@@ -1,6 +1,6 @@
 ruby:
-  photo ||= item.respond_to?(:photo) ? item.photo : item.is_a?(Photo) ? item : nil
-  image_url = photo ? photo.image_url(:medium) : image_url("placeholder.#{I18n.locale}.png")
+  image ||= item.respond_to?(:photo) ? item.photo&.image : item.is_a?(Photo) ? item.image : nil
+  image_url = image ? image[:medium].url : placeholder_url
   title ||= item&.title
   description ||= item&.description
   link ||= "#"

@@ -77,6 +77,7 @@ gem 'slim-rails'
 group :development, :test, :assets do
   gem 'bootstrap'
   gem 'font-awesome-sass'
+  gem 'trix'
 end
 
 gem 'breadcrumbs_on_rails'
