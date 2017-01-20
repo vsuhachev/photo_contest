@@ -58,6 +58,8 @@ ru:
       models:
         photo:
           attributes:
+            base:
+              photos_limit: Количество ваших конкурсных работ в данной номинации не должно превышать ограничения, оговоренного в условиях конкура.
             competitor:
               must_belongs_to_you: должен принадлежать вам
             nomination:

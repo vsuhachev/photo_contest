@@ -21,7 +21,7 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   test "should create competitor" do
     assert_difference('Competitor.count') do
       post contest_competitors_url(@contest), params: { competitor: {
-          dob: @competitor.dob,
+          location: 'blah',
           fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
       } }
     end
@@ -41,7 +41,7 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update competitor" do
     patch competitor_url(@competitor), params: { competitor: {
-        dob: @competitor.dob,
+        location: 'blah',
         fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
     } }
     assert_redirected_to competitor_url(@competitor)
