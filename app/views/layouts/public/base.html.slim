@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title PhotoContest
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+
+  body
+    .container
+      = render 'shared/header'
+
+    .container
+      - if @contest&.state_machine&.current == :preparation
+        .alert.alert-warning role="alert"
+          = t('.preparation_warn')
+
+      = yield
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', 'data-turbolinks-eval' => false

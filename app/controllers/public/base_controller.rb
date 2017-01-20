@@ -1,10 +1,22 @@
 class Public::BaseController < ApplicationController
+  after_action :verify_authorized
+
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
+
+  class PublicAccess < Struct.new(:contest)
+    def policy_class
+      PublicAccessPolicy
+    end
+  end
+
+  def auth_context
+    PublicAccess.new(@contest)
+  end
 
   private
 
   def not_found_error(err)
     logger.debug { err.inspect }
-    render file: Rails.root.join('public', '404.html'), status: :not_found, layout: false
+    head :not_found
   end
 end

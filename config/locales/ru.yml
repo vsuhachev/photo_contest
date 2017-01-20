@@ -147,3 +147,8 @@ ru:
     photos:
       index:
         no_items: Нет ни одной работы в этой номинации.
+
+  layouts:
+    public:
+      base:
+        preparation_warn: Внимание! Конкурс еще не запущен, длступ только для членов жюри

@@ -12,6 +12,7 @@ class Contest < ApplicationRecord
 
   scope :published, -> { where.not(state: :draft)  }
   scope :active, -> { where(state: [:in_progress, :finished])  }
+  scope :juror_active, -> { where(state: [:preparation, :in_progress, :finished])  }
 
   validates :title, presence: true
 

@@ -5,7 +5,7 @@ ruby:
 .d-flex.flex-wrap-reverse.justify-content-between.align-items-center
   h1 = title
   ul.actions.list-inline.list-unstyled
-    - unless action_name == 'new'
+    - unless action_name == 'new' || action_name == 'create'
       ruby:
         policy ||= policy(path[:id])
         new_path = { controller: controller_name, action: :new }.merge(path.except(:id))
