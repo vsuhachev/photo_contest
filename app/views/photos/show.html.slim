@@ -7,6 +7,8 @@ ruby:
   .col-12.col-md-6.col-lg-8
     img.img-fluid src=@photo.image_url(:large)
 
+    .small.text-muted.my-2 = t('copyright', author: @photo.competitor.fio.strip, year: @photo.obtained_at.year)
+
     - if current_user&.has_role?(:admin)
       ul.nav.my-3
         li.nav-item = link_to @photo.image_url(:original), class: 'btn btn-secondary' do
