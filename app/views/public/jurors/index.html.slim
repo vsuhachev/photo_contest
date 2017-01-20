@@ -1,0 +1,6 @@
+h1 = t('.title')
+
+= render partial: 'public/contests/person',
+        collection: @jurors,
+        as: :person,
+        locals: { url: -> (p) { public_contest_juror_path(@contest, p) } }

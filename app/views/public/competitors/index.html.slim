@@ -1,0 +1,6 @@
+h1 = t('.title')
+
+= render partial: 'public/contests/person',
+        collection: @competitors,
+        as: :person,
+        locals: { url: -> (p) { public_contest_competitor_path(@contest, p) } }

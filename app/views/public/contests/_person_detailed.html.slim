@@ -1,0 +1,23 @@
+ruby:
+  klass = person.class
+  avatar = person.avatar ? person.avatar_url(:large) : placeholder_url
+
+.row
+  .col-sm-4
+    img.img-fluid.img-thumbnail.rounded-circle src=avatar
+  .col-sm-8
+    dl.row
+      dt.col-sm-12 = klass.human_attribute_name(:fio)
+      dd.col-sm-12 = person.fio
+
+      dt.col-sm-12 = klass.human_attribute_name(:age)
+      dd.col-sm-12 = person.age
+
+      dt.col-sm-12 = klass.human_attribute_name(:location)
+      dd.col-sm-12 = person.location
+
+      dt.col-sm-12 = klass.human_attribute_name(:organization)
+      dd.col-sm-12 = person.organization
+
+      dt.col-sm-12 = klass.human_attribute_name(:description)
+      dd.col-sm-12 = person.description

@@ -1,6 +1,6 @@
 module Helpers::CommonHelper
   def admin?
-    user.has_role?(:admin)
+    user&.has_role?(:admin)
   end
 
   def owner?

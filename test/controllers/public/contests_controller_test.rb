@@ -14,14 +14,4 @@ class Public::ContestsControllerTest < ActionDispatch::IntegrationTest
     get public_contest_about_url(@contest)
     assert_response :success
   end
-
-  test "should get jurors" do
-    get public_contest_jurors_url(@contest)
-    assert_response :success
-  end
-
-  test "should get competitors" do
-    get public_contest_competitors_url(@contest)
-    assert_response :success
-  end
 end

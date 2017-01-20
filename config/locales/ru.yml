@@ -131,16 +131,24 @@ ru:
       index:
         title: Конкурсы
         no_items: Пока нет ни одного активного конкурса, запаситесь терпением.
+      show:
+        title: О конкурсе
       navigation:
         about: Об этом конкурсе
         competitors: Участники
         jurors: Жюри
-      about:
-        title: О конкурсе
-      competitors:
+
+    competitors:
+      index:
         title: Участники
-      jurors:
+      show:
+        title: Участник
+
+    jurors:
+      index:
         title: Жюри
+      show:
+        title: Член жюри
 
     nominations:
       index:

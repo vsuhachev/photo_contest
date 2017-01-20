@@ -1,5 +1,5 @@
 class Public::PhotosController < Public::BaseController
-  before_action :set_parents
+  include Public::ContestPart
 
   def index
     authorize auth_context
@@ -12,14 +12,11 @@ class Public::PhotosController < Public::BaseController
     add_breadcrumb @photo, public_contest_nomination_photo_path(@contest, @nomination, @photo)
   end
 
-  private
+  protected
 
-  def set_parents
-    @contest = policy_scope(auth_context).find(params[:contest_id])
+  def set_contest
+    super
     @nomination = @contest.nominations.find(params[:nomination_id])
-
-    add_breadcrumb I18n.t('public.contests.index.title'), :public_contests_path
-    add_breadcrumb @contest, public_contest_nominations_path(@contest)
     add_breadcrumb @nomination, public_contest_nomination_photos_path(@contest, @nomination)
   end
 end

@@ -21,7 +21,7 @@ ruby:
       dd.col-12 = @photo.description
 
       dt.col-12 = klass.human_attribute_name(:competitor)
-      dd.col-12 = render 'shared/person', person: @photo.competitor
+      dd.col-12 = render 'shared/person', person: @photo.competitor, url: public_contest_competitor_path(@contest, @photo.competitor)
 
 
     = render 'shared/ratings/photo', photo: @photo
