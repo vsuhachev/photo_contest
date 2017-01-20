@@ -5,8 +5,12 @@ ruby:
 
 .row
   .col-12.col-md-6.col-lg-8
-    = link_to @photo.image_url(:original) do
-      img.img-fluid src=@photo.image_url(:large)
+    img.img-fluid src=@photo.image_url(:large)
+
+    - if current_user&.has_role?(:admin)
+      ul.nav.my-3
+        li.nav-item = link_to @photo.image_url(:original), class: 'btn btn-secondary' do
+          = icon 'download', t('actions.download')
 
   .col-12.col-md-6.col-lg-4
     dl.row

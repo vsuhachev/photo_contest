@@ -26,6 +26,7 @@ ru:
     created: '%{model} успешно создан.'
     updated: '%{model} успешно обновлен.'
     destroyed: '%{model} успешно удален.'
+    download: Скачать
 
   auth:
     sign_in: Вход
