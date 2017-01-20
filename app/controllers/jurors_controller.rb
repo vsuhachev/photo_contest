@@ -1,5 +1,6 @@
 class JurorsController < AdminController
   include ContestControllerPart
+  helper Shared::UsersHelper
 
   before_action :set_juror, only: [:show, :edit, :update, :destroy]
 

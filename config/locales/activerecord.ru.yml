@@ -15,8 +15,11 @@ ru:
         fio1: Фамилия
         fio2: Имя
         fio3: Отчество
+        location: Откуда
+        organization: Организация
         dob: Дата рождения
         contest: Конкурс
+        user: Пользователь
       contest:
         title: Название
         description: Описание
@@ -31,6 +34,7 @@ ru:
         fio3: Отчество
         dob: Дата рождения
         location: Откуда
+        organization: Организация
         description: О себе
         user: Пользователь
       nomination:

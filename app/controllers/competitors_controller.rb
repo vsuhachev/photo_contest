@@ -1,5 +1,6 @@
 class CompetitorsController < AdminController
   include ContestControllerPart
+  helper Shared::UsersHelper
 
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
 

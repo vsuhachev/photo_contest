@@ -4,7 +4,7 @@ ruby:
   klass = @juror.class
 
 dl.row
-  - if display_user?(@juror)
+  - if full_view?(@juror)
     dt.col-sm-3.text-sm-right = klass.human_attribute_name(:user)
     dd.col-sm-9 = @juror.user&.email
 
@@ -13,6 +13,9 @@ dl.row
 
   dt.col-sm-3.text-sm-right = klass.human_attribute_name(:location)
   dd.col-sm-9 = @juror.location
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:organization)
+  dd.col-sm-9 = @juror.organization
 
   dt.col-sm-3.text-sm-right = klass.human_attribute_name(:description)
   dd.col-sm-9 = @juror.description

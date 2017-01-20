@@ -6,6 +6,10 @@ ruby:
   klass = @competitor.class
 
 dl.row
+  - if full_view?(@competitor)
+    dt.col-sm-3.text-sm-right = klass.human_attribute_name(:user)
+    dd.col-sm-9 = @competitor.user&.email
+
   dt.col-sm-3.text-sm-right = klass.human_attribute_name(:fio1)
   dd.col-sm-9 = @competitor.fio1
 
@@ -17,3 +21,9 @@ dl.row
 
   dt.col-sm-3.text-sm-right = klass.human_attribute_name(:dob)
   dd.col-sm-9 = @competitor.dob
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:location)
+  dd.col-sm-9 = @competitor.location
+
+  dt.col-sm-3.text-sm-right = klass.human_attribute_name(:organization)
+  dd.col-sm-9 = @competitor.organization
