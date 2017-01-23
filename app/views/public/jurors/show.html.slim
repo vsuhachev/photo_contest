@@ -1,3 +1,4 @@
-h1 = t('.title')
+- cache [:public, @juror] do
+  h1 = t('.title')
 
-= render 'public/contests/person_detailed', person: @juror
+  = render 'public/contests/person_detailed', person: @juror

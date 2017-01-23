@@ -11,7 +11,7 @@ class PhotosController < AdminController
   # GET /photos.json
   def index
     authorize Photo
-    @photos = policy_scope(@contest.photos).all
+    @photos = policy_scope(@contest.photos).includes(:competitor, :nomination, :user)
   end
 
   # GET /photos/1

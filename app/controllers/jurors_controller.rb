@@ -10,7 +10,7 @@ class JurorsController < AdminController
   # GET /jurors.json
   def index
     authorize Juror
-    @jurors = policy_scope(@contest.jurors).all
+    @jurors = policy_scope(@contest.jurors).includes(:user).all
   end
 
   # GET /jurors/1

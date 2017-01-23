@@ -10,7 +10,7 @@ class CompetitorsController < AdminController
   # GET /competitors.json
   def index
     authorize Competitor
-    @competitors = policy_scope(@contest.competitors).all.all
+    @competitors = policy_scope(@contest.competitors).includes(:user).all
   end
 
   # GET /competitors/1

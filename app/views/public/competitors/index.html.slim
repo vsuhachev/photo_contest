@@ -1,6 +1,7 @@
-h1 = t('.title')
+- cache [:public, @contest, :competitors, @competitors.maximum(:updated_at).to_f] do
+  h1 = t('.title')
 
-= render partial: 'public/contests/person',
-        collection: @competitors,
-        as: :person,
-        locals: { url: -> (p) { public_contest_competitor_path(@contest, p) } }
+  = render partial: 'public/contests/person',
+          collection: @competitors,
+          as: :person,
+          locals: { url: -> (p) { public_contest_competitor_path(@contest, p) } }

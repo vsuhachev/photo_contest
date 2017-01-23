@@ -1,6 +1,7 @@
-h1 = t('.title')
+- cache [:public, @contest, :jurors, @jurors.maximum(:updated_at).to_f] do
+  h1 = t('.title')
 
-= render partial: 'public/contests/person',
-        collection: @jurors,
-        as: :person,
-        locals: { url: -> (p) { public_contest_juror_path(@contest, p) } }
+  = render partial: 'public/contests/person',
+          collection: @jurors,
+          as: :person,
+          locals: { url: -> (p) { public_contest_juror_path(@contest, p) } }

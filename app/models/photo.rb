@@ -2,7 +2,7 @@ class Photo < ApplicationRecord
   include ImageUploader[:image]
 
   belongs_to :user
-  belongs_to :nomination
+  belongs_to :nomination, touch: true
   belongs_to :competitor
   belongs_to :contest
 

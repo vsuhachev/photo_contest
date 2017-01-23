@@ -1,5 +1,5 @@
 class Criterion < ApplicationRecord
-  belongs_to :contest
+  belongs_to :contest, touch: true
 
   has_many :ratings, dependent: :delete_all
 

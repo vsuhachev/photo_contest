@@ -1,15 +1,16 @@
-ruby:
-  url ||= '#'
-  url = url.call(person) if url.respond_to?(:call)
-  avatar = person.avatar ? person.avatar_url(:small) : placeholder_url
-  klass = person.class
+- cache [:public, @contest, person] do
+  ruby:
+    url ||= '#'
+    url = url.call(person) if url.respond_to?(:call)
+    avatar = person.avatar ? person.avatar_url(:small) : placeholder_url
+    klass = person.class
 
-.row.my-4
-  .col-sm-1
-    a href=url
-      img.img-fluid.rounded-circle src=avatar
-  .col-sm-11
-    h5 = person.fio
-    - %i(location organization).each do |name|
-      - if person.send(name).present?
-        small.d-block.my-1 title=klass.human_attribute_name(name) = person.send(name)
+  .row.my-4
+    .col-sm-1
+      a href=url
+        img.img-fluid.rounded-circle src=avatar
+    .col-sm-11
+      h5 = person.fio
+      - %i(location organization).each do |name|
+        - if person.send(name).present?
+          small.d-block.my-1 title=klass.human_attribute_name(name) = person.send(name)

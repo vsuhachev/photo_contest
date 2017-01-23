@@ -3,21 +3,24 @@ ruby:
   important ||= [attributes.first]
   collection ||= []
   path ||= {}
-  model = collection.first&.class
+  model = collection.to_a[0]&.class
+  cache_suffix = [attributes.join(','), important.join(',')]
 
 - if model
   table.table.table-hover.w-100
-    thead
-      tr
-        - attributes.each do |attr|
-          th class=(important.include?(attr) ? nil : 'hidden-xs-down') = model.human_attribute_name(attr)
-        th
+    - cache [:shared, :resources, :list_as_table, :head, model, cache_suffix]
+      thead
+        tr
+          - attributes.each do |attr|
+            th class=(important.include?(attr) ? nil : 'hidden-xs-down') = model.human_attribute_name(attr)
+          th
 
     tbody
       - collection.each do |item|
         tr
-          - attributes.each do |attr|
-            td class=(important.include?(attr) ? nil : 'hidden-xs-down') = item.send(attr)
+          - cache [:shared, :resources, :list_as_table, item, cache_suffix]
+            - attributes.each do |attr|
+              td class=(important.include?(attr) ? nil : 'hidden-xs-down') = item.send(attr)
           td
             = render 'shared/resources/list_actions', path: path.merge(id: item)
 - else

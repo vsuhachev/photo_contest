@@ -1,5 +1,5 @@
 class Nomination < ApplicationRecord
-  belongs_to :contest
+  belongs_to :contest, touch: true
   has_many :photos, dependent: :restrict_with_error
 
   validates :title, presence: true

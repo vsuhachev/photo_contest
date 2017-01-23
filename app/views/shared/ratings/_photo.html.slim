@@ -1,22 +1,29 @@
 ruby:
   max ||= 10
   user ||= current_user
-  ratings = ratings_by_criterion(photo, user)
-  juror ||= photo.contest.juror_for_user(user)
-  rating_policy = Pundit.policy(user, Rating.new(photo: photo, juror: juror))
 
-- if rating_policy&.create?
-  .list-group
+- if user
+  ruby:
+    juror ||= photo.contest.juror_for_user(user)
+    rating_policy = Pundit.policy(user, Rating.new(photo: photo, juror: juror))
 
-    .list-group-item.flex-column.align-items-start.list-group-item-info
-      .d-flex.w-100.justify-content-between
-        h5.mb-1 = t('.title')
-        small = juror.fio
+  - if rating_policy&.create?
+    .list-group
 
-    - photo.criteria.each do |criterion|
+      - cache [:shared, :ratings, juror] do
+        .list-group-item.flex-column.align-items-start.list-group-item-info
+          .d-flex.w-100.justify-content-between
+            h5.mb-1 = t('.title')
+            small = juror.fio
+
       ruby:
-        rating = ratings[criterion.id]
-      .list-group-item.flex-column.align-items-start
-        = render 'shared/ratings/criterion', rating: rating, photo: photo, criterion: criterion, max: max
-        - if criterion.description?
-          .small = criterion.description
+        ratings = ratings_by_criterion(photo, user)
+
+      - photo.criteria.each do |criterion|
+        ruby:
+          rating = ratings[criterion.id]
+        -cache [:shared, :ratings, photo, criterion, rating, max] do
+          .list-group-item.flex-column.align-items-start
+            = render 'shared/ratings/criterion', rating: rating, photo: photo, criterion: criterion, max: max
+            - if criterion.description?
+              .small = criterion.description

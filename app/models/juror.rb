@@ -2,7 +2,7 @@ class Juror < ApplicationRecord
   include AvatarUploader[:avatar]
 
   belongs_to :user
-  belongs_to :contest
+  belongs_to :contest, touch: true
 
   has_many :ratings, dependent: :delete_all
 

@@ -9,6 +9,10 @@ class Shared::ContestUserPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    admin? || owner?
+  end
+
   def create?
     (admin? && contest_editable?) || contest_enabled?
   end

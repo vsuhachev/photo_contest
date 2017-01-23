@@ -1,9 +1,10 @@
-- if @contests.empty?
-  p = t('.no_items')
-- else
-  .row
-    - @contests.each do |contest|
-      = render 'public/photos/photo',
-              item: contest,
-              image: contest.cover || contest.photo&.image,
-              link: public_contest_nominations_path(contest)
+- cache [:public, :contests, current_user, @contests.maximum(:updated_at).to_f] do
+  - if @contests.empty?
+    p = t('.no_items')
+  - else
+    .row
+      - @contests.each do |contest|
+        = render 'public/photos/photo',
+                item: contest,
+                image: contest.cover || contest.photo&.image,
+                link: public_contest_nominations_path(contest)
