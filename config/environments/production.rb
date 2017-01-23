@@ -101,4 +101,6 @@ Rails.application.configure do
 
   redis_connection = ENV.fetch('REDIS_CACHE', 'redis://redis:6379/0')
   config.cache_store = :redis_store, redis_connection, { expires_in: ENV.fetch('REDIS_CACHE_EXPIRES', 90.minutes) }
+
+  config.active_job.queue_adapter = :sidekiq
 end

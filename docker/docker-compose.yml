@@ -39,6 +39,21 @@ services:
       - pc_uploads:/opt/app/public/uploads
     restart: always
 
+  sidekiq:
+    container_name: pc_jobs
+    image: vsuhachev/photo_contest
+    links:
+      - postgres
+      - redis
+    env_file: .env
+    tmpfs:
+      - /opt/app/tmp
+      - /opt/app/log
+    volumes:
+      - pc_uploads:/opt/app/public/uploads
+    restart: always
+    command: ['sidekiq', '--concurrency', '4']
+
   nginx:
     container_name: pc_web
     image: nginx:alpine
