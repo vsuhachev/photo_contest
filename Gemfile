@@ -91,3 +91,5 @@ gem 'mini_magick', '>= 4.3.5'
 gem 'finite_machine'
 
 gem 'thor', '0.19.1' # FIXME: fix issue with "Expected string default value for '--jbuilder'; got true (boolean)" messsage
+
+gem 'redis-rails'
