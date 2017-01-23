@@ -1,0 +1,4 @@
+- if Rails.env.production?
+  - cache [:counters, :all] do
+    - if (id = ENV.fetch('COUNTER_YANDEX_METRIKA_ID', nil))
+      = render 'shared/counters/yandex_metrika', counter_id: id
