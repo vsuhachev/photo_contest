@@ -95,3 +95,6 @@ gem 'thor', '0.19.1' # FIXME: fix issue with "Expected string default value for 
 gem 'redis-rails'
 
 gem 'sidekiq'
+
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
