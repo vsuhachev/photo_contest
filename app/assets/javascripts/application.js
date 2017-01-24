@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require five-star-rating/rating
 //= require trix
+//= require yandex-metrika-embedded
 //= require_tree .

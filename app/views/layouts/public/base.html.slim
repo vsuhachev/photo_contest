@@ -1,21 +1,11 @@
-doctype html
-html
-  head
-    title PhotoContest
-    = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+- content_for :head
+  meta name="site:counters" content="enabled"
 
-  body
-    .container
-      = render 'shared/header'
+- content_for :content
+  - if @contest&.state_machine&.current == :preparation
+    .alert.alert-warning role="alert"
+      = t('.preparation_warn')
 
-    .container
-      - if @contest&.state_machine&.current == :preparation
-        .alert.alert-warning role="alert"
-          = t('.preparation_warn')
+  = yield
 
-      = yield
-
-    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', 'data-turbolinks-eval' => false
-
-    = render 'shared/counters/all'
+= render template: 'layouts/application'
