@@ -4,9 +4,10 @@ ruby:
   klass = @photo.class
 
 .row
-  - cache [:public, @contest, @photo, :photo_image] do
+  - cache [:public, @contest, @photo, @juror.present?, :photo_image] do
     .col-12.col-md-6.col-lg-8
-      img.img-fluid src=@photo.image_url(:large)
+      = link_to @photo.image_url(@juror ? :original : :large) do
+        img.img-fluid src=@photo.image_url(:large)
 
       .small.text-muted.my-2 = t('copyright', author: @photo.competitor.fio.strip, year: @photo.obtained_at.year)
 
@@ -25,6 +26,8 @@ ruby:
         dt.col-12 = klass.human_attribute_name(:competitor)
         dd.col-12 = render 'shared/person', person: @photo.competitor, url: public_contest_competitor_path(@contest, @photo.competitor)
 
-    = render 'shared/ratings/photo', photo: @photo
+    - if @ratings_enabled
+      - cache [:public, @photo, @juror, :ratings, @juror.ratings.for_photo(@photo).maximum(:updated_at).to_f]
+        = render 'shared/ratings/photo', photo: @photo, juror: @juror
 
     .mb-4 = ' '

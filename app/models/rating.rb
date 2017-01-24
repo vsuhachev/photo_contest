@@ -19,6 +19,7 @@ class Rating < ApplicationRecord
   scope :owned_by, -> (user) { joins(:juror).where(jurors: { user_id: user }) }
   scope :for_photo, -> (photo) { where(photo_id: photo) }
   scope :for_criterion, -> (criterion) { where(criterion_id: criterion) }
+  scope :for_juror, -> (juror) { where(juror_id: juror) }
 
   delegate :to_s, to: :criterion
 

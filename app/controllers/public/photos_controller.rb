@@ -9,6 +9,8 @@ class Public::PhotosController < Public::BaseController
   def show
     authorize auth_context
     @photo = @nomination.photos.find(params[:photo_id])
+    @juror = current_user ? @contest.jurors.find_by(user_id: current_user) : nil
+    @ratings_enabled = @juror ? policy(Rating.new(photo: @photo, juror: @juror))&.create? : false
     add_breadcrumb @photo, public_contest_nomination_photo_path(@contest, @nomination, @photo)
   end
 
