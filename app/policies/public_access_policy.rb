@@ -3,9 +3,6 @@ class PublicAccessPolicy < ApplicationPolicy
     true
   end
 
-  alias_method :about?, :index?
-  alias_method :competitors?, :index?
-  alias_method :jurors?, :index?
   alias_method :show?, :index?
 
   def juror?
