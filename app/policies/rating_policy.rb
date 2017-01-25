@@ -24,6 +24,6 @@ class RatingPolicy < Shared::ContestUserPolicy
   end
 
   def juror?
-    record.juror ? record.juror.user_id == user.id : contest.user_is_juror?(user)
+    (record.respond_to?(:juror) && record.juror) ? record.juror.user_id == user.id : contest.user_is_juror?(user)
   end
 end
