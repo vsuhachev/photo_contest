@@ -18,6 +18,8 @@ ruby:
       rating = ratings[criterion.id]
     - cache [:shared, :ratings, photo, criterion, rating, max] do
       .list-group-item.flex-column.align-items-start
+        .ratings-blocker
+          = icon('circle-o-notch', class: 'fa-spin spinner')
         .row.d-block
           .col-sm-3.text-sm-right
             = criterion

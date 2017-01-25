@@ -15,6 +15,9 @@ document.addEventListener 'turbolinks:load', ->
     valueMax = currentRating.data('rating-max') || 10
 
     o.ratingObj = rating o, valueFirst, valueMax, (valueNew) ->
+      blocker = currentRating.closest('.list-group-item').find('.ratings-blocker')
+      blocker.fadeIn(400)
+
       valueOld = currentRating.data('rating-old')
 
       ratingId = currentRating.data('rating-id')
@@ -29,11 +32,13 @@ document.addEventListener 'turbolinks:load', ->
           alert errorMessage
           # WTF: valueOld.toString() - is a workaround for set rating to zerro
           o.ratingObj.setRating valueOld.toString(), false
+          blocker.fadeOut(400)
 
         success: (data, textStatus, jqXHR) ->
           currentRating.data('rating-old', valueNew)
           currentRating.data('url', data.url)
           currentRating.data('rating-id', data.id)
+          blocker.fadeOut(400)
 
 
       $.extend options, (
