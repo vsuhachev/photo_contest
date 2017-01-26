@@ -7,7 +7,7 @@ formatErrors = (errors) ->
   rv
 
 document.addEventListener 'turbolinks:load', ->
-  $('.c-rating').each (i, o) ->
+  $('.c-rating.voting').each (i, o) ->
     currentRating = $(o)
 
     valueFirst = currentRating.data('rating-value') || 0

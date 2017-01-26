@@ -1,0 +1,25 @@
+ruby:
+  max ||= 10
+  total = 0.0
+
+.list-group.mt-3
+  .list-group-item.flex-column.align-items-start.list-group-item-info
+    h5.mb-1 = t('.title')
+
+  - Rating.averages_for_photo(photo).each do |rating|
+    ruby:
+      total += rating.value if rating.value
+    .list-group-item.flex-column.align-items-start
+      = rating.criterion
+      .d-flex.w-100.justify-content-between.flex-sm-nowrap
+        ul.c-rating.w-100
+          - 1.upto(max) do |i|
+            li.c-rating__item class=(i <= (rating.value || 0) ? 'enabled' : 'disabled')
+        .small.align-self-center = rating.value&.round(2)
+      - if rating.criterion.description?
+        .small = rating.criterion.description
+
+  .list-group-item.flex-column.align-items-start.list-group-item-info
+    .d-flex.w-100.justify-content-between.flex-sm-nowrap
+      h5.mb-1 = t('.total')
+      .badge.badge-success.align-self-center = total.round(2)

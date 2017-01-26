@@ -26,8 +26,12 @@ ruby:
         dt.col-12 = klass.human_attribute_name(:competitor)
         dd.col-12 = render 'shared/person', person: @photo.competitor, url: public_contest_competitor_path(@contest, @photo.competitor)
 
-    - if @ratings_enabled
+    - if @ratings_voting_enabled
       - cache [:public, @photo, @juror, :ratings, @juror.ratings.for_photo(@photo).maximum(:updated_at).to_f]
-        = render 'shared/ratings/photo', photo: @photo, juror: @juror
+        = render 'shared/ratings/voting', photo: @photo, juror: @juror
+
+    - if @ratings_results_enabled
+      - cache [:public, @photo, :ratings, :results, @photo.ratings.maximum(:updated_at).to_f]
+        = render 'shared/ratings/results', photo: @photo
 
     .mb-4 = ' '

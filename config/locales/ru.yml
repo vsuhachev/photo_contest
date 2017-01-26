@@ -45,8 +45,11 @@ ru:
         close: Закрыть
         success: Действие завершилось успешно!
     ratings:
-      photo:
+      voting:
         title: Оценки
+      results:
+        title: Результаты голосования
+        total: Итого
 
   state_machine:
     contest:
