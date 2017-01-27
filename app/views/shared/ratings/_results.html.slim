@@ -6,18 +6,21 @@ ruby:
   .list-group-item.flex-column.align-items-start.list-group-item-info
     h5.mb-1 = t('.title')
 
-  - Rating.averages_for_photo(photo).each do |rating|
+  ruby:
+    values = Rating.for_photo(photo).averages_by_criterion
+  - photo.criteria.each do |criterion|
     ruby:
-      total += rating.value if rating.value
+      value = values[criterion.id]
+      total += value || 0
     .list-group-item.flex-column.align-items-start
-      = rating.criterion
+      = criterion
       .d-flex.w-100.justify-content-between.flex-sm-nowrap
         ul.c-rating.w-100
           - 1.upto(max) do |i|
-            li.c-rating__item class=(i <= (rating.value || 0) ? 'enabled' : 'disabled')
-        .small.align-self-center = rating.value&.round(2)
-      - if rating.criterion.description?
-        .small = rating.criterion.description
+            li.c-rating__item class=(i <= (value || 0) ? 'enabled' : 'disabled')
+        .small.align-self-center = value&.round(2)
+      - if criterion.description?
+        .small = criterion.description
 
   .list-group-item.flex-column.align-items-start.list-group-item-info
     .d-flex.w-100.justify-content-between.flex-sm-nowrap
