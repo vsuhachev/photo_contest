@@ -20,7 +20,10 @@ class Rating < ApplicationRecord
   scope :for_photo, -> (photo) { where(photo_id: photo) }
   scope :for_criterion, -> (criterion) { where(criterion_id: criterion) }
   scope :for_juror, -> (juror) { where(juror_id: juror) }
+  scope :for_contest, -> (contest) { joins(:criterion).where(criteria: { contest_id: contest }) }
+  scope :for_nomination, -> (nomination) { joins(:photo).where(photos: { nomination_id: nomination }) }
   scope :averages_by_criterion, -> { group(:criterion_id).average(:value) }
+  scope :averages_by_photo_and_criterion, -> { group(:photo_id, :criterion_id).average(:value) }
 
   delegate :to_s, to: :criterion
 

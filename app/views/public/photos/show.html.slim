@@ -34,4 +34,8 @@ ruby:
       - cache [:public, @photo, :ratings, :results, @photo.ratings.maximum(:updated_at).to_f]
         = render 'shared/ratings/results', photo: @photo
 
+    - if policy(controller.auth_context).detailed_ratings?
+      nav.nav.mb-3.flex-column.flex-sm-row.flex-sm-wrap
+        = link_to t('public.ratings.show.title'), public_contest_nomination_photo_ratings_path(@contest, @nomination, @photo), class: 'nav-link'
+
     .mb-4 = ' '

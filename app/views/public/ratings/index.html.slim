@@ -1,0 +1,18 @@
+ruby:
+  title ||= t('.title')
+
+- cache [:public, @contest, @nomination, :scores, @ratings.maximum(:updated_at).to_f].compact do
+  h1 = title
+
+  .list-group
+    - photos_sorted.each do |photo|
+      = link_to public_contest_nomination_photo_path(photo.contest, photo.nomination, photo), class: 'list-group-item list-group-item-action flex-column align-items-start'
+        .d-flex.w-100.justify-content-start.flex-wrap.flex-sm-nowrap.flex-row
+          .m-2
+            img.hidden-xs-down src=photo.image_url(:small)
+            img.img-fluid.hidden-sm-up src=photo.image_url(:medium)
+          .m-2.d-flex.w-100.flex-column
+            .d-flex.w-100.justify-content-between
+              h5 = photo.title
+              .badge.badge-default.align-self-baseline = score_for_photo(photo)
+            = "#{photo.competitor.to_s.strip}, #{I18n.t('month_names')[photo.obtained_at.month]} #{photo.obtained_at.year}"

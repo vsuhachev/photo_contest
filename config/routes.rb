@@ -3,18 +3,28 @@ Rails.application.routes.draw do
     get '' => 'public/contests#index', as: :contests
     scope path: ':contest_id', as: :contest do
       get 'about' => 'public/contests#show'
+      get 'ratings' => 'public/ratings#index', as: :ratings
+
       scope path: 'jurors' do
         get '' => 'public/jurors#index', as: :jurors
         get ':id' => 'public/jurors#show', as: :juror
       end
+
       scope path: 'competitors' do
         get '' => 'public/competitors#index', as: :competitors
         get ':id' => 'public/competitors#show', as: :competitor
       end
+
       get '' => 'public/nominations#index', as: :nominations
+
       scope path: ':nomination_id', as: :nomination do
         get '' => 'public/photos#index', as: :photos
-        get ':photo_id' => 'public/photos#show', as: :photo
+        get 'ratings' => 'public/ratings#index'
+
+        scope path: ':photo_id', as: :photo do
+          get '' => 'public/photos#show'
+          get 'ratings' => 'public/ratings#show', as: :ratings
+        end
       end
     end
   end

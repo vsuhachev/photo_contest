@@ -1,3 +1,7 @@
+- if policy(controller.auth_context).ratings?
+  nav.nav.mb-3.flex-column.flex-sm-row.flex-sm-wrap
+    = link_to t('.ratings'), public_contest_nomination_ratings_path(@contest, @nomination), class: 'nav-link'
+
 - cache [:public, @contest, @nomination, :photos, @photos.maximum(:updated_at).to_f] do
   - if @photos.empty?
     p = t('.no_items')

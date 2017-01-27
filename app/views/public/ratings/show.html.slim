@@ -1,0 +1,24 @@
+- cache [:public, @contest, @nomination, @photo, :scores, @ratings.maximum(:updated_at).to_f].compact do
+
+  h1 = t('.title')
+
+  h4 = @photo.title
+  = @photo.competitor
+
+  hr
+
+  - if @ratings.empty?
+    = t('.no_items')
+  - else
+    ruby:
+      grouped_ratings = @ratings.group_by(&:juror)
+
+    - grouped_ratings.keys.each do |juror|
+      h4 = juror
+      .d-flex.flex-column.w-100.border-0
+        - grouped_ratings[juror].each do |rating|
+          .d-flex.flex-row.w-100.my-1
+            .badge.badge-default.align-self-center = rating.value.round(2)
+            .ml-2 = rating.criterion
+            .ml-2.align-self-center.small.text-muted = rating.updated_at
+

@@ -5,3 +5,5 @@ nav.nav.mb-3.flex-column.flex-sm-row.flex-sm-wrap
   = link_to t('.about'), public_contest_about_path(contest), class: 'nav-link'
   = link_to t('.competitors'), public_contest_competitors_path(contest), class: 'nav-link'
   = link_to t('.jurors'), public_contest_jurors_path(contest), class: 'nav-link'
+  - if policy(controller.auth_context).ratings?
+    = link_to t('.ratings'), public_contest_ratings_path(contest), class: 'nav-link'

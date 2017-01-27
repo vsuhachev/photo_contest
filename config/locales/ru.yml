@@ -1,4 +1,19 @@
 ru:
+  month_names:
+  -
+  - январь
+  - февраль
+  - март
+  - апрель
+  - май
+  - июнь
+  - июль
+  - август
+  - сентябрь
+  - октябрь
+  - ноябрь
+  - декабрь
+
   app:
     title: Ф.К.
 
@@ -140,6 +155,7 @@ ru:
         about: Об этом конкурсе
         competitors: Участники
         jurors: Жюри
+        ratings: Итоги конкурса
 
     competitors:
       index:
@@ -160,6 +176,14 @@ ru:
     photos:
       index:
         no_items: Нет ни одной работы в этой номинации.
+        ratings: Итоги в номинации
+
+    ratings:
+      index:
+        title: Итоги
+      show:
+        title: Результаты голосования
+        no_items: Нет ни одной оценки.
 
   layouts:
     public:

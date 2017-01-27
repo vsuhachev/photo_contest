@@ -5,6 +5,14 @@ class PublicAccessPolicy < ApplicationPolicy
 
   alias_method :show?, :index?
 
+  def ratings?
+    admin? || state == :finished || state == :archived
+  end
+
+  def detailed_ratings?
+    admin?
+  end
+
   def juror?
     user && (contest ? contest.user_is_juror?(user) : !user.jurors.empty?)
   end
