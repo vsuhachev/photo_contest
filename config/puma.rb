@@ -4,8 +4,9 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, threads_count
+threads_count = ENV.fetch("RAILS_THREADS", 1).to_i
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS", 5).to_i
+threads threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
@@ -42,7 +43,13 @@ preload_app!
 # cannot share connections between processes.
 #
 on_worker_boot do
-  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
 end
 
 # Allow puma to be restarted by `rails restart` command.
