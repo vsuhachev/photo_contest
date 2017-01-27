@@ -5,7 +5,7 @@ class Public::RatingsController < Public::BaseController
     authorize auth_context, :ratings?
     add_breadcrumb t('.title')
 
-    @ratings = (@nomination ? Rating.for_nomination(@nomination) : Rating.for_contest(@contest))
+    @ratings = (@nomination ? Rating.for_nomination(@nomination) : Rating.for_contest(@contest)).no_jurors_photos
     @photos = @contest.photos.preload(:contest, :nomination, :competitor)
     @photos = @photos.by_nomination(@nomination) if @nomination
   end
@@ -14,7 +14,7 @@ class Public::RatingsController < Public::BaseController
     authorize auth_context, :detailed_ratings?
     add_breadcrumb t('.title')
 
-    @ratings = @photo.ratings.preload(:juror, :criterion).order(:juror_id, :criterion_id)
+    @ratings = @photo.ratings.preload(:juror, :criterion).no_jurors_photos
   end
 
   protected

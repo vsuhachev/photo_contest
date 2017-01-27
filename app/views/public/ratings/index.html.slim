@@ -14,5 +14,5 @@ ruby:
           .m-2.d-flex.w-100.flex-column
             .d-flex.w-100.justify-content-between
               h5 = photo.title
-              .badge.badge-default.align-self-baseline = score_for_photo(photo)
+              .badge.badge-default.align-self-baseline = score_for_photo(photo).round(2)
             = "#{photo.competitor.to_s.strip}, #{I18n.t('month_names')[photo.obtained_at.month]} #{photo.obtained_at.year}"

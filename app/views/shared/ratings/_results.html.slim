@@ -7,7 +7,7 @@ ruby:
     h5.mb-1 = t('.title')
 
   ruby:
-    values = Rating.for_photo(photo).averages_by_criterion
+    values = Rating.for_photo(photo).no_jurors_photos.averages_by_criterion
   - photo.criteria.each do |criterion|
     ruby:
       value = values[criterion.id]
