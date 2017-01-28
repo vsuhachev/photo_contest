@@ -98,3 +98,8 @@ gem 'sidekiq'
 
 gem 'rollbar'
 gem 'oj', '~> 2.12.14'
+
+gem 'rack-mini-profiler'
+gem 'flamegraph'
+gem 'stackprof'
+gem 'memory_profiler'
