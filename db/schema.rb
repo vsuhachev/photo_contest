@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120083847) do
+ActiveRecord::Schema.define(version: 20170128113043) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "fio1"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.text     "avatar_data"
     t.text     "description"
     t.index ["contest_id"], name: "index_competitors_on_contest_id"
+    t.index ["updated_at"], name: "index_competitors_on_updated_at"
     t.index ["user_id"], name: "index_competitors_on_user_id"
   end
 
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.string   "state"
     t.text     "cover_data"
     t.text     "conditions"
+    t.index ["updated_at"], name: "index_contests_on_updated_at"
   end
 
   create_table "criteria", force: :cascade do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["contest_id"], name: "index_criteria_on_contest_id"
+    t.index ["updated_at"], name: "index_criteria_on_updated_at"
   end
 
   create_table "jurors", force: :cascade do |t|
@@ -62,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.string   "organization"
     t.text     "avatar_data"
     t.index ["contest_id"], name: "index_jurors_on_contest_id"
+    t.index ["updated_at"], name: "index_jurors_on_updated_at"
     t.index ["user_id"], name: "index_jurors_on_user_id"
   end
 
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["contest_id"], name: "index_nominations_on_contest_id"
+    t.index ["updated_at"], name: "index_nominations_on_updated_at"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -89,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.index ["competitor_id"], name: "index_photos_on_competitor_id"
     t.index ["contest_id"], name: "index_photos_on_contest_id"
     t.index ["nomination_id"], name: "index_photos_on_nomination_id"
+    t.index ["updated_at"], name: "index_photos_on_updated_at"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -100,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["photo_id", "juror_id", "criterion_id"], name: "index_ratings_on_photo_juror_criterion", unique: true
+    t.index ["updated_at"], name: "index_ratings_on_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -127,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170120083847) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["updated_at"], name: "index_users_on_updated_at"
   end
 
 end
