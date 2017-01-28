@@ -6,8 +6,8 @@ module Stateful
 
     before_validation :set_initial_state, on: :create
 
-    after_find :restore_state
-    after_initialize :restore_state
+    # after_find :restore_state
+    # after_initialize :restore_state
   end
 
   module ClassMethods
@@ -35,6 +35,7 @@ module Stateful
       }
     end.new
     @state_machine.target(self)
+    @state_machine.restore!(state.to_sym) if state.present?
     @state_machine
   end
 end

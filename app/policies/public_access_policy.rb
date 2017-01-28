@@ -22,7 +22,7 @@ class PublicAccessPolicy < ApplicationPolicy
   end
 
   def state
-    contest&.state_machine&.current
+    contest&.state&.to_sym
   end
 
   def active?

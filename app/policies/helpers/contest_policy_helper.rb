@@ -1,21 +1,17 @@
 module Helpers::ContestPolicyHelper
-  def state_machine
-    contest&.state_machine
-  end
-
   def contest_editable?
-    state_machine&.draft? || state_machine&.preparation?
+    contest&.state == 'draft' || contest&.state == 'preparation'
   end
 
   def contest_destroyable?
-    state_machine&.draft?
+    contest&.state == 'draft'
   end
 
   def contest_enabled?
-    state_machine&.preparation?
+    contest&.state == 'preparation'
   end
 
   def contest_rating_able?
-    state_machine&.in_progress?
+    contest&.state == 'in_progress'
   end
 end

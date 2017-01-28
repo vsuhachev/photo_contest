@@ -2,7 +2,7 @@
   meta name="site:counters" content="enabled"
 
 - content_for :content
-  - if @contest&.state_machine&.current == :preparation
+  - if @contest&.state == 'preparation'
     .alert.alert-warning role="alert"
       = t('.preparation_warn')
 
