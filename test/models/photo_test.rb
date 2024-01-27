@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase
-  # test "the truth" do
+  # def test_the_truth
   #   assert true
   # end
 end

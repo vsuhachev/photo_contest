@@ -10,24 +10,24 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
     @nomination = nominations(:two)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get contest_photos_url(@contest)
     assert_response :success
   end
 
-  test "should get new" do
+  def test_should_get_new
     get new_contest_photo_url(@contest)
     assert_response :success
   end
 
-  test "should create photo" do
+  def test_should_create_photo
     assert_difference('Photo.count') do
       post contest_photos_url(@contest), params: { photo: {
           description: @photo.description,
           location: @photo.location,
           obtained_at: @photo.obtained_at,
           title: @photo.title,
-          image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
+          image: fixture_file_upload('test.jpg', 'image/jpeg'),
           competitor_id: @competitor.id,
           nomination_id: @nomination.id
       } }
@@ -36,30 +36,30 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to photo_url(Photo.last)
   end
 
-  test "should show photo" do
+  def test_should_show_photo
     get photo_url(@photo)
     assert_response :success
   end
 
-  test "should get edit" do
+  def test_should_get_edit
     get edit_photo_url(@photo)
     assert_response :success
   end
 
-  test "should update photo" do
+  def test_should_update_photo
     patch photo_url(@photo), params: { photo: {
         description: @photo.description,
         location: @photo.location,
         obtained_at: @photo.obtained_at,
         title: @photo.title,
-        image: fixture_file_upload('files/test.jpg', 'image/jpeg'),
+        image: fixture_file_upload('test.jpg', 'image/jpeg'),
         competitor_id: @competitor.id,
         nomination_id: @nomination.id
     } }
     assert_redirected_to photo_url(@photo)
   end
 
-  test "should destroy photo" do
+  def test_should_destroy_photo
     assert_difference('Photo.count', -1) do
       delete photo_url(@photo)
     end

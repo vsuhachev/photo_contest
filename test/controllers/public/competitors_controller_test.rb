@@ -6,12 +6,12 @@ class Public::CompetitorsControllerTest < ActionDispatch::IntegrationTest
     @competitor = competitors(:in_progress)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get public_contest_competitors_url(@contest)
     assert_response :success
   end
 
-  test "should get show" do
+  def test_should_get_show
     get public_contest_competitor_url(@contest, @competitor)
     assert_response :success
   end

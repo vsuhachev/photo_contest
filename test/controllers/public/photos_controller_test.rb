@@ -7,12 +7,12 @@ class Public::PhotosControllerTest < ActionDispatch::IntegrationTest
     @photo = photos(:in_progress)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get public_contest_nomination_photos_url(@contest, @nomination)
     assert_response :success
   end
 
-  test "should get show" do
+  def test_should_get_show
     get public_contest_nomination_photo_url(@contest, @nomination, @photo)
     assert_response :success
   end

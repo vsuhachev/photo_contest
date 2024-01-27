@@ -1,12 +1,17 @@
 doctype html
 html
   head
+    title PhotoContest
+
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 
-    title PhotoContest
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = javascript_include_tag "application", "data-turbolinks-track": "reload", "data-turbolinks-eval": false
 
     = render 'shared/counters/all'
 
@@ -19,5 +24,3 @@ html
 
     .container
       = content_for?(:content) ? yield(:content) : yield
-
-    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', 'data-turbolinks-eval' => false

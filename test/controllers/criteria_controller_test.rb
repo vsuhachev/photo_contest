@@ -8,17 +8,17 @@ class CriteriaControllerTest < ActionDispatch::IntegrationTest
     @criterion = criteria(:one)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get contest_criteria_url(@contest)
     assert_response :success
   end
 
-  test "should get new" do
+  def test_should_get_new
     get new_contest_criterion_url(@contest)
     assert_response :success
   end
 
-  test "should create criterion" do
+  def test_should_create_criterion
     assert_difference('Criterion.count') do
       post contest_criteria_url(@contest), params: { criterion: { description: @criterion.description, title: @criterion.title } }
     end
@@ -26,22 +26,22 @@ class CriteriaControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to criterion_url(Criterion.last)
   end
 
-  test "should show criterion" do
+  def test_should_show_criterion
     get criterion_url(@criterion)
     assert_response :success
   end
 
-  test "should get edit" do
+  def test_should_get_edit
     get edit_criterion_url(@criterion)
     assert_response :success
   end
 
-  test "should update criterion" do
+  def test_should_update_criterion
     patch criterion_url(@criterion), params: { criterion: { description: @criterion.description, title: @criterion.title } }
     assert_redirected_to criterion_url(@criterion)
   end
 
-  test "should destroy criterion" do
+  def test_should_destroy_criterion
     assert_difference('Criterion.count', -1) do
       delete criterion_url(@criterion)
     end

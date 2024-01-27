@@ -5,12 +5,12 @@ class Public::ContestsControllerTest < ActionDispatch::IntegrationTest
     @contest = contests(:in_progress)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get public_contests_url
     assert_response :success
   end
 
-  test "should get about" do
+  def test_should_get_about
     get public_contest_about_url(@contest)
     assert_response :success
   end

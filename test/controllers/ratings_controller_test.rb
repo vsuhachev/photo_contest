@@ -9,12 +9,12 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
     @new_criterion = criteria(:in_progress_alone)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get ratings_url(format: :json)
     assert_response :success
   end
 
-  test "should create rating" do
+  def test_should_create_rating
     assert_difference('Rating.count') do
       post ratings_url(format: :json) , params: { rating: {
           criterion_id: @new_criterion.id,
@@ -26,12 +26,12 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
-  test "should show rating" do
+  def test_should_show_rating
     get rating_url(@rating, format: :json)
     assert_response :success
   end
 
-  test "should update rating" do
+  def test_should_update_rating
     patch rating_url(@rating, format: :json), params: { rating: {
         value: 7
     } }
@@ -39,7 +39,7 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test "should destroy rating" do
+  def test_should_destroy_rating
     assert_difference('Rating.count', -1) do
       delete rating_url(@rating, format: :json)
     end

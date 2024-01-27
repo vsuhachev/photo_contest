@@ -19,7 +19,7 @@ class Public::RatingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get show" do
+  def test_should_get_show
     get public_contest_nomination_photo_ratings_url(@contest, @nomination, @photo)
     assert_response :success
   end

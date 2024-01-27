@@ -7,17 +7,17 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
     @contest = contests(:one)
   end
 
-  test "should get index" do
+  def test_should_get_index
     get contests_url
     assert_response :success
   end
 
-  test "should get new" do
+  def test_should_get_new
     get new_contest_url
     assert_response :success
   end
 
-  test "should create contest" do
+  def test_should_create_contest
     assert_difference('Contest.count') do
       post contests_url, params: { contest: { description: @contest.description, title: @contest.title } }
     end
@@ -25,22 +25,22 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to contest_url(Contest.last)
   end
 
-  test "should show contest" do
+  def test_should_show_contest
     get contest_url(@contest)
     assert_response :success
   end
 
-  test "should get edit" do
+  def test_should_get_edit
     get edit_contest_url(@contest)
     assert_response :success
   end
 
-  test "should update contest" do
+  def test_should_update_contest
     patch contest_url(@contest), params: { contest: { description: @contest.description, title: @contest.title } }
     assert_redirected_to contest_url(@contest)
   end
 
-  test "should destroy contest" do
+  def test_should_destroy_contest
     @contest = contests(:alone)
 
     assert_difference('Contest.count', -1) do
