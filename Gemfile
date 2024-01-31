@@ -97,7 +97,8 @@ gem 'shrine'
 gem 'fastimage'
 gem 'mini_magick'
 
-gem 'finite_machine'
+gem 'finite_machine', "~> 0.11.3"
+gem "sync"
 
 gem 'redis-rails'
 

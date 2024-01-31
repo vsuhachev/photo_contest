@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
-  include ImageUploader[:image]
+  include ImageUploader::Attachment(:image)
 
   belongs_to :user
   belongs_to :nomination, touch: true

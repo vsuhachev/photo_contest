@@ -132,9 +132,7 @@ GEM
     execjs (2.9.1)
     fastimage (2.3.0)
     ffi (1.16.3)
-    finite_machine (0.14.1)
-      concurrent-ruby (~> 1.0)
-      sync (~> 0.5)
+    finite_machine (0.11.3)
     flamegraph (0.9.5)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
@@ -395,7 +393,7 @@ DEPENDENCIES
   devise
   devise-i18n
   fastimage
-  finite_machine
+  finite_machine (~> 0.11.3)
   flamegraph
   font-awesome-sass (~> 4.7.0)
   image_processing (~> 1.2)
@@ -425,6 +423,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stackprof
   stimulus-rails
+  sync
   trix
   turbo-rails
   tzinfo-data
