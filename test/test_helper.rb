@@ -16,11 +16,11 @@ end
 
 ActionDispatch::IntegrationTest.include(Devise::Test::IntegrationHelpers)
 
-require 'shrine/storage/memory'
+require "shrine/storage/memory"
 
 Shrine.storages = {
-    cache: Shrine::Storage::Memory.new,
-    store: Shrine::Storage::Memory.new,
+  cache: Shrine::Storage::Memory.new,
+  store: Shrine::Storage::Memory.new
 }
 
 ActiveJob::Base.queue_adapter = :inline

@@ -1,22 +1,22 @@
 module ApplicationHelper
   def shallow_target(object, path)
     case action_name
-      when 'edit', 'update'
-        object
-      when 'new', 'create'
-        path + [object]
-      else
-        object
+    when "edit", "update"
+      object
+    when "new", "create"
+      path + [object]
+    else
+      object
     end
   end
 
   def permitted_attributes_for(record, action = params[:action])
     policy = policy(record)
-    method_name = if policy.respond_to?("permitted_attributes_for_#{action}")
-                    "permitted_attributes_for_#{action}"
-                  else
-                    "permitted_attributes"
-                  end
+    method_name = if policy.respond_to?(:"permitted_attributes_for_#{action}")
+      "permitted_attributes_for_#{action}"
+    else
+      "permitted_attributes"
+    end
     policy.public_send(method_name)
   end
 
@@ -32,7 +32,7 @@ module ApplicationHelper
     html_options[:class] = content_class
 
     html = content_tag(:i, nil, html_options)
-    html << ' ' << text.to_s unless text.blank?
+    html << " " << text.to_s unless text.blank?
     html
   end
 

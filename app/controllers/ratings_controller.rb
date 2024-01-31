@@ -71,6 +71,6 @@ class RatingsController < AdminController
 
   def not_authorized(err)
     logger.debug { err.inspect }
-    render json: { base: ['Not Authorized'] }, status: :forbidden
+    render json: {base: ["Not Authorized"]}, status: :forbidden
   end
 end

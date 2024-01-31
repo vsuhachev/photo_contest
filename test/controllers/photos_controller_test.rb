@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PhotosControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -21,16 +21,16 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_create_photo
-    assert_difference('Photo.count') do
-      post contest_photos_url(@contest), params: { photo: {
-          description: @photo.description,
-          location: @photo.location,
-          obtained_at: @photo.obtained_at,
-          title: @photo.title,
-          image: fixture_file_upload('test.jpg', 'image/jpeg'),
-          competitor_id: @competitor.id,
-          nomination_id: @nomination.id
-      } }
+    assert_difference("Photo.count") do
+      post contest_photos_url(@contest), params: {photo: {
+        description: @photo.description,
+        location: @photo.location,
+        obtained_at: @photo.obtained_at,
+        title: @photo.title,
+        image: fixture_file_upload("test.jpg", "image/jpeg"),
+        competitor_id: @competitor.id,
+        nomination_id: @nomination.id
+      }}
     end
 
     assert_redirected_to photo_url(Photo.last)
@@ -47,20 +47,20 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_update_photo
-    patch photo_url(@photo), params: { photo: {
-        description: @photo.description,
-        location: @photo.location,
-        obtained_at: @photo.obtained_at,
-        title: @photo.title,
-        image: fixture_file_upload('test.jpg', 'image/jpeg'),
-        competitor_id: @competitor.id,
-        nomination_id: @nomination.id
-    } }
+    patch photo_url(@photo), params: {photo: {
+      description: @photo.description,
+      location: @photo.location,
+      obtained_at: @photo.obtained_at,
+      title: @photo.title,
+      image: fixture_file_upload("test.jpg", "image/jpeg"),
+      competitor_id: @competitor.id,
+      nomination_id: @nomination.id
+    }}
     assert_redirected_to photo_url(@photo)
   end
 
   def test_should_destroy_photo
-    assert_difference('Photo.count', -1) do
+    assert_difference("Photo.count", -1) do
       delete photo_url(@photo)
     end
 

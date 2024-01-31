@@ -1,5 +1,4 @@
 class RatingPolicy < Shared::ContestUserPolicy
-
   def create?
     juror? && contest_rating_able?
   end
@@ -14,11 +13,10 @@ class RatingPolicy < Shared::ContestUserPolicy
 
   class Scope < Scope
     def resolve
-      case
-        when admin?
-          scope
-        else
-          scope.owned_by(user)
+      if admin?
+        scope
+      else
+        scope.owned_by(user)
       end
     end
   end

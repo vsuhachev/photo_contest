@@ -16,8 +16,8 @@ class Photo < ApplicationRecord
     errors.add(:base, :photos_limit) if photos_limit?
   end
 
-  scope :by_nomination, -> (nomination) { where(nomination_id: nomination) }
-  scope :by_competitor, -> (competitor) { where(competitor_id: competitor) }
+  scope :by_nomination, ->(nomination) { where(nomination_id: nomination) }
+  scope :by_competitor, ->(competitor) { where(competitor_id: competitor) }
 
   def photos_limit?
     nomination && competitor && Photo.by_nomination(nomination).by_competitor(competitor).count >= 3

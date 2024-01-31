@@ -8,6 +8,6 @@ module JsonController
   protected
 
   def force_json
-    head :not_acceptable unless params[:format] == 'json' || request.body.read.blank? || request.headers["Accept"] =~ /application\/json/
+    head :not_acceptable unless params[:format] == "json" || request.body.read.blank? || request.headers["Accept"] =~ /application\/json/
   end
 end

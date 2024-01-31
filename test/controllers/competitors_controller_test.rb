@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -19,11 +19,11 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_create_competitor
-    assert_difference('Competitor.count') do
-      post contest_competitors_url(@contest), params: { competitor: {
-          location: 'blah',
-          fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
-      } }
+    assert_difference("Competitor.count") do
+      post contest_competitors_url(@contest), params: {competitor: {
+        location: "blah",
+        fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
+      }}
     end
     assert_redirected_to competitor_url(Competitor.last)
     assert_equal @user, Competitor.last.user
@@ -40,17 +40,17 @@ class CompetitorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_update_competitor
-    patch competitor_url(@competitor), params: { competitor: {
-        location: 'blah',
-        fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
-    } }
+    patch competitor_url(@competitor), params: {competitor: {
+      location: "blah",
+      fio1: @competitor.fio1, fio2: @competitor.fio2, fio3: @competitor.fio3
+    }}
     assert_redirected_to competitor_url(@competitor)
   end
 
   def test_should_destroy_competitor
     @competitor = competitors(:alone)
 
-    assert_difference('Competitor.count', -1) do
+    assert_difference("Competitor.count", -1) do
       delete competitor_url(@competitor)
     end
 

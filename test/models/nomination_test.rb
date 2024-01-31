@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class NominationTest < ActiveSupport::TestCase
   # def test_the_truth

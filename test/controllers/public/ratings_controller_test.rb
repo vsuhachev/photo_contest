@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Public::RatingsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -23,5 +23,4 @@ class Public::RatingsControllerTest < ActionDispatch::IntegrationTest
     get public_contest_nomination_photo_ratings_url(@contest, @nomination, @photo)
     assert_response :success
   end
-
 end

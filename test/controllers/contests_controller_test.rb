@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ContestsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -18,8 +18,8 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_create_contest
-    assert_difference('Contest.count') do
-      post contests_url, params: { contest: { description: @contest.description, title: @contest.title } }
+    assert_difference("Contest.count") do
+      post contests_url, params: {contest: {description: @contest.description, title: @contest.title}}
     end
 
     assert_redirected_to contest_url(Contest.last)
@@ -36,14 +36,14 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_update_contest
-    patch contest_url(@contest), params: { contest: { description: @contest.description, title: @contest.title } }
+    patch contest_url(@contest), params: {contest: {description: @contest.description, title: @contest.title}}
     assert_redirected_to contest_url(@contest)
   end
 
   def test_should_destroy_contest
     @contest = contests(:alone)
 
-    assert_difference('Contest.count', -1) do
+    assert_difference("Contest.count", -1) do
       delete contest_url(@contest)
     end
 

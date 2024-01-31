@@ -1,4 +1,4 @@
-require 'open3'
+require "open3"
 
 def run_docker(command)
   Dir.chdir(Rails.root) do
@@ -10,17 +10,17 @@ end
 
 namespace :docker do
   task :build_assets do
-    Rake::Task['assets:clobber'].invoke
-    Rake::Task['assets:precompile'].invoke
+    Rake::Task["assets:clobber"].invoke
+    Rake::Task["assets:precompile"].invoke
   end
 
-  desc 'build app image'
-  task :build => :build_assets do
-    run_docker('docker build --force-rm --tag vsuhachev/photo_contest --file Dockerfile . ')
+  desc "build app image"
+  task build: :build_assets do
+    run_docker("docker build --force-rm --tag vsuhachev/photo_contest --file Dockerfile . ")
   end
 
-  desc 'push app image'
+  desc "push app image"
   task :push do
-    run_docker('docker push vsuhachev/photo_contest')
+    run_docker("docker push vsuhachev/photo_contest")
   end
 end

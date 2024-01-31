@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class JurorsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -20,13 +20,13 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_create_juror
-    assert_difference('Juror.count') do
-      post contest_jurors_url(@contest), params: { juror: {
-          dob: @juror.dob,
-          fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
-          location: @juror.location,
-          user_id: @juror_user.id
-      } }
+    assert_difference("Juror.count") do
+      post contest_jurors_url(@contest), params: {juror: {
+        dob: @juror.dob,
+        fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
+        location: @juror.location,
+        user_id: @juror_user.id
+      }}
     end
 
     assert_redirected_to juror_url(Juror.last)
@@ -43,17 +43,17 @@ class JurorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_update_juror
-    patch juror_url(@juror), params: { juror: {
-        dob: @juror.dob,
-        fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
-        location: @juror.location,
-        user_id: @juror_user.id
-    } }
+    patch juror_url(@juror), params: {juror: {
+      dob: @juror.dob,
+      fio1: @juror.fio1, fio2: @juror.fio2, fio3: @juror.fio3,
+      location: @juror.location,
+      user_id: @juror_user.id
+    }}
     assert_redirected_to juror_url(@juror)
   end
 
   def test_should_destroy_juror
-    assert_difference('Juror.count', -1) do
+    assert_difference("Juror.count", -1) do
       delete juror_url(@juror)
     end
 

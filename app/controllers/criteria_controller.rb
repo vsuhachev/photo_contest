@@ -3,7 +3,7 @@ class CriteriaController < AdminController
 
   before_action :set_criterion, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('criteria.index.title'), ->(c) { c.contest_criteria_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t("criteria.index.title"), ->(c) { c.contest_criteria_path(c.instance_variable_get(:@contest)) }
 
   # GET /criteria
   # GET /criteria.json
@@ -21,7 +21,7 @@ class CriteriaController < AdminController
 
   # GET /criteria/new
   def new
-    add_breadcrumb I18n.t('app.crumbs.new')
+    add_breadcrumb I18n.t("app.crumbs.new")
     @criterion = @contest.criteria.build
     authorize @criterion
   end
@@ -40,7 +40,7 @@ class CriteriaController < AdminController
 
     respond_to do |format|
       if @criterion.save
-        format.html { redirect_to @criterion, notice: 'Criterion was successfully created.' }
+        format.html { redirect_to @criterion, notice: "Criterion was successfully created." }
         format.json { render :show, status: :created, location: @criterion }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class CriteriaController < AdminController
     authorize @criterion
     respond_to do |format|
       if @criterion.update(criterion_params)
-        format.html { redirect_to @criterion, notice: 'Criterion was successfully updated.' }
+        format.html { redirect_to @criterion, notice: "Criterion was successfully updated." }
         format.json { render :show, status: :ok, location: @criterion }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class CriteriaController < AdminController
     authorize @criterion
     @criterion.destroy
     respond_to do |format|
-      format.html { redirect_to contest_criteria_url(@contest), notice: 'Criterion was successfully destroyed.' }
+      format.html { redirect_to contest_criteria_url(@contest), notice: "Criterion was successfully destroyed." }
       format.json { head :no_content }
     end
   end

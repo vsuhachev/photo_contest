@@ -1,1 +1,1 @@
-json.array! @jurors, partial: 'jurors/juror', as: :juror
+json.array! @jurors, partial: "jurors/juror", as: :juror

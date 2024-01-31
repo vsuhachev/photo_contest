@@ -13,7 +13,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -41,7 +41,7 @@ gem "redis", ">= 4.0.1"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -51,7 +51,7 @@ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
+  gem "debug", platforms: %i[mri windows]
 end
 
 group :development do
@@ -64,7 +64,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem 'letter_opener'
+  gem "letter_opener"
+
+  gem "standard"
+  gem "standard-performance"
 end
 
 group :test do
@@ -73,41 +76,41 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'rails-i18n'
+gem "rails-i18n"
 
-gem 'devise'
-gem 'devise-i18n'
-gem 'role_model'
-gem 'pundit'
+gem "devise"
+gem "devise-i18n"
+gem "role_model"
+gem "pundit"
 
-gem 'slim-rails'
+gem "slim-rails"
 
 group :development, :test do
-  gem 'sass-rails'
-  gem 'bootstrap', "~> 4"
-  gem 'font-awesome-sass', "~> 4.7.0"
-  gem 'trix'
-  gem 'jquery-rails'
-  gem 'coffee-rails'
+  gem "sass-rails"
+  gem "bootstrap", "~> 4"
+  gem "font-awesome-sass", "~> 4.7.0"
+  gem "trix"
+  gem "jquery-rails"
+  gem "coffee-rails"
 end
 
-gem 'breadcrumbs_on_rails'
+gem "breadcrumbs_on_rails"
 
-gem 'shrine'
-gem 'fastimage'
-gem 'mini_magick'
+gem "shrine"
+gem "fastimage"
+gem "mini_magick"
 
-gem 'finite_machine', "~> 0.11.3"
+gem "finite_machine", "~> 0.11.3"
 gem "sync"
 
-gem 'redis-rails'
+gem "redis-rails"
 
-gem 'sidekiq'
+gem "sidekiq"
 
-gem 'rollbar'
-gem 'oj'
+gem "rollbar"
+gem "oj"
 
-gem 'rack-mini-profiler'
-gem 'flamegraph'
-gem 'stackprof'
-gem 'memory_profiler'
+gem "rack-mini-profiler"
+gem "flamegraph"
+gem "stackprof"
+gem "memory_profiler"

@@ -27,11 +27,10 @@ class Shared::ContestUserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      case
-        when admin?
-          scope
-        else
-          scope.where(user_id: user)
+      if admin?
+        scope
+      else
+        scope.where(user_id: user)
       end
     end
   end

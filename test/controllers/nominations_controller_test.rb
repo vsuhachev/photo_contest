@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class NominationsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -19,8 +19,8 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_create_nomination
-    assert_difference('Nomination.count') do
-      post contest_nominations_url(@contest), params: { nomination: { description: @nomination.description, title: @nomination.title } }
+    assert_difference("Nomination.count") do
+      post contest_nominations_url(@contest), params: {nomination: {description: @nomination.description, title: @nomination.title}}
     end
 
     assert_redirected_to nomination_url(Nomination.last)
@@ -37,7 +37,7 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_update_nomination
-    patch nomination_url(@nomination), params: { nomination: { description: @nomination.description, title: @nomination.title } }
+    patch nomination_url(@nomination), params: {nomination: {description: @nomination.description, title: @nomination.title}}
     assert_redirected_to nomination_url(@nomination)
   end
 
@@ -45,7 +45,7 @@ class NominationsControllerTest < ActionDispatch::IntegrationTest
     @contest = contests(:alone)
     @nomination = nominations(:alone)
 
-    assert_difference('Nomination.count', -1) do
+    assert_difference("Nomination.count", -1) do
       delete nomination_url(@nomination)
     end
 

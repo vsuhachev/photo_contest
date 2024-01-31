@@ -16,6 +16,6 @@ class Public::JurorsController < Public::BaseController
   def set_contest
     super
     @jurors = @contest.jurors
-    add_breadcrumb t('.index.title'), public_contest_jurors_path(@contest)
+    add_breadcrumb t(".index.title"), public_contest_jurors_path(@contest)
   end
 end

@@ -3,7 +3,7 @@
 
 if Rails.env.production?
   # set RedisStore
-  Rack::MiniProfiler.config.storage_options = { url: ENV.fetch('REDIS_CACHE') }
+  Rack::MiniProfiler.config.storage_options = {url: ENV.fetch("REDIS_CACHE")}
   Rack::MiniProfiler.config.storage = Rack::MiniProfiler::RedisStore
 else
   # set MemoryStore

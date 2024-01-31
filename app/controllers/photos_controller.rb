@@ -5,7 +5,7 @@ class PhotosController < AdminController
 
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('photos.index.title'), ->(c) { c.contest_photos_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t("photos.index.title"), ->(c) { c.contest_photos_path(c.instance_variable_get(:@contest)) }
 
   # GET /photos
   # GET /photos.json
@@ -23,7 +23,7 @@ class PhotosController < AdminController
 
   # GET /photos/new
   def new
-    add_breadcrumb I18n.t('app.crumbs.new')
+    add_breadcrumb I18n.t("app.crumbs.new")
     @photo = @contest.photos.build
     authorize @photo
   end
@@ -42,7 +42,7 @@ class PhotosController < AdminController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to @photo, notice: "Photo was successfully created." }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class PhotosController < AdminController
     authorize @photo
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to @photo, notice: "Photo was successfully updated." }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class PhotosController < AdminController
     authorize @photo
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to contest_photos_url(@contest), notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to contest_photos_url(@contest), notice: "Photo was successfully destroyed." }
       format.json { head :no_content }
     end
   end

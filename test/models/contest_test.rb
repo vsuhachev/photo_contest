@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ContestTest < ActiveSupport::TestCase
   # def test_the_truth

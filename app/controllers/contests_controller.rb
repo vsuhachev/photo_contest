@@ -3,7 +3,7 @@ class ContestsController < AdminController
 
   before_action :set_contest, only: [:show, :edit, :update, :destroy, :transition]
 
-  add_breadcrumb I18n.t('contests.index.title'), :contests_path
+  add_breadcrumb I18n.t("contests.index.title"), :contests_path
 
   # GET /contests
   # GET /contests.json
@@ -21,7 +21,7 @@ class ContestsController < AdminController
 
   # GET /contests/new
   def new
-    add_breadcrumb I18n.t('app.crumbs.new')
+    add_breadcrumb I18n.t("app.crumbs.new")
     @contest = Contest.new
     authorize @contest
   end
@@ -40,7 +40,7 @@ class ContestsController < AdminController
 
     respond_to do |format|
       if @contest.save
-        format.html { redirect_to @contest, notice: 'Contest was successfully created.' }
+        format.html { redirect_to @contest, notice: "Contest was successfully created." }
         format.json { render :show, status: :created, location: @contest }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class ContestsController < AdminController
     authorize @contest
     respond_to do |format|
       if @contest.update(contest_params)
-        format.html { redirect_to @contest, notice: 'Contest was successfully updated.' }
+        format.html { redirect_to @contest, notice: "Contest was successfully updated." }
         format.json { render :show, status: :ok, location: @contest }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class ContestsController < AdminController
     authorize @contest
     respond_to do |format|
       if @contest.destroy
-        format.html { redirect_to contests_url, notice: 'Contest was successfully destroyed.' }
+        format.html { redirect_to contests_url, notice: "Contest was successfully destroyed." }
         format.json { head :no_content }
       else
         format.html { render :show }

@@ -15,7 +15,7 @@ module Stateful
   end
 
   def state_machine_class
-    self.class.state_machine or fail 'state machine not defined'
+    self.class.state_machine or fail "state machine not defined"
   end
 
   def set_initial_state

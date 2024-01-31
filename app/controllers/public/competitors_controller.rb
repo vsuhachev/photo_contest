@@ -16,6 +16,6 @@ class Public::CompetitorsController < Public::BaseController
   def set_contest
     super
     @competitors = @contest.competitors
-    add_breadcrumb t('.index.title'), public_contest_competitors_path(@contest)
+    add_breadcrumb t(".index.title"), public_contest_competitors_path(@contest)
   end
 end

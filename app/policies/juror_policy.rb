@@ -13,10 +13,10 @@ class JurorPolicy < Shared::ContestAdminPolicy
 
   def permitted_attributes
     common_attributes = [
-        :avatar,
-        :fio1, :fio2, :fio3, :dob,
-        :location, :organization,
-        :description
+      :avatar,
+      :fio1, :fio2, :fio3, :dob,
+      :location, :organization,
+      :description
     ]
     if admin?
       common_attributes << :user_id

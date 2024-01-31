@@ -4,7 +4,7 @@ class JurorsController < AdminController
 
   before_action :set_juror, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('jurors.index.title'), ->(c) { c.contest_jurors_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t("jurors.index.title"), ->(c) { c.contest_jurors_path(c.instance_variable_get(:@contest)) }
 
   # GET /jurors
   # GET /jurors.json
@@ -22,7 +22,7 @@ class JurorsController < AdminController
 
   # GET /jurors/new
   def new
-    add_breadcrumb I18n.t('app.crumbs.new')
+    add_breadcrumb I18n.t("app.crumbs.new")
     @juror = @contest.jurors.build
     authorize @juror
   end
@@ -41,7 +41,7 @@ class JurorsController < AdminController
 
     respond_to do |format|
       if @juror.save
-        format.html { redirect_to @juror, notice: 'Juror was successfully created.' }
+        format.html { redirect_to @juror, notice: "Juror was successfully created." }
         format.json { render :show, status: :created, location: @juror }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class JurorsController < AdminController
     authorize @juror
     respond_to do |format|
       if @juror.update(permitted_attributes(@juror))
-        format.html { redirect_to @juror, notice: 'Juror was successfully updated.' }
+        format.html { redirect_to @juror, notice: "Juror was successfully updated." }
         format.json { render :show, status: :ok, location: @juror }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class JurorsController < AdminController
     authorize @juror
     @juror.destroy
     respond_to do |format|
-      format.html { redirect_to contest_jurors_url(@contest), notice: 'Juror was successfully destroyed.' }
+      format.html { redirect_to contest_jurors_url(@contest), notice: "Juror was successfully destroyed." }
       format.json { head :no_content }
     end
   end

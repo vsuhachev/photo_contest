@@ -3,7 +3,7 @@ class Public::RatingsController < Public::BaseController
 
   def index
     authorize auth_context, :ratings?
-    add_breadcrumb t('.title')
+    add_breadcrumb t(".title")
 
     @ratings = (@nomination ? Rating.for_nomination(@nomination) : Rating.for_contest(@contest)).no_jurors_photos
     @photos = @contest.photos.preload(:contest, :nomination, :competitor)
@@ -12,7 +12,7 @@ class Public::RatingsController < Public::BaseController
 
   def show
     authorize auth_context, :detailed_ratings?
-    add_breadcrumb t('.title')
+    add_breadcrumb t(".title")
 
     @ratings = @photo.ratings.preload(:juror, :criterion).no_jurors_photos
   end

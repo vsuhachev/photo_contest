@@ -6,11 +6,9 @@ class CreateRatings < ActiveRecord::Migration[5.0]
       t.references :criterion, foreign_key: true, index: false
       t.integer :value
 
-      t.index [:photo_id, :juror_id, :criterion_id], unique: true, name: 'index_ratings_on_photo_juror_criterion'
+      t.index [:photo_id, :juror_id, :criterion_id], unique: true, name: "index_ratings_on_photo_juror_criterion"
 
       t.timestamps
     end
-
-
   end
 end

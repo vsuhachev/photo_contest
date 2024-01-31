@@ -1,1 +1,1 @@
-json.array! @criteria, partial: 'criteria/criterion', as: :criterion
+json.array! @criteria, partial: "criteria/criterion", as: :criterion

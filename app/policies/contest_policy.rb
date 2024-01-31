@@ -27,11 +27,10 @@ class ContestPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      case
-        when admin?
-          scope
-        else
-          scope.published
+      if admin?
+        scope
+      else
+        scope.published
       end
     end
   end

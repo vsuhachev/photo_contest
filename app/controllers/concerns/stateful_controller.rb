@@ -12,10 +12,10 @@ module StatefulController
 
     respond_to do |format|
       if @transition.perform
-        format.html { redirect_to transition_redirect_url, notice: t('shared.stateful.transition.success') }
+        format.html { redirect_to transition_redirect_url, notice: t("shared.stateful.transition.success") }
         format.json { render :show, status: :ok }
       else
-        format.html { render 'shared/stateful/_transition', locals: { i18n_scope: state_machine_i18n_scope } }
+        format.html { render "shared/stateful/_transition", locals: {i18n_scope: state_machine_i18n_scope} }
         format.json { render json: @transition.errors, status: :unprocessable_entity }
       end
     end
@@ -36,7 +36,7 @@ module StatefulController
   end
 
   def transition_redirect_url
-    { controller: controller_name, action: 'show', id: stateful_model }
+    {controller: controller_name, action: "show", id: stateful_model}
   end
 
   def state_machine_params

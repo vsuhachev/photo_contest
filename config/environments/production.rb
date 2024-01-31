@@ -52,12 +52,12 @@ Rails.application.configure do
   config.force_ssl = true
 
   # Log to STDOUT by default
-  config.logger = ActiveSupport::Logger.new(STDOUT)
-    .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+  config.logger = ActiveSupport::Logger.new($stdout)
+    .tap { |logger| logger.formatter = ::Logger::Formatter.new }
     .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
@@ -99,21 +99,21 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch('RAILS_SMTP_HOST', 'localhost'),
-    port: ENV.fetch('RAILS_SMTP_PORT', 25),
-    user_name: ENV.fetch('RAILS_SMTP_USER', nil),
-    password: ENV.fetch('RAILS_SMTP_PWD', nil),
-    authentication: ENV.fetch('RAILS_SMTP_AUTH_TYPE', :plain),
-    ssl: ENV.fetch('RAILS_SMTP_SSL', nil) == 'true',
-    tls: ENV.fetch('RAILS_SMTP_TLS', nil) == 'true',
-    enable_starttls_auto: ENV.fetch('RAILS_SMTP_ENABLE_STARTTLS_AUTO', nil) == 'true'
+    address: ENV.fetch("RAILS_SMTP_HOST", "localhost"),
+    port: ENV.fetch("RAILS_SMTP_PORT", 25),
+    user_name: ENV.fetch("RAILS_SMTP_USER", nil),
+    password: ENV.fetch("RAILS_SMTP_PWD", nil),
+    authentication: ENV.fetch("RAILS_SMTP_AUTH_TYPE", :plain),
+    ssl: ENV.fetch("RAILS_SMTP_SSL", nil) == "true",
+    tls: ENV.fetch("RAILS_SMTP_TLS", nil) == "true",
+    enable_starttls_auto: ENV.fetch("RAILS_SMTP_ENABLE_STARTTLS_AUTO", nil) == "true"
   }
 
-  config.gem 'redis-store', lib: 'redis-store'
-  require 'redis-store' # HACK
+  config.gem "redis-store", lib: "redis-store"
+  require "redis-store" # HACK
 
-  redis_connection = ENV.fetch('REDIS_CACHE', 'redis://redis:6379/0')
-  config.cache_store = :redis_store, redis_connection, { expires_in: ENV.fetch('REDIS_CACHE_EXPIRES', 90.minutes) }
+  redis_connection = ENV.fetch("REDIS_CACHE", "redis://redis:6379/0")
+  config.cache_store = :redis_store, redis_connection, {expires_in: ENV.fetch("REDIS_CACHE_EXPIRES", 90.minutes)}
 
   config.active_job.queue_adapter = :sidekiq
 end

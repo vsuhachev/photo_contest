@@ -4,7 +4,7 @@ class CompetitorsController < AdminController
 
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb I18n.t('competitors.index.title'), ->(c) { c.contest_competitors_path(c.instance_variable_get(:@contest)) }
+  add_breadcrumb I18n.t("competitors.index.title"), ->(c) { c.contest_competitors_path(c.instance_variable_get(:@contest)) }
 
   # GET /competitors
   # GET /competitors.json
@@ -24,7 +24,7 @@ class CompetitorsController < AdminController
   def new
     @competitor = @contest.competitors.build
     authorize @competitor
-    add_breadcrumb I18n.t('app.crumbs.new')
+    add_breadcrumb I18n.t("app.crumbs.new")
   end
 
   # GET /competitors/1/edit
@@ -41,7 +41,7 @@ class CompetitorsController < AdminController
 
     respond_to do |format|
       if @competitor.save
-        format.html { redirect_to @competitor, notice: 'Competitor was successfully created.' }
+        format.html { redirect_to @competitor, notice: "Competitor was successfully created." }
         format.json { render :show, status: :created, location: @competitor }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class CompetitorsController < AdminController
     authorize @competitor
     respond_to do |format|
       if @competitor.update(competitor_params)
-        format.html { redirect_to @competitor, notice: 'Competitor was successfully updated.' }
+        format.html { redirect_to @competitor, notice: "Competitor was successfully updated." }
         format.json { render :show, status: :ok, location: @competitor }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class CompetitorsController < AdminController
     authorize @competitor
     respond_to do |format|
       if @competitor.destroy
-        format.html { redirect_to contest_competitors_url(@contest), notice: 'Competitor was successfully destroyed.' }
+        format.html { redirect_to contest_competitors_url(@contest), notice: "Competitor was successfully destroyed." }
         format.json { head :no_content }
       else
         format.html { render :show }

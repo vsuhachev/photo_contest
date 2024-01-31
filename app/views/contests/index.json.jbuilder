@@ -1,1 +1,1 @@
-json.array! @contests, partial: 'contests/contest', as: :contest
+json.array! @contests, partial: "contests/contest", as: :contest

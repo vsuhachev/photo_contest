@@ -1,4 +1,4 @@
-require 'image_processing/mini_magick'
+require "image_processing/mini_magick"
 
 class CoverUploader < Shrine
   include ImageProcessing::MiniMagick
@@ -9,8 +9,8 @@ class CoverUploader < Shrine
   plugin :delete_raw
 
   Attacher.validate do
-    validate_max_size 5*1024*1024, message: 'is too large (max is 5 MB)'
-    validate_mime_type_inclusion ['image/jpeg', 'image/png']
+    validate_max_size 5 * 1024 * 1024, message: "is too large (max is 5 MB)"
+    validate_mime_type_inclusion ["image/jpeg", "image/png"]
   end
 
   process(:store) do |io, context|
@@ -22,10 +22,10 @@ class CoverUploader < Shrine
 
     original.delete
 
-    { large: large, medium: medium, small: small }
+    {large: large, medium: medium, small: small}
   end
 
   def generate_location(_io, _context)
-    ['covers', super].compact.join('/')
+    ["covers", super].compact.join("/")
   end
 end

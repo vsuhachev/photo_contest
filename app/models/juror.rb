@@ -6,11 +6,11 @@ class Juror < ApplicationRecord
 
   has_many :ratings, dependent: :delete_all
 
-  validates :fio1, :fio2, :location,  presence: true
-  validates :user, uniqueness: { scope: [:contest] }
+  validates :fio1, :fio2, :location, presence: true
+  validates :user, uniqueness: {scope: [:contest]}
 
   def fio
-    [fio1, fio2, fio3].compact.join(' ')
+    [fio1, fio2, fio3].compact.join(" ")
   end
 
   alias_method :to_s, :fio

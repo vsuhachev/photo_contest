@@ -8,7 +8,7 @@ class Competitor < ApplicationRecord
   validates :fio1, :fio2, :location, presence: true
 
   def fio
-    [fio1, fio2, fio3].compact.join(' ')
+    [fio1, fio2, fio3].compact.join(" ")
   end
 
   alias_method :to_s, :fio

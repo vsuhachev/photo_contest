@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ImageDeleteJobTest < ActiveJob::TestCase
   # def test_the_truth
