@@ -12,23 +12,24 @@ ruby:
         edit_path = { controller: controller_name, action: :edit }.merge(shallow ? path.slice(:id) : path)
         show_path = { controller: controller_name, action: :show }.merge(shallow ? path.slice(:id) : path)
         destroy_path = { controller: controller_name, action: :destroy }.merge(shallow ? path.slice(:id) : path)
+        btn_class = "btn btn-secondary"
 
       - if action_name == 'edit' && policy.show?
-        li.btn.btn-secondary.ml-1
-          = link_to show_path do
+        li.ml-1.list-inline-item
+          = link_to show_path, class: btn_class do
             = icon 'folder-open-o', title: t('actions.show')
 
       - if action_name == 'show' && policy.edit?
-        li.btn.btn-secondary.ml-1
-          = link_to edit_path do
+        li.ml-1.list-inline-item
+          = link_to edit_path, class: btn_class do
             = icon 'pencil', title: t('actions.edit')
 
       - if (action_name == 'show' || action_name == 'edit') && policy.destroy?
-        li.btn.btn-secondary.ml-1
-          = link_to destroy_path, data: { confirm: t('actions.confirm.destroy') }, method: :delete do
+        li.ml-1.list-inline-item
+          = link_to destroy_path, class: btn_class, data: { confirm: t('actions.confirm.destroy') }, method: :delete do
             = icon 'trash', title: t('actions.destroy')
 
       - if policy.new?
-        li.btn.btn-secondary.ml-1
-          = link_to new_path do
+        li.ml-1.list-inline-item
+          = link_to new_path, class: btn_class do
             = icon 'file-o', title: t('actions.new')
