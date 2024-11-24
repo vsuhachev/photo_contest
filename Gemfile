@@ -85,14 +85,12 @@ gem "pundit"
 
 gem "slim-rails"
 
-group :development, :test do
-  gem "sass-rails"
-  gem "bootstrap", "~> 4"
-  gem "font-awesome-sass", "~> 4.7.0"
-  gem "trix"
-  gem "jquery-rails"
-  gem "coffee-rails"
-end
+gem "sass-rails"
+gem "bootstrap", "~> 4"
+gem "font-awesome-sass", "~> 4.7.0"
+gem "trix"
+gem "jquery-rails"
+gem "coffee-rails"
 
 gem "breadcrumbs_on_rails"
 
