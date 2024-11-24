@@ -1,11 +1,12 @@
-nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+nav.navbar.navbar-expand-lg.navbar-light.bg-faded
 
-  button.navbar-toggler.navbar-toggler-right (
+  a.navbar-brand href=root_path = t('app.title')
+
+  button.navbar-toggler (
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     data-target="#navbarSupportedContent" data-toggle="collapse" type="button" )
     span.navbar-toggler-icon
 
-  a.navbar-brand href=root_path = t('app.title')
 
   #navbarSupportedContent.collapse.navbar-collapse
 
