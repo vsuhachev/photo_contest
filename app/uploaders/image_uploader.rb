@@ -4,7 +4,6 @@ class ImageUploader < Shrine
   plugin :determine_mime_type
   plugin :store_dimensions
   plugin :validation_helpers
-  plugin :versions
 
   Attacher.validate do
     validate_max_size 35 * 1024 * 1024, message: "is too large (max is 35 MB)"
