@@ -6,7 +6,7 @@ ruby:
 .row
   - cache [:public, @contest, @photo, @juror.present?, :photo_image] do
     .col-12.col-md-6.col-lg-8
-      = link_to @photo.image_url(@juror ? :original : :large) do
+      = link_to @juror ? @photo.image_url : @photo.image_url(:large) do
         img.img-fluid src=@photo.image_url(:large)
 
       .small.text-muted.my-2 = t('copyright', author: @photo.competitor.fio.strip, year: @photo.obtained_at.year)
@@ -27,11 +27,11 @@ ruby:
         dd.col-12 = render 'shared/person', person: @photo.competitor, url: public_contest_competitor_path(@contest, @photo.competitor)
 
     - if @ratings_voting_enabled
-      - cache [:public, @photo, @juror, :ratings, @juror.ratings.for_photo(@photo).maximum(:updated_at).to_f]
+      - cache [:public, @photo, @juror, :ratings, @juror.ratings.for_photo(@photo).maximum(:updated_at).to_f] do
         = render 'shared/ratings/voting', photo: @photo, juror: @juror
 
     - if @ratings_results_enabled
-      - cache [:public, @photo, :ratings, :results, @photo.ratings.maximum(:updated_at).to_f]
+      - cache [:public, @photo, :ratings, :results, @photo.ratings.maximum(:updated_at).to_f] do
         = render 'shared/ratings/results', photo: @photo
 
     - if policy(controller.auth_context).detailed_ratings?

@@ -10,10 +10,7 @@ Shrine.plugin :model
 Shrine.plugin :validation
 Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data
-
-Shrine.plugin :derivatives,
-  create_on_promote: true, # automatically create derivatives on promotion
-  versions_compatibility: true # handle versions column format
+Shrine.plugin :derivatives, create_on_promote: true
 
 Shrine.plugin :backgrounding
 

@@ -1,6 +1,8 @@
 require "image_processing/mini_magick"
 
 class AvatarUploader < Shrine
+  plugin :determine_mime_type
+  plugin :store_dimensions
   plugin :validation_helpers
 
   Attacher.validate do
@@ -10,7 +12,7 @@ class AvatarUploader < Shrine
 
   plugin :derivatives
 
-  Attacher.derivatives(:thumb) do |original|
+  Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
     {

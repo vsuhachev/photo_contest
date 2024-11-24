@@ -12,13 +12,13 @@ class ImageUploader < Shrine
 
   plugin :derivatives
 
-  Attacher.derivatives(:thumb) do |original|
+  Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
-      large: magick.resize_to_fill(800, 800),
-      medium: magick.resize_to_limit(300, 300),
-      small: magick.resize_to_limit(80, 80)
+      large: magick.resize_to_fill!(800, 800),
+      medium: magick.resize_to_limit!(300, 300),
+      small: magick.resize_to_limit!(80, 80)
     }
   end
 end

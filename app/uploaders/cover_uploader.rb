@@ -1,6 +1,8 @@
 require "image_processing/mini_magick"
 
 class CoverUploader < Shrine
+  plugin :determine_mime_type
+  plugin :store_dimensions
   plugin :validation_helpers
 
   Attacher.validate do
@@ -10,13 +12,13 @@ class CoverUploader < Shrine
 
   plugin :derivatives
 
-  Attacher.derivatives(:thumb) do |original|
+  Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
-      large: magick.resize_to_fill(800, 800),
-      medium: magick.resize_to_limit(400, 400),
-      small: magick.resize_to_limit(80, 80)
+      large: magick.resize_to_fill!(800, 800),
+      medium: magick.resize_to_limit!(400, 400),
+      small: magick.resize_to_limit!(80, 80)
     }
   end
 end
