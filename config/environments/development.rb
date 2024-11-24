@@ -78,5 +78,5 @@ Rails.application.configure do
 
   config.sass.preferred_syntax = :sass
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
 end
