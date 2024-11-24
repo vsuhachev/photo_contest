@@ -13,7 +13,7 @@ class ImageUploader < Shrine
 
   plugin :derivatives
 
-  Attacher.derivatives do |original|
+  Attacher.derivatives(:thumb) do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
