@@ -38,6 +38,7 @@
 
 /.idea
 /.ruby-version
+/.tool-versions
 
 /public/uploads/
 
