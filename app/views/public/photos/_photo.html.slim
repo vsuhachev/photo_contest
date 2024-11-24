@@ -1,7 +1,7 @@
 - cache [:public, :photo_thumb, item] do
   ruby:
-    image ||= item.respond_to?(:photo) ? item.photo&.image : item.is_a?(Photo) ? item.image : nil
-    image_url = image ? image[:medium].url : placeholder_url
+    photo ||= item.respond_to?(:photo) ? item.photo : item.is_a?(Photo) ? item : nil
+    image_url = photo ? photo.image_url(:medium) : placeholder_url
     title ||= item&.title
     description ||= item&.description
     link ||= "#"
